@@ -45,14 +45,14 @@ header h1 span { color: var(--primary); }
 .benefit-list { list-style: none; margin-top: 20px; }
 .benefit-list li { margin-bottom: 10px; font-size: 1.1rem; }
 
-#features { padding: 80px 10%; text-align: center; }
+#jatekmodok { padding: 80px 10%; text-align: center; }
 .section-title { margin-bottom: 40px; font-size: 2.5rem; }
 .card-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
 .card { background: var(--card-bg); padding: 40px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); transition: 0.4s; }
 .card:hover { border-color: var(--primary); transform: translateY(-10px); }
 .card-icon { font-size: 3rem; margin-bottom: 20px; }
 
-#faq { padding: 80px 10%; background: #0e0e12; }
+#info { padding: 80px 10%; background: #0e0e12; }
 .faq-container { max-width: 800px; margin: 0 auto; }
 .faq-item { background: var(--card-bg); padding: 20px; margin-bottom: 15px; border-radius: 10px; }
 .faq-item h4 { color: var(--primary); margin-bottom: 10px; }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="hu">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,26 +9,27 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/your-code.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
 
     <nav>
         <div class="logo">Solaryn<span>Network</span></div>
         <ul>
-            <li><a href="#home">Kezdőlap</a></li>
-            <li><a href="#about">Rólunk</a></li>
-            <li><a href="#features">Játékmódok</a></li>
-            <li><a href="#faq">Infó</a></li>
+            <li><a href="#kezdolap">Kezdőlap</a></li>
+            <li><a href="#rolunk">Rólunk</a></li>
+            <li><a href="#jatekmodok">Játékmódok</a></li>
+            <li><a href="#info">Infó</a></li>
             <li><a href="http://bolt.solaryn.hu" class="btn-shop">Webshop</a></li>
         </ul>
     </nav>
 
-    <header id="home">
+    <header id="kezdolap">
         <div class="hero-content">
             <div class="badge">Hamarosan rajtolunk!</div>
             <h1>Solaryn<span>Network</span></h1>
             <p>Fedezd fel a legújabb generációs túlélő élményt és a pörgős minijátékokat.</p>
             <div class="ip-container" onclick="copyIP()">
-                <span id="ip-text">play.solarynnetwork.hu</span>
+                <span id="ip-text">play.solaryn.hu</span>
             </div>
         </div>
     </header>
@@ -47,10 +49,11 @@
         </div>
     </section>
 
-    <section id="about" class="info-section">
+    <section id="rolunk" class="info-section">
         <div class="info-text">
             <h2>Mi az a <span class="highlight">Solaryn?</span></h2>
-            <p>A SolarynNetwork nem csak egy szerver, hanem egy közösség. 2026-os indulásunk óta célunk a legstabilabb és legélvezetesebb magyar Minecraft környezet megteremtése.</p>
+            <p>A SolarynNetwork nem csak egy szerver, hanem egy közösség. 2026-os indulásunk óta célunk a legstabilabb
+                és legélvezetesebb magyar Minecraft környezet megteremtése.</p>
             <ul class="benefit-list">
                 <li>✅ Egyedi fejlesztésű pluginok</li>
                 <li>✅ Kedves és segítőkész Staff csapat</li>
@@ -59,17 +62,18 @@
             </ul>
         </div>
         <div class="info-image">
-            <img src="https://via.placeholder.com/500x300" alt="Szerver kép">
+            <img src="background.png" alt="Szerver kép">
         </div>
     </section>
 
-    <section id="features">
+    <section id="jatekmodok">
         <h2 class="section-title">Játékmódjaink</h2>
         <div class="card-container">
             <div class="card">
                 <div class="card-icon">👑</div>
                 <h3>Kingdoms</h3>
-                <p>Fejleszd a királyságodat, kereskedj a piacon, és harcolj a saját birodalmadért egy védett területen.</p>
+                <p>Fejleszd a királyságodat, kereskedj a piacon, és harcolj a saját birodalmadért egy védett területen.
+                </p>
             </div>
             <div class="card">
                 <div class="card-icon">🪄</div>
@@ -84,16 +88,28 @@
         </div>
     </section>
 
-    <section id="faq">
+    <section id="info">
         <h2 class="section-title">Gyakori Kérdések</h2>
         <div class="faq-container">
             <div class="faq-item">
                 <h4>Melyik verzióval tudok csatlakozni?</h4>
-                <p>Szerverünk támogatja az 1.19.4-től egészen a legfrissebb 1.20+ verziókig az összes klienst.</p>
+                <p>Szerverünk támogatja az 1.19.4-től egészen a legfrissebb 1.21+ verziókig az összes klienst.</p>
             </div>
             <div class="faq-item">
                 <h4>Hogyan lehetek moderátor?</h4>
                 <p>A tagfelvétel időszakos, ezeket a Discord szerverünkön hirdetjük meg.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Hogyan csatlakozhatok fel a hálózatra?</h4>
+                <p>Add hozzá a szervert a többjátékos menüpontban, majd írd be az IP címet: play.solaryn.hu</p>
+            </div>
+            <div class="faq-item">
+                <h4>Mit csináljak ha nem tudok felcsatlakozni a szerverre?</h4>
+                <p>Indítsd újra a kliensed, majd próbálj meg újból csatlakozni.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Fel lehet csatlakozni FyreMC kliensről is?</h4>
+                <p>Igen, bármilyen Minecraft kliensel fel lehet csatlakozni, még a FyreMC kliensel is.</p>
             </div>
         </div>
     </section>
@@ -116,4 +132,5 @@
         }
     </script>
 </body>
+
 </html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SolarNet partnerprogram - Solaryn Network</title>
+    <meta name="description" content="A Solaryn Network partnerprogramja - szerver-tulajdonosoknak, akik több játékost szeretnének.">
+    <link rel="icon" type="image/png" href="assets/solaryn-icon.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <canvas class="particle-canvas" id="particleCanvas"></canvas>
+
+    <nav>
+        <a href="index.html#kezdolap" class="logo">
+            <img src="assets/solaryn-icon.png" alt="Solaryn" class="logo-icon">
+            <span class="logo-word">Network</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html#kezdolap">Kezdőlap</a></li>
+            <li><a href="index.html#rolunk">Rólunk</a></li>
+            <li><a href="index.html#jatekmodok">Játékmódok</a></li>
+            <li><a href="index.html#kliens">Kliens</a></li>
+            <li><a href="index.html#csapat">Csapat</a></li>
+            <li><a href="index.html#gyik">GYIK</a></li>
+            <li><a href="solarnet.html">SolarNet</a></li>
+        </ul>
+        <div class="nav-actions">
+            <a href="https://center.solaryn.hu" class="btn-outline-nav">Webshop</a>
+            <a href="index.html#kliens" class="btn-nav-download">Letöltés</a>
+        </div>
+    </nav>
+
+    <section class="subpage-hero">
+        <a href="index.html" class="back-home">← Vissza a főoldalra</a>
+        <div class="badge hero-anim badge-pulse">SolarNet partnerprogram</div>
+        <h1 class="hero-anim" style="animation-delay:.1s">Van egy jó szervered,<br>de kevés a játékos?</h1>
+        <p class="hero-anim" style="animation-delay:.2s">Elképzelhető, hogy a Solaryn Network SolarNet
+            partnerprogramja pontosan neked szól!</p>
+        <div class="solarnet-cta hero-anim" style="animation-delay:.3s; padding-top: 26px;">
+            <a href="https://dc.solaryn.hu" class="btn-glow-download btn-download-big">Jelentkezés</a>
+        </div>
+    </section>
+
+    <section class="solarnet-benefits">
+        <div class="solarnet-benefit-grid">
+            <div class="solarnet-benefit-card reveal" style="--reveal-delay:0s">
+                <span class="solarnet-benefit-tag">Előny</span>
+                <h3>Bekerülés a kliensbe</h3>
+                <p>A partnerségünk egyik legnagyobb húzóereje, hogy a szervered megjelenik a hivatalos Solaryn kliens
+                    szerverlistájában - azt a klienst, amit naponta több százan, csúcsidőszakban több ezren
+                    indítanak el. Kiemelt helyet kapsz egy már összeszokott, aktív magyar közösség előtt.</p>
+            </div>
+            <div class="solarnet-benefit-card reveal" style="--reveal-delay:.08s">
+                <span class="solarnet-benefit-tag">Előny</span>
+                <h3>Stratégiai tanácsadás</h3>
+                <p>Ha nagyobb technikai kérdésbe futsz bele, szívesen megosztjuk a tapasztalatunkat - hosting-
+                    megoldások, bevált technikai gyakorlatok, architektúra-döntések. Operatív, "belépünk és
+                    megjavítjuk" jellegű support nem része a programnak, de tanácsban nem lesz hiány.</p>
+            </div>
+            <div class="solarnet-benefit-card reveal" style="--reveal-delay:.16s">
+                <span class="solarnet-benefit-tag">Előny</span>
+                <h3>Vezetési és marketing tanácsok</h3>
+                <p>Marketing, kommunikáció, közösségépítés - mindaz, amit mi már megtanultunk útközben, átadjuk
+                    neked is, hogy a szervered a lehető legjobb formáját hozza, és a fejlődésed felgyorsuljon.</p>
+            </div>
+            <div class="solarnet-benefit-card reveal" style="--reveal-delay:.24s">
+                <span class="solarnet-benefit-tag">Előny</span>
+                <h3>Teljes függetlenség</h3>
+                <p>A partnerség nem köt semmilyen kizárólagossághoz - a játékosaid továbbra is bármelyik klienssel
+                    csatlakozhatnak hozzád. Te maradsz a csapatod, a rangjaid, a weboldalad és a szervergéped ura;
+                    semmilyen hozzáférést nem kérünk el tőled.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="solarnet-conditions">
+        <h2 class="section-title reveal" style="text-align:center; margin-bottom: 40px;">Partnerprogram feltételei</h2>
+
+        <div class="solarnet-condition reveal" style="--reveal-delay:0s">
+            <div class="solarnet-condition-num">1</div>
+            <div>
+                <h4>Minőségi szerver</h4>
+                <p>Stabil működés, minimális leállási idő, megfelelő védelmi rendszerek, rendszeres frissítések.
+                    A csapatodnak gyorsan és hatékonyan kell tudnia reagálni a játékosok problémáira.</p>
+            </div>
+        </div>
+        <div class="solarnet-condition reveal" style="--reveal-delay:.1s">
+            <div class="solarnet-condition-num">2</div>
+            <div>
+                <h4>Egyediségre törekvés</h4>
+                <p>Olyan tartalom, ami kiemel a mezőnyből - egyedi minijátékok, kihívások, pluginok vagy világok.
+                    Fontos, hogy a közösséged visszajelzéseire építve folyamatosan fejlődj.</p>
+            </div>
+        </div>
+        <div class="solarnet-condition reveal" style="--reveal-delay:.2s">
+            <div class="solarnet-condition-num">3</div>
+            <div>
+                <h4>Hatékony kommunikáció</h4>
+                <p>Aktív jelenlét a közösségi médiában és a Discordon, rendszeres tájékoztatás a frissítésekről és
+                    eseményekről, valamint egy moderációs csapat, amely biztosítja a szabályok betartását és a
+                    játékosok biztonságát.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="solarnet-pricing">
+        <h2 class="section-title reveal">Fizetési feltételek</h2>
+        <p class="section-subtitle reveal">Minden jó dolognak ára van, de a SolarNet esetében ez meglehetősen barátságos.</p>
+        <div class="solarnet-price-card reveal">
+            <div class="solarnet-price-row">
+                <span class="solarnet-price-label">Belépési díj (egyszeri, első alkalommal)</span>
+                <span class="solarnet-price-value">10 000 Ft</span>
+            </div>
+            <div class="solarnet-price-row">
+                <span class="solarnet-price-label">Havi fenntartási díj (ezt követően, minden hónapban)</span>
+                <span class="solarnet-price-value">5 000 Ft</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="gyik" class="faq-section">
+        <h2 class="section-title reveal">Gyakran Ismételt Kérdések</h2>
+        <div class="faq-container">
+            <div class="faq-item reveal">
+                <button class="faq-question">
+                    <span>Milyen hosszú a partneri szerződés időtartama?</span>
+                    <span class="faq-arrow">⌄</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Nincs kötött időtartam - a partnerség hónapról hónapra megújul, és bármikor lemondható,
+                        felmondási díj nélkül.</p>
+                </div>
+            </div>
+            <div class="faq-item reveal">
+                <button class="faq-question">
+                    <span>Milyen technikai segítséget kaphatok a Solaryntól?</span>
+                    <span class="faq-arrow">⌄</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Stratégiai szintű tanácsokat - hosting-választás, teljesítmény-optimalizálás, bevált
+                        gyakorlatok. Operatív, a szerveredre bejelentkezős hibajavítást nem vállalunk.</p>
+                </div>
+            </div>
+            <div class="faq-item reveal">
+                <button class="faq-question">
+                    <span>Mikor kapok választ a jelentkezésemre?</span>
+                    <span class="faq-arrow">⌄</span>
+                </button>
+                <div class="faq-answer">
+                    <p>A Discord ticketedre jellemzően pár napon belül válaszol a csapatunk.</p>
+                </div>
+            </div>
+            <div class="faq-item reveal">
+                <button class="faq-question">
+                    <span>Milyen fizetési módokat fogadtok el?</span>
+                    <span class="faq-arrow">⌄</span>
+                </button>
+                <div class="faq-answer">
+                    <p>A pontos módot a jelentkezésed elbírálása után, a ticketben egyeztetjük veled.</p>
+                </div>
+            </div>
+            <div class="faq-item reveal">
+                <button class="faq-question">
+                    <span>Mit tegyek, ha technikai problémám van?</span>
+                    <span class="faq-arrow">⌄</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Nyiss egy ticketet a Discordon - stratégiai szinten igyekszünk segíteni, még ha operatív
+                        hibajavítást nem is vállalunk.</p>
+                </div>
+            </div>
+            <div class="faq-item reveal">
+                <button class="faq-question">
+                    <span>Kik vehetnek részt a programban?</span>
+                    <span class="faq-arrow">⌄</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Bármely stabilan üzemelő, egyedi tartalommal rendelkező Minecraft szerver tulajdonosa
+                        jelentkezhet.</p>
+                </div>
+            </div>
+            <div class="faq-item reveal">
+                <button class="faq-question">
+                    <span>Mit vártok el a partnerszerverektől?</span>
+                    <span class="faq-arrow">⌄</span>
+                </button>
+                <div class="faq-answer">
+                    <p>A fent felsorolt 3 feltétel teljesítését: minőségi üzemeltetés, egyediségre törekvés és
+                        hatékony kommunikáció.</p>
+                </div>
+            </div>
+            <div class="faq-item reveal">
+                <button class="faq-question">
+                    <span>Fel fogtok jönni a szerveremre, hogy átnézzétek?</span>
+                    <span class="faq-arrow">⌄</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Igen - a jelentkezés elbírálásához szükségünk van rá, hogy megnézzük a szervered, mielőtt
+                        megalapozott döntést hozunk.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="solarnet-cta reveal">
+        <h2 class="section-title">Mire vársz még?</h2>
+        <p class="section-subtitle">Itt az ideje jelentkezni! A SolarNet nem csak tanácsadást, hanem egy erős
+            közösséget és hálózatot is kínál - ne hagyd ki ezt a lehetőséget.</p>
+        <p style="color: var(--text-dim); font-size: 0.9rem; max-width: 520px; margin: 0 auto 26px;">
+            Nyiss ticketet a Discordunkon, és írj pár mondatot a szerveredről, a terveidről és a csapatodról - a
+            szerver nevét és IP-címét is add meg!</p>
+        <a href="https://dc.solaryn.hu" class="btn-glow-download btn-download-big">Jelentkezés</a>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <img src="assets/solaryn-icon.png" alt="Solaryn" class="footer-logo-icon">
+            <div class="footer-logo">Solaryn Network</div>
+            <div class="legal-disclaimer">
+                Disclaimer: Solaryn is not in any way affiliated with or supported by Minecraft, Mojang AB and/or
+                Microsoft.
+            </div>
+            <div class="footer-legal-links">
+                <a href="jogi.html#impresszum">Impresszum</a>
+                <span class="footer-legal-sep">•</span>
+                <a href="jogi.html#aszf">ÁSZF</a>
+                <span class="footer-legal-sep">•</span>
+                <a href="jogi.html#adatkezeles">Adatvédelem</a>
+            </div>
+            <div class="footer-copy">© 2026 Solaryn Network. Minden jog fenntartva.</div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

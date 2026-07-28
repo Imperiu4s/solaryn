@@ -4,133 +4,372 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solaryn</title>
+    <title>Solaryn Network</title>
+    <meta name="description" content="A Solaryn Network hivatalos oldala - egyedi játékmódok, saját kliens, aktív magyar közösség.">
+    <link rel="icon" type="image/png" href="assets/solaryn-icon.png">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/your-code.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 
 <body>
+    <canvas class="particle-canvas" id="particleCanvas"></canvas>
 
     <nav>
-        <div class="logo">Solaryn<span>Network</span></div>
-        <ul>
+        <a href="#kezdolap" class="logo">
+            <img src="assets/solaryn-icon.png" alt="Solaryn" class="logo-icon">
+            <span class="logo-word">Network</span>
+        </a>
+        <ul class="nav-links">
             <li><a href="#kezdolap">Kezdőlap</a></li>
             <li><a href="#rolunk">Rólunk</a></li>
             <li><a href="#jatekmodok">Játékmódok</a></li>
-            <li><a href="#info">Infó</a></li>
-            <li><a href="http://bolt.solaryn.hu" class="btn-shop">Webshop</a></li>
+            <li><a href="#kliens">Kliens</a></li>
+            <li><a href="#csapat">Csapat</a></li>
+            <li><a href="#gyik">GYIK</a></li>
+            <li><a href="solarnet.html">SolarNet</a></li>
         </ul>
+        <div class="nav-actions">
+            <a href="https://center.solaryn.hu" class="btn-outline-nav">Webshop</a>
+            <a href="#kliens" class="btn-nav-download">Letöltés</a>
+        </div>
     </nav>
 
-    <header id="kezdolap">
+    <header id="kezdolap" class="hero" style="background-image: url('assets/lobby.png');">
+        <div class="hero-overlay"></div>
         <div class="hero-content">
-            <div class="badge">Hamarosan rajtolunk!</div>
-            <h1>Solaryn<span>Network</span></h1>
-            <p>Fedezd fel a legújabb generációs túlélő élményt és a pörgős minijátékokat.</p>
-            <div class="ip-container" onclick="copyIP()">
-                <span id="ip-text">play.solaryn.hu</span>
+            <div class="badge hero-anim badge-pulse" style="animation-delay:.05s">Aktív magyar Minecraft hálózat</div>
+            <img src="assets/solaryn-wordmark.png" alt="Solaryn" class="hero-wordmark hero-anim wordmark-float" style="animation-delay:.15s">
+            <p class="hero-anim" style="animation-delay:.3s">Egyedi fejlesztésű játékmódok, saját kliens, saját anticheat - fedezd fel a Solaryn Networköt a magyar
+                közösséggel együtt.</p>
+            <div class="hero-actions hero-anim" style="animation-delay:.45s">
+                <div class="ip-container" onclick="copyIP()">
+                    <span class="ip-label">Szerver IP</span>
+                    <span id="ip-text">play.solaryn.hu</span>
+                </div>
+                <a href="#kliens" class="btn-glow-download">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 3a1 1 0 0 1 1 1v9.59l3.3-3.3a1 1 0 1 1 1.4 1.42l-5 5a1 1 0 0 1-1.4 0l-5-5a1 1 0 1 1 1.4-1.42l3.3 3.3V4a1 1 0 0 1 1-1Zm-7 15a1 1 0 0 1 1 1v1h12v-1a1 1 0 1 1 2 0v2a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1Z"/></svg>
+                    Launcher letöltése
+                </a>
             </div>
         </div>
     </header>
 
-    <section class="stats">
+    <section class="stats reveal">
         <div class="stat-item">
-            <h2>99.9%</h2>
-            <p>Uptime (Futásidő)</p>
+            <h2 data-count="4" data-suffix="+">0+</h2>
+            <p>Egyedi játékmód</p>
         </div>
         <div class="stat-item">
-            <h2>0 ms</h2>
-            <p>Lag-mentes játék</p>
+            <h2 data-count="100" data-suffix="%">0%</h2>
+            <p>Ingyenesen játszható</p>
         </div>
         <div class="stat-item">
-            <h2>24/7</h2>
-            <p>Ügyfélszolgálat</p>
+            <h2 data-count="24" data-suffix="/7">0/7</h2>
+            <p>Aktív staff csapat</p>
         </div>
     </section>
 
     <section id="rolunk" class="info-section">
         <div class="info-text">
-            <h2>Mi az a <span class="highlight">Solaryn?</span></h2>
-            <p>A SolarynNetwork nem csak egy szerver, hanem egy közösség. 2026-os indulásunk óta célunk a legstabilabb
-                és legélvezetesebb magyar Minecraft környezet megteremtése.</p>
-            <ul class="benefit-list">
-                <li>✅ Egyedi fejlesztésű pluginok</li>
-                <li>✅ Kedves és segítőkész Staff csapat</li>
-                <li>✅ Heti szintű események és nyereményjátékok</li>
-                <li>✅ Folyamatosan frissülő tartalom</li>
-            </ul>
-        </div>
-        <div class="info-image">
-            <img src="background.png" alt="Szerver kép">
+            <h2 class="reveal">Mi az a <span class="highlight">Solaryn?</span></h2>
+            <p class="reveal">A Solaryn Network nem csak egy szerver, hanem egy közösség. Célunk a legstabilabb és legélvezetesebb
+                magyar Minecraft környezet megteremtése - egyedi, saját fejlesztésű játékmódokkal, egy kifejezetten
+                erre a hálózatra épített kliensprogrammal, és egy csapat mögötte, akiknek fontos, hogy jól érezd magad
+                nálunk.</p>
+            <div class="feature-grid">
+                <div class="feature-item reveal" style="--reveal-delay:0s">
+                    <div class="feature-icon">🧩</div>
+                    <div>
+                        <div class="feature-title">Egyedi fejlesztésű pluginok</div>
+                        <div class="feature-desc">Minden játékmódunk saját, senki más által nem használt kóddal fut - nem másolt, letöltött megoldásokkal.</div>
+                    </div>
+                </div>
+                <div class="feature-item reveal" style="--reveal-delay:.08s">
+                    <div class="feature-icon">🛡️</div>
+                    <div>
+                        <div class="feature-title">Saját anticheat és kliens</div>
+                        <div class="feature-desc">A hivatalos Solaryn kliens beépített anticheat- és integritásvédelemmel fut, hogy mindenki egyenlő eséllyel játsszon.</div>
+                    </div>
+                </div>
+                <div class="feature-item reveal" style="--reveal-delay:.16s">
+                    <div class="feature-icon">💚</div>
+                    <div>
+                        <div class="feature-title">Nem Pay2Win</div>
+                        <div class="feature-desc">A webshopon vásárolható tartalom kényelmi/kozmetikai jellegű - minden komoly előny fizetés nélkül, tiszta játékkal is elérhető.</div>
+                    </div>
+                </div>
+                <div class="feature-item reveal" style="--reveal-delay:.24s">
+                    <div class="feature-icon">🤝</div>
+                    <div>
+                        <div class="feature-title">Kedves, segítőkész staff</div>
+                        <div class="feature-desc">Kérdésed van, vagy bajba kerültél? A csapatunk a Discordon és élesben is elérhető.</div>
+                    </div>
+                </div>
+                <div class="feature-item reveal" style="--reveal-delay:.32s">
+                    <div class="feature-icon">🚀</div>
+                    <div>
+                        <div class="feature-title">Folyamatos fejlesztés</div>
+                        <div class="feature-desc">A hálózat és a kliens is folyamatosan frissül - új funkciók, javítások, teljesítmény-optimalizációk rendszeresen.</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section id="jatekmodok">
-        <h2 class="section-title">Játékmódjaink</h2>
-        <div class="card-container">
-            <div class="card">
-                <div class="card-icon">👑</div>
+    <section id="jatekmodok" class="gamemodes-section">
+        <h2 class="section-title reveal">Játékmódjaink</h2>
+        <p class="section-subtitle reveal">Négy teljesen egyedi világ, egy hálózaton belül.</p>
+
+        <div class="gamemode-row reveal">
+            <div class="gamemode-image">
+                <img src="assets/kingdoms.png" alt="Kingdoms spawn">
+            </div>
+            <div class="gamemode-text">
+                <div class="gamemode-icon">👑</div>
                 <h3>Kingdoms</h3>
-                <p>Fejleszd a királyságodat, kereskedj a piacon, és harcolj a saját birodalmadért egy az elfoglalt területeden. Szövetkezz másokkal és nyerjétek meg a legnagyobb harcokat!
-                </p>
+                <p>A Kingdoms egy közösségi túlélő játékmód, ahol nem egyedül, hanem egy egész királyság élén küzdesz a
+                    fejlődésért. Alapíts vagy csatlakozz egy királysághoz, oszd ki a rangokat (vezér, al-vezér, tag),
+                    és építsétek fel közösen a birodalmatokat a nulláról. Kereskedj a piacon a többi királysággal,
+                    szövetkezz az erősebb ellenfelek ellen, vagy vívjátok ki a magatok helyét a szerver legerősebb
+                    birodalmai között - minden csata, minden gyilkosság a királyságotok presztízsét és ranglista-helyezését
+                    mozgatja.</p>
             </div>
-            <div class="card">
-                <div class="card-icon">🪄</div>
+        </div>
+
+        <div class="gamemode-row reverse reveal">
+            <div class="gamemode-image">
+                <img src="assets/momentum.png" alt="Momentum PvP spawn">
+            </div>
+            <div class="gamemode-text">
+                <div class="gamemode-icon">🔱</div>
+                <h3>Momentum PvP</h3>
+                <p>A Momentum PvP Magyarország egyik legegyedibb, mozgás-alapú harci játékmódja - itt nem csak a
+                    kardforgatás, hanem a taktikai mozgás dönt a csatákban. Válassz egyet a különböző kasztok (kitek)
+                    közül: mindegyiknek saját aktív és passzív képessége van. Robbanj előre Sebességlökettel, tűnj el
+                    Láthatatlansággal, zúzz nagyobbat Erőlöket alatt, védd magad Védelmi löketttel, törj az égbe
+                    Égbetöréssel, vagy csapj le egy Üstökös-zuhanással és rázd meg a csatateret egy Lökéshullámmal.
+                    A passzív képességek - Falfutás, Ugrásnövelés, Elnyelő pajzs, Kombó-roham és társaik - tovább
+                    mélyítik a harcstílusokat: minden kit egy teljesen más játékstílust nyit meg.</p>
+            </div>
+        </div>
+
+        <div class="gamemode-row reveal">
+            <div class="gamemode-image">
+                <img src="assets/elyvientrum.png" alt="Elyvientrum spawn">
+            </div>
+            <div class="gamemode-text">
+                <div class="gamemode-icon">🪄</div>
                 <h3>Elyvientrum</h3>
-                <p>Hamarosan...</p>
+                <p>Az Elyvientrum egy teljes értékű RPG-élmény a Solaryn hálózaton belül: küzdj végig egyedi
+                    dungeonökön, teljesíts questeket, és fejleszd tovább a kasztodat egyre erősebb varázslatokkal.
+                    A rendszer középpontjában a mana áll - minden varázslat, minden képesség ennek gazdálkodásán
+                    múlik, úgyhogy a taktikus manahasználat legalább annyira számít, mint a nyers erő. Küzdj meg a
+                    dungeonök végén várakozó bossokkal egyedül vagy csapatban, majd, ha inkább embert próbálnál, állj
+                    ki más játékosok ellen is - az Elyvientrumban a PvE és a PvP karöltve létezik.</p>
             </div>
-            <div class="card">
-                <div class="card-icon">🔱</div>
-                <h3>Momentum PVP</h3>
-                <p>Magyarország egyik legegyedibb játékmódja, amely kifejezetten a különböző mozgásokon alapuló PvP-t hozza be a játékba. Számos képességek és taktikai megmozdulások vannak.</p>
+        </div>
+
+        <div class="gamemode-row reverse reveal">
+            <div class="gamemode-image">
+                <img src="assets/foci.png" alt="Foci pálya">
+            </div>
+            <div class="gamemode-text">
+                <div class="gamemode-icon">⚽</div>
+                <h3>Foci</h3>
+                <p>A Foci a Solaryn saját, Minecraftra épített csapatsport-élménye: két csapat, egy pálya, és egy
+                    igazi, fizikailag szimulált labda. Minden meccsen kapsz egy speciális Gyorsulás-képességet
+                    (rövid visszatöltési idővel), amivel az utolsó pillanatban előzheted meg az ellenfeled, vagy
+                    érhetsz be a labdához időben. A meccsek automatikusan rögzítik a statisztikáidat - góljaidat,
+                    meccseidet, győzelmeidet -, az eredmények pedig kikerülnek a Discord szerverünkre is, hogy
+                    mindenki lássa, ki a hét gólkirálya.</p>
             </div>
         </div>
     </section>
 
-    <section id="info">
-        <h2 class="section-title">Gyakori Kérdések</h2>
+    <section id="kliens" class="client-section">
+        <div class="client-inner">
+            <h2 class="section-title reveal">Töltsd le a hivatalos klienst</h2>
+            <p class="section-subtitle client-warning reveal">A Solaryn hálózatra <strong>kizárólag a saját, hivatalos
+                    launcherünkön keresztül</strong> lehet csatlakozni - más kliensről (pl. vanilla, Lunar, Badlion,
+                FyreMC) a szerver nem fogad kapcsolatot. Ez biztosítja az egységes anticheat-védelmet és az
+                egyedi funkciókat mindenki számára.</p>
+
+            <a href="http://node2.hexaverse.hu:8341/updates/SolarLauncher%20Setup%200.6.31.exe" class="btn-glow-download btn-download-big">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 3a1 1 0 0 1 1 1v9.59l3.3-3.3a1 1 0 1 1 1.4 1.42l-5 5a1 1 0 0 1-1.4 0l-5-5a1 1 0 1 1 1.4-1.42l3.3 3.3V4a1 1 0 0 1 1-1Zm-7 15a1 1 0 0 1 1 1v1h12v-1a1 1 0 1 1 2 0v2a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1Z"/></svg>
+                Solaryn Launcher letöltése (Windows)
+            </a>
+
+            <div class="client-steps">
+                <div class="client-step reveal" style="--reveal-delay:0s">
+                    <div class="client-step-num">1</div>
+                    <div class="client-step-title">Töltsd le és telepítsd</div>
+                    <div class="client-step-desc">Indítsd el a fenti telepítőt, és kövesd a lépéseket.</div>
+                </div>
+                <div class="client-step reveal" style="--reveal-delay:.1s">
+                    <div class="client-step-num">2</div>
+                    <div class="client-step-title">Jelentkezz be</div>
+                    <div class="client-step-desc">Jelentkezz be a Solaryn-fiókoddal, vagy regisztrálj újat közvetlenül a launcherben.</div>
+                </div>
+                <div class="client-step reveal" style="--reveal-delay:.2s">
+                    <div class="client-step-num">3</div>
+                    <div class="client-step-title">Indítsd el a játékot</div>
+                    <div class="client-step-desc">A launcher mindent automatikusan telepít és rácsatlakoztat a hálózatra.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="csapat" class="team-section">
+        <h2 class="section-title reveal">Csapat</h2>
+        <p class="section-subtitle reveal">A Solaryn Network mögött álló tulajdonosok.</p>
+        <div class="team-grid">
+            <div class="team-card reveal">
+                <canvas id="teamSkinKisskorboy" width="150" height="200"></canvas>
+                <div class="team-card-name">Kisskorboy</div>
+                <div class="team-card-role">Tulajdonos</div>
+            </div>
+            <div class="team-card reveal">
+                <canvas id="teamSkinImperiussss" width="150" height="200"></canvas>
+                <div class="team-card-name">Imperiussss</div>
+                <div class="team-card-role">Tulajdonos</div>
+            </div>
+            <div class="team-card reveal">
+                <canvas id="teamSkinDistance" width="150" height="200"></canvas>
+                <div class="team-card-name">Distance</div>
+                <div class="team-card-role">Tulajdonos</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gyik" class="faq-section">
+        <h2 class="section-title reveal">Gyakori Kérdések</h2>
         <div class="faq-container">
-            <div class="faq-item">
-                <h4>Melyik verzióval tudok csatlakozni?</h4>
-                <p>Szerverünk támogatja az 1.19.4-től egészen a legfrissebb 1.21+ verziókig az összes klienst.</p>
+            <div class="faq-item reveal">
+                <button class="faq-question">
+                    <span>Hogyan tudok csatlakozni a Solarynra?</span>
+                    <span class="faq-arrow">⌄</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Töltsd le a hivatalos Solaryn Launchert (lásd fentebb), telepítsd, majd jelentkezz be a
+                        Solaryn-fiókoddal - ha még nincs, a launcherben vagy a SolarCenterben ingyenesen
+                        regisztrálhatsz egyet. Ezután csak nyomd meg a "Játék indítása" gombot - a launcher mindent
+                        automatikusan letölt és beállít, nincs szükség kézi IP-beírásra vagy modtelepítésre.</p>
+                </div>
             </div>
-            <div class="faq-item">
-                <h4>Hogyan lehetek moderátor?</h4>
-                <p>A tagfelvétel időszakos, ezeket a Discord szerverünkön hirdetjük meg.</p>
+            <div class="faq-item reveal">
+                <button class="faq-question">
+                    <span>Csatlakozhatok más klienssel is (pl. FyreMC, Lunar, Badlion, vanilla)?</span>
+                    <span class="faq-arrow">⌄</span>
+                </button>
+                <div class="faq-answer">
+                    <p><strong>Nem.</strong> A Solarynra kizárólag a saját, hivatalos kliensünkön (SolarClient) és
+                        launcherünkön keresztül lehet csatlakozni - ezt technikailag is kikényszerítjük. Más
+                        kliensről (bármelyikről) a szerver nem enged be.</p>
+                </div>
             </div>
-            <div class="faq-item">
-                <h4>Hogyan csatlakozhatok fel a hálózatra?</h4>
-                <p>Add hozzá a szervert a többjátékos menüpontban, majd írd be az IP címet: play.solaryn.hu</p>
+            <div class="faq-item reveal">
+                <button class="faq-question">
+                    <span>Miért csak a saját kliensetekkel lehet csatlakozni?</span>
+                    <span class="faq-arrow">⌄</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Ez biztosítja az egységes anticheat-védelmet és a kiegyensúlyozott, csalásmentes játékmenetet
+                        mindenki számára, emellett a kliensünk olyan egyedi funkciókat is tartalmaz (barátlista,
+                        jelvények, beépített teljesítmény-optimalizáció), amik más klienssel nem lennének elérhetők.</p>
+                </div>
             </div>
-            <div class="faq-item">
-                <h4>Mit csináljak ha nem tudok felcsatlakozni a szerverre?</h4>
-                <p>Indítsd újra a kliensed, majd próbálj meg újból csatlakozni.</p>
+            <div class="faq-item reveal">
+                <button class="faq-question">
+                    <span>Milyen Minecraft verzió és fiók kell?</span>
+                    <span class="faq-arrow">⌄</span>
+                </button>
+                <div class="faq-answer">
+                    <p>A launcher automatikusan telepíti a megfelelő Minecraft-verziót és a szükséges modokat -
+                        neked csak egy Solaryn-fiókra van szükséged, amit ingyenesen regisztrálhatsz a launcherben
+                        vagy a SolarCenterben.</p>
+                </div>
             </div>
-            <div class="faq-item">
-                <h4>Fel lehet csatlakozni FyreMC kliensről is?</h4>
-                <p>Igen, bármilyen Minecraft kliensel fel lehet csatlakozni, még a FyreMC kliensel is.</p>
+            <div class="faq-item reveal">
+                <button class="faq-question">
+                    <span>Ingyenes a szerver?</span>
+                    <span class="faq-arrow">⌄</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Igen, a Solaryn teljesen ingyenesen játszható, és nem pay2win: a webshopon opcionálisan
+                        vásárolhatsz rangokat, kozmetikákat és PrémiumPontot, de ezek csak kényelmi/kozmetikai
+                        előnyök - érvényesülni fizetés nélkül, tiszta játékkal is lehet.</p>
+                </div>
+            </div>
+            <div class="faq-item reveal">
+                <button class="faq-question">
+                    <span>Mit csináljak, ha nem tudok csatlakozni?</span>
+                    <span class="faq-arrow">⌄</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Ellenőrizd, hogy a launcher legfrissebb verzióját használod-e, indítsd újra, és győződj meg
+                        róla, hogy stabil az internetkapcsolatod. Ha ez nem segít, keress minket a Discord szerverünkön.</p>
+                </div>
+            </div>
+            <div class="faq-item reveal">
+                <button class="faq-question">
+                    <span>Hogyan lehetek staff/moderátor?</span>
+                    <span class="faq-arrow">⌄</span>
+                </button>
+                <div class="faq-answer">
+                    <p>A tagfelvétel időszakos, ezeket mindig a Discord szerverünkön hirdetjük meg - érdemes ott
+                        figyelni a bejelentéseket.</p>
+                </div>
+            </div>
+            <div class="faq-item reveal">
+                <button class="faq-question">
+                    <span>Hol tudom nyomon követni a fiókom, rangom és statisztikáim?</span>
+                    <span class="faq-arrow">⌄</span>
+                </button>
+                <div class="faq-answer">
+                    <p>A SolarCenter felületén - ott találod a rangodat, PrémiumPont-egyenlegedet, játékidődet,
+                        barátaidat és jelvényeidet is, egy helyen.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <footer>
         <div class="footer-content">
-            <div class="footer-logo">SolarynNetwork</div>
+            <img src="assets/solaryn-icon.png" alt="Solaryn" class="footer-logo-icon">
+            <div class="footer-logo">Solaryn Network</div>
             <p>Csatlakozz a Discord szerverünkhöz a legfrissebb hírekért!</p>
             <div class="socials">
-                <a href="https://dc.solaryn.hu">Discord</a> | <a href="#">Facebook</a> | <a href="#">TikTok</a>
+                <a href="https://dc.solaryn.hu">Discord</a>
+                <span class="socials-sep">•</span>
+                <a href="https://center.solaryn.hu">Webshop</a>
+                <span class="socials-sep">•</span>
+                <a href="https://www.instagram.com/solarynnetwork/">Instagram</a>
+                <span class="socials-sep">•</span>
+                <a href="https://www.tiktok.com/@solaryn.network">TikTok</a>
+                <span class="socials-sep">•</span>
+                <a href="solarnet.html">SolarNet partnerprogram</a>
             </div>
+
+            <div class="legal-disclaimer">
+                Disclaimer: Solaryn is not in any way affiliated with or supported by Minecraft, Mojang AB and/or
+                Microsoft.
+            </div>
+
+            <div class="footer-legal-links">
+                <a href="jogi.html#impresszum">Impresszum</a>
+                <span class="footer-legal-sep">•</span>
+                <a href="jogi.html#aszf">ÁSZF</a>
+                <span class="footer-legal-sep">•</span>
+                <a href="jogi.html#adatkezeles">Adatvédelem</a>
+            </div>
+
+            <div class="footer-copy">© 2026 Solaryn Network. Minden jog fenntartva.</div>
         </div>
     </footer>
 
-    <script>
-        function copyIP() {
-            const ip = document.getElementById('ip-text').innerText;
-            navigator.clipboard.writeText(ip);
-            alert("Szerver IP másolva: " + ip);
-        }
-    </script>
+    <script src="skin3d.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>

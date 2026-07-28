@@ -286,11 +286,27 @@ footer { padding: 70px 10% 40px; text-align: center; border-top: 1px solid var(-
 
 @media (prefers-reduced-motion: reduce) {
     .reveal { opacity: 1; transform: none; transition: none; }
-    .hero-anim, .badge-pulse, .wordmark-float { animation: none !important; }
+    /* JAVÍTVA: korábban itt csak az "animation"-t kapcsoltuk ki, de a
+       .hero-anim ALAP szabálya (lentebb) "opacity: 0"-val indul, amit csak
+       maga az animáció mozgat vissza 1-re - "animation: none" mellett ez a
+       visszaállítás sosem történt meg, ezért a hero-badge/wordmark/szöveg
+       PERMANENSEN láthatatlan maradt bárkinél, akinek a rendszerében be van
+       kapcsolva a "csökkentett mozgás" beállítás. Itt kell explicit
+       opacity/transform reset is, nem csak az animáció letiltása. */
+    .hero-anim, .badge-pulse, .wordmark-float {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
 }
 
-/* Hero belépő animáció - oldalbetöltéskor, nem scrollra */
-.hero-anim { opacity: 0; animation: heroIn .9s cubic-bezier(.16,.84,.44,1) forwards; }
+/* Hero belépő animáció - oldalbetöltéskor, nem scrollra.
+   SZÁNDÉKOSAN nincs itt statikus "opacity: 0" - a kezdő (láthatatlan)
+   állapotot kizárólag a "backwards" fill-mode adja, amíg az animáció fut.
+   Ha bármi okból (letiltott animáció, prefers-reduced-motion, egy jövőbeli
+   böngésző-kivétel) az animáció nem futna le, az elem az alapértelmezett
+   (teljesen látható) opacitásán marad, nem ragad örökre láthatatlanul. */
+.hero-anim { animation: heroIn .9s cubic-bezier(.16,.84,.44,1) both; }
 @keyframes heroIn { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
 .badge-pulse { animation: badgePulse 2.8s ease-in-out infinite; }
 @keyframes badgePulse {
@@ -350,68 +366,89 @@ footer { padding: 70px 10% 40px; text-align: center; border-top: 1px solid var(-
 }
 .back-home:hover { color: var(--gold); }
 
-/* ── Jogi dokumentumok oldal ── */
-.legal-page { padding: 0 10% 110px; max-width: 900px; margin: 0 auto; }
-.legal-tabs { display: flex; gap: 10px; justify-content: center; margin-bottom: 30px; flex-wrap: wrap; }
-.legal-tab {
-    padding: 10px 22px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel-2);
-    color: var(--text-dim); font-weight: 700; font-size: 0.85rem; cursor: pointer; font-family: inherit;
-    transition: all .2s;
+/* ── Jogi dokumentumok oldal - széles, oldalsávos elrendezés, hogy a
+   nagy képernyő szélessége is ki legyen használva, ne egy keskeny,
+   középre zsugorodott kártya legyen. ── */
+.legal-page { padding: 0 6% 120px; max-width: 1300px; margin: 0 auto; }
+.legal-layout { display: grid; grid-template-columns: 300px 1fr; gap: 36px; align-items: start; }
+.legal-sidebar {
+    position: sticky; top: 110px; display: flex; flex-direction: column; gap: 10px;
 }
-.legal-tab.active, .legal-tab:hover { background: rgba(255,176,32,.12); color: var(--gold); border-color: rgba(255,176,32,.4); }
-.legal-card { background: var(--panel); border: 1px solid var(--line); border-radius: 20px; padding: 40px; }
+.legal-tab {
+    text-align: left; padding: 18px 22px; border-radius: 14px; border: 1px solid var(--line);
+    background: var(--panel); color: var(--text-dim); font-weight: 700; font-size: 0.95rem;
+    cursor: pointer; font-family: inherit; transition: all .2s; line-height: 1.4;
+}
+.legal-tab.active, .legal-tab:hover { background: rgba(255,176,32,.1); color: var(--gold); border-color: rgba(255,176,32,.4); }
+.legal-card { background: var(--panel); border: 1px solid var(--line); border-radius: 24px; padding: 56px; }
 .legal-panel { display: none; }
 .legal-panel.active { display: block; }
-.legal-panel h3 { font-size: 1.5rem; font-weight: 800; margin-bottom: 20px; color: var(--gold); }
-.legal-panel h4 { font-size: 1rem; font-weight: 700; margin: 24px 0 8px; }
+.legal-panel h3 { font-size: 2rem; font-weight: 800; margin-bottom: 30px; color: var(--gold); }
+.legal-panel h4 { font-size: 1.15rem; font-weight: 700; margin: 32px 0 10px; }
 .legal-panel h4:first-of-type { margin-top: 0; }
-.legal-panel p, .legal-panel ul { color: var(--text-dim); font-size: 0.93rem; line-height: 1.75; }
-.legal-panel ul { padding-left: 20px; margin: 8px 0; }
+.legal-panel p, .legal-panel ul { color: var(--text-dim); font-size: 1rem; line-height: 1.85; }
+.legal-panel ul { padding-left: 22px; margin: 10px 0; }
 .legal-panel b { color: var(--text); }
 
-/* ── SolarNet partnerprogram oldal ── */
-.solarnet-cta {
-    text-align: center; padding: 10px 10% 70px;
+@media (max-width: 900px) {
+    .legal-layout { grid-template-columns: 1fr; }
+    .legal-sidebar { position: static; flex-direction: row; overflow-x: auto; }
+    .legal-card { padding: 32px 24px; }
 }
-.solarnet-benefits { padding: 20px 10% 20px; max-width: 1000px; margin: 0 auto; }
-.solarnet-benefit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 22px; }
+
+/* ── SolarNet partnerprogram oldal - jóval nagyobb elemek, szélesebb
+   elrendezés a korábbi kis, 4-oszlopos rácshoz képest. ── */
+.solarnet-hero { padding-bottom: 90px; }
+.solarnet-hero-title { font-size: 3.2rem; font-weight: 800; line-height: 1.15; max-width: 780px; margin: 0 auto; }
+.solarnet-hero-sub { font-size: 1.25rem !important; max-width: 700px !important; color: var(--text-dim); margin: 18px auto 0 !important; }
+
+.solarnet-cta { text-align: center; padding: 10px 6% 70px; }
+.solarnet-benefits { padding: 20px 6% 30px; max-width: 1280px; margin: 0 auto; }
+.solarnet-benefit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(460px, 1fr)); gap: 30px; }
 .solarnet-benefit-card {
-    background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 28px 26px;
+    background: var(--panel); border: 1px solid var(--line); border-radius: 22px; padding: 44px 40px;
     transition: transform .25s, border-color .25s;
 }
-.solarnet-benefit-card:hover { transform: translateY(-5px); border-color: var(--gold-2); }
+.solarnet-benefit-card:hover { transform: translateY(-6px); border-color: var(--gold-2); }
+.solarnet-benefit-icon { font-size: 2.8rem; margin-bottom: 18px; }
 .solarnet-benefit-tag {
-    display: inline-block; padding: 3px 12px; border-radius: 999px; font-size: 0.68rem; font-weight: 800;
+    display: inline-block; padding: 4px 14px; border-radius: 999px; font-size: 0.72rem; font-weight: 800;
     text-transform: uppercase; letter-spacing: .6px; color: #1a1206;
-    background: linear-gradient(180deg, var(--gold), var(--gold-2)); margin-bottom: 14px;
+    background: linear-gradient(180deg, var(--gold), var(--gold-2)); margin-bottom: 16px;
 }
-.solarnet-benefit-card h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 10px; }
-.solarnet-benefit-card p { color: var(--text-dim); font-size: 0.92rem; line-height: 1.7; }
+.solarnet-benefit-card h3 { font-size: 1.5rem; font-weight: 800; margin-bottom: 16px; }
+.solarnet-benefit-card p { color: var(--text-dim); font-size: 1.05rem; line-height: 1.8; }
 
-.solarnet-conditions { padding: 60px 10%; max-width: 900px; margin: 0 auto; }
+.solarnet-conditions { padding: 90px 6%; max-width: 1100px; margin: 0 auto; }
 .solarnet-condition {
-    display: flex; gap: 20px; align-items: flex-start; margin-bottom: 26px;
-    background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 24px 26px;
+    display: flex; gap: 30px; align-items: flex-start; margin-bottom: 30px;
+    background: var(--panel); border: 1px solid var(--line); border-radius: 20px; padding: 38px 42px;
 }
 .solarnet-condition-num {
-    width: 40px; height: 40px; flex-shrink: 0; border-radius: 12px;
+    width: 60px; height: 60px; flex-shrink: 0; border-radius: 16px; font-size: 1.5rem;
     background: rgba(255,176,32,.1); border: 1px solid rgba(255,176,32,.25);
     display: flex; align-items: center; justify-content: center; font-weight: 800; color: var(--gold);
 }
-.solarnet-condition h4 { font-size: 1rem; font-weight: 800; margin-bottom: 8px; }
-.solarnet-condition p { color: var(--text-dim); font-size: 0.92rem; line-height: 1.7; }
+.solarnet-condition h4 { font-size: 1.35rem; font-weight: 800; margin-bottom: 12px; }
+.solarnet-condition p { color: var(--text-dim); font-size: 1.05rem; line-height: 1.8; }
 
-.solarnet-pricing {
-    text-align: center; padding: 60px 10%; max-width: 640px; margin: 0 auto;
+.solarnet-pricing { text-align: center; padding: 80px 6%; max-width: 1000px; margin: 0 auto; }
+.solarnet-price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; margin-top: 46px; }
+.solarnet-price-tile {
+    background: linear-gradient(180deg, var(--panel), var(--bg-2)); border: 1px solid var(--line);
+    border-radius: 26px; padding: 50px 30px; transition: transform .25s, border-color .25s;
 }
-.solarnet-price-card {
-    background: linear-gradient(180deg, var(--panel), var(--bg-2)); border: 1px solid rgba(255,176,32,.3);
-    border-radius: 22px; padding: 40px 30px; box-shadow: 0 20px 50px rgba(0,0,0,.4);
+.solarnet-price-tile:hover { transform: translateY(-6px); }
+.solarnet-price-tile.featured { border-color: rgba(255,176,32,.4); box-shadow: 0 20px 55px rgba(255,176,32,.12); }
+.solarnet-price-tile-label { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-faint); font-weight: 700; }
+.solarnet-price-tile-value { font-size: 3rem; font-weight: 800; color: var(--gold); margin-top: 14px; }
+.solarnet-price-tile-value span { font-size: 1.1rem; color: var(--text-dim); font-weight: 600; }
+.solarnet-price-tile-note { margin-top: 12px; color: var(--text-dim); font-size: 0.95rem; }
+
+@media (max-width: 760px) {
+    .solarnet-hero-title { font-size: 2.1rem; }
+    .solarnet-benefit-grid { grid-template-columns: 1fr; }
 }
-.solarnet-price-row { display: flex; justify-content: space-between; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--line); text-align: left; }
-.solarnet-price-row:last-child { border-bottom: none; }
-.solarnet-price-label { color: var(--text-dim); font-size: 0.95rem; }
-.solarnet-price-value { font-size: 1.3rem; font-weight: 800; color: var(--gold); white-space: nowrap; }
 
 @media (max-width: 640px) {
     .team-section, .solarnet-benefits, .solarnet-conditions, .solarnet-pricing, .legal-page { padding-left: 6%; padding-right: 6%; }

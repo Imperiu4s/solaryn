@@ -9,34 +9,36 @@
     <link rel="icon" type="image/png" href="../assets/solaryn-icon.png">
     <link rel="stylesheet" href="../style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Cinzel:wght@600;700;800;900&display=swap" rel="stylesheet">
 </head>
 
 <body>
+    <div class="scroll-progress"></div>
     <canvas class="particle-canvas" id="particleCanvas"></canvas>
 
     <nav>
-        <a href="../index.html#kezdolap" class="logo">
+        <a href="../#kezdolap" class="logo">
             <img src="../assets/solaryn-icon.png" alt="Solaryn" class="logo-icon">
             <span class="logo-word">Network</span>
         </a>
         <ul class="nav-links">
-            <li><a href="../index.html#kezdolap">Kezdőlap</a></li>
-            <li><a href="../index.html#rolunk">Rólunk</a></li>
-            <li><a href="../index.html#jatekmodok">Játékmódok</a></li>
-            <li><a href="../index.html#kliens">Kliens</a></li>
-            <li><a href="../index.html#csapat">Csapat</a></li>
-            <li><a href="../index.html#gyik">GYIK</a></li>
+            <li><a href="../#kezdolap">Kezdőlap</a></li>
+            <li><a href="../#rolunk">Rólunk</a></li>
+            <li><a href="../#jatekmodok">Játékmódok</a></li>
+            <li><a href="../#kliens">Kliens</a></li>
+            <li><a href="../#csapat">Csapat</a></li>
+            <li><a href="../#gyik">GYIK</a></li>
             <li><a href="../solarnet/">SolarNet</a></li>
+            <li><a href="../szabalyzat/">Szabályzat</a></li>
         </ul>
         <div class="nav-actions">
             <a href="https://center.solaryn.hu" class="btn-outline-nav">Webshop</a>
-            <a href="../index.html#kliens" class="btn-nav-download">Letöltés</a>
+            <a href="../#kliens" class="btn-nav-download">Letöltés</a>
         </div>
     </nav>
 
     <section class="subpage-hero">
-        <a href="../index.html" class="back-home">← Vissza a főoldalra</a>
+        <a href="../" class="back-home">← Vissza a főoldalra</a>
         <h1>Jogi <span class="highlight">dokumentumok</span></h1>
         <p>Az alábbiakban találod a Solaryn Network hivatalos dokumentumait.</p>
     </section>
@@ -181,6 +183,15 @@
                 Disclaimer: Solaryn is not in any way affiliated with or supported by Minecraft, Mojang AB and/or
                 Microsoft.
             </div>
+            <div class="footer-legal-links">
+                <a href="#impresszum">Impresszum</a>
+                <span class="footer-legal-sep">•</span>
+                <a href="#aszf">ÁSZF</a>
+                <span class="footer-legal-sep">•</span>
+                <a href="#adatkezeles">Adatvédelem</a>
+                <span class="footer-legal-sep">•</span>
+                <a href="../szabalyzat/">Játékszabályzat</a>
+            </div>
             <div class="footer-copy">© 2026 Solaryn Network. Minden jog fenntartva.</div>
         </div>
     </footer>
@@ -190,21 +201,26 @@
         // ── Legal-tab váltás (ugyanaz a data-legal / data-legal-panel minta,
         // mint a SolarCenter jogi nézetében). Ha az URL-ben van #aszf/
         // #adatkezeles/#impresszum horgony, azzal a taggal nyit.
-        document.querySelectorAll('.legal-tab').forEach((tab) => {
-            tab.addEventListener('click', () => {
-                const key = tab.getAttribute('data-legal');
-                document.querySelectorAll('.legal-tab').forEach((t) => t.classList.toggle('active', t === tab));
-                document.querySelectorAll('.legal-panel').forEach((p) => {
-                    p.classList.toggle('active', p.getAttribute('data-legal-panel') === key);
-                });
-                document.querySelector('.legal-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        function openLegalTab(key, smooth) {
+            const targetTab = document.querySelector(`.legal-tab[data-legal="${key}"]`);
+            if (!targetTab) return;
+            document.querySelectorAll('.legal-tab').forEach((t) => t.classList.toggle('active', t === targetTab));
+            document.querySelectorAll('.legal-panel').forEach((p) => {
+                p.classList.toggle('active', p.getAttribute('data-legal-panel') === key);
             });
+            if (smooth) document.querySelector('.legal-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        document.querySelectorAll('.legal-tab').forEach((tab) => {
+            tab.addEventListener('click', () => openLegalTab(tab.getAttribute('data-legal'), true));
+        });
+        // Footer/külső linkek is a #aszf / #adatkezeles / #impresszum horgonnyal navigálnak ide -
+        // ezért nem csak betöltéskor, hanem hashchange-re is újra kell nyitni a megfelelő fület.
+        window.addEventListener('hashchange', () => {
+            const key = window.location.hash.replace('#', '');
+            if (key) openLegalTab(key, true);
         });
         const hash = window.location.hash.replace('#', '');
-        if (hash) {
-            const targetTab = document.querySelector(`.legal-tab[data-legal="${hash}"]`);
-            if (targetTab) targetTab.click();
-        }
+        if (hash) openLegalTab(hash, false);
     </script>
 </body>
 

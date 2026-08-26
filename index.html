@@ -9,10 +9,11 @@
     <link rel="icon" type="image/png" href="assets/solaryn-icon.png">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Cinzel:wght@600;700;800;900&display=swap" rel="stylesheet">
 </head>
 
 <body>
+    <div class="scroll-progress"></div>
     <canvas class="particle-canvas" id="particleCanvas"></canvas>
 
     <nav>
@@ -28,6 +29,7 @@
             <li><a href="#csapat">Csapat</a></li>
             <li><a href="#gyik">GYIK</a></li>
             <li><a href="solarnet/">SolarNet</a></li>
+            <li><a href="szabalyzat/">Szabályzat</a></li>
         </ul>
         <div class="nav-actions">
             <a href="https://center.solaryn.hu" class="btn-outline-nav">Webshop</a>
@@ -35,8 +37,9 @@
         </div>
     </nav>
 
-    <header id="kezdolap" class="hero" style="background-image: url('assets/lobby.png');">
+    <header id="kezdolap" class="hero" style="background-image: url('assets/lobby.jpg');">
         <div class="hero-overlay"></div>
+        <div class="hero-glow"></div>
         <div class="hero-content">
             <div class="badge hero-anim badge-pulse" style="animation-delay:.05s">Aktív magyar Minecraft hálózat</div>
             <img src="assets/solaryn-wordmark.png" alt="Solaryn" class="hero-wordmark hero-anim wordmark-float" style="animation-delay:.15s">
@@ -53,6 +56,9 @@
                 </a>
             </div>
         </div>
+        <a href="#rolunk" class="scroll-cue" aria-label="Görgess lejjebb">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 4v14M6 13l6 6 6-6"/></svg>
+        </a>
     </header>
 
     <section class="stats reveal">
@@ -121,9 +127,9 @@
         <h2 class="section-title reveal">Játékmódjaink</h2>
         <p class="section-subtitle reveal">Négy teljesen egyedi világ, egy hálózaton belül.</p>
 
-        <div class="gamemode-row reveal">
+        <div class="gamemode-row accent-kingdoms reveal">
             <div class="gamemode-image">
-                <img src="assets/kingdoms.png" alt="Kingdoms spawn">
+                <img src="assets/kingdoms.jpg" alt="Kingdoms spawn" loading="lazy">
             </div>
             <div class="gamemode-text">
                 <div class="gamemode-icon">👑</div>
@@ -137,9 +143,9 @@
             </div>
         </div>
 
-        <div class="gamemode-row reverse reveal">
+        <div class="gamemode-row reverse accent-momentum reveal">
             <div class="gamemode-image">
-                <img src="assets/momentum.png" alt="Momentum PvP spawn">
+                <img src="assets/momentum.jpg" alt="Momentum PvP spawn" loading="lazy">
             </div>
             <div class="gamemode-text">
                 <div class="gamemode-icon">🔱</div>
@@ -154,9 +160,9 @@
             </div>
         </div>
 
-        <div class="gamemode-row reveal">
+        <div class="gamemode-row accent-elyvientrum reveal">
             <div class="gamemode-image">
-                <img src="assets/elyvientrum.png" alt="Elyvientrum spawn">
+                <img src="assets/elyvientrum.jpg" alt="Elyvientrum spawn" loading="lazy">
             </div>
             <div class="gamemode-text">
                 <div class="gamemode-icon">🪄</div>
@@ -170,9 +176,9 @@
             </div>
         </div>
 
-        <div class="gamemode-row reverse reveal">
+        <div class="gamemode-row reverse accent-foci reveal">
             <div class="gamemode-image">
-                <img src="assets/foci.png" alt="Foci pálya">
+                <img src="assets/foci.png" alt="Foci pálya" loading="lazy">
             </div>
             <div class="gamemode-text">
                 <div class="gamemode-icon">⚽</div>
@@ -362,6 +368,8 @@
                 <a href="jogi/#aszf">ÁSZF</a>
                 <span class="footer-legal-sep">•</span>
                 <a href="jogi/#adatkezeles">Adatvédelem</a>
+                <span class="footer-legal-sep">•</span>
+                <a href="szabalyzat/">Játékszabályzat</a>
             </div>
 
             <div class="footer-copy">© 2026 Solaryn Network. Minden jog fenntartva.</div>

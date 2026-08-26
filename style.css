@@ -1,6 +1,6 @@
 :root {
-    --bg: #0a0a0d;
-    --bg-2: #101015;
+    --bg: #07070a;
+    --bg-2: #0d0d12;
     --panel: #14141b;
     --panel-2: #1b1b24;
     --line: #26262f;
@@ -14,6 +14,18 @@
     --orange-2: #ff4d1f;
     --orange-glow: rgba(255, 90, 30, 0.45);
     --discord: #5865f2;
+    --font-display: 'Cinzel', 'Poppins', serif;
+
+    /* Játékmódonkénti akcentszínek - a Kingdoms/Momentum/Elyvientrum/Foci
+       kártyák és ikonok ezekkel az egyedi izzásszínekkel különülnek el. */
+    --acc-kingdoms: #ffc42e;
+    --acc-kingdoms-glow: rgba(255, 196, 46, 0.35);
+    --acc-momentum: #ff5a3d;
+    --acc-momentum-glow: rgba(255, 90, 61, 0.35);
+    --acc-elyvientrum: #b06bff;
+    --acc-elyvientrum-glow: rgba(176, 107, 255, 0.35);
+    --acc-foci: #35d488;
+    --acc-foci-glow: rgba(53, 212, 136, 0.35);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
@@ -21,7 +33,8 @@
 html, body { min-height: 100%; }
 body {
     background:
-        radial-gradient(1100px 600px at 78% -10%, rgba(255, 160, 30, 0.10), transparent 60%),
+        radial-gradient(1200px 650px at 80% -8%, rgba(255, 160, 30, 0.13), transparent 60%),
+        radial-gradient(900px 550px at 6% 18%, rgba(176, 107, 255, 0.07), transparent 55%),
         radial-gradient(900px 500px at 12% 120%, rgba(255, 190, 60, 0.06), transparent 55%),
         var(--bg);
     color: var(--text);
@@ -31,6 +44,15 @@ body {
 
 a { color: inherit; }
 img { max-width: 100%; display: block; }
+::selection { background: var(--gold-2); color: #1a1206; }
+
+/* ── Görgetési előrehaladás-sáv a lap tetején ── */
+.scroll-progress {
+    position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+    background: linear-gradient(90deg, var(--gold), var(--orange-2));
+    box-shadow: 0 0 12px var(--gold-glow);
+    z-index: 200; transition: width 0.1s linear;
+}
 
 /* ── Hulló parázs-szemcse háttéranimáció (ugyanaz, mint a SolarCenter/SolarLauncherben) ── */
 .particle-canvas { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
@@ -42,15 +64,21 @@ nav, header, .stats, .info-section, .gamemodes-section, .client-section, .faq-se
 /* ── Navigáció ── */
 nav {
     display: flex; justify-content: space-between; align-items: center;
-    padding: 16px 6%; background: rgba(10, 10, 13, 0.85);
-    backdrop-filter: blur(10px);
+    padding: 16px 6%; background: rgba(8, 8, 11, 0.75);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
     position: fixed; top: 0; width: 100%; z-index: 100;
     border-bottom: 1px solid var(--line);
 }
+nav::after {
+    content: ''; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-glow) 25%, var(--orange-glow) 50%, var(--gold-glow) 75%, transparent);
+    opacity: .8;
+}
 .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-.logo-icon { width: 38px; height: 38px; filter: drop-shadow(0 0 10px var(--gold-glow)); }
+.logo-icon { width: 38px; height: 38px; filter: drop-shadow(0 0 10px var(--gold-glow)); transition: filter .25s, transform .25s; }
+.logo:hover .logo-icon { filter: drop-shadow(0 0 16px var(--gold-glow)); transform: rotate(-6deg) scale(1.05); }
 .logo-word {
-    font-size: 1.05rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
+    font-family: var(--font-display); font-size: 1.02rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
     color: var(--text-dim);
 }
 .nav-links { display: flex; list-style: none; gap: 30px; }
@@ -64,6 +92,7 @@ nav {
 }
 .btn-outline-nav:hover { border-color: var(--gold-2); color: var(--gold); }
 .btn-nav-download {
+    position: relative; overflow: hidden;
     padding: 9px 20px; border-radius: 999px; text-decoration: none;
     font-size: 0.85rem; font-weight: 700; color: #1a1206;
     background: linear-gradient(180deg, var(--gold), var(--gold-2));
@@ -79,27 +108,58 @@ nav {
 /* ── Hero ── */
 .hero {
     min-height: 100vh; display: flex; align-items: center; justify-content: center;
-    text-align: center; position: relative;
+    text-align: center; position: relative; isolation: isolate;
     background-size: cover; background-position: center 65%;
     padding: 100px 20px 60px;
 }
 .hero-overlay {
-    position: absolute; inset: 0;
+    position: absolute; inset: 0; z-index: 0;
     background:
-        linear-gradient(180deg, rgba(10,10,13,.55) 0%, rgba(10,10,13,.78) 55%, var(--bg) 100%),
-        linear-gradient(90deg, rgba(10,10,13,.5) 0%, rgba(10,10,13,.1) 40%, rgba(10,10,13,.1) 60%, rgba(10,10,13,.5) 100%);
+        linear-gradient(180deg, rgba(7,7,10,.5) 0%, rgba(7,7,10,.8) 55%, var(--bg) 100%),
+        linear-gradient(90deg, rgba(7,7,10,.5) 0%, rgba(7,7,10,.1) 40%, rgba(7,7,10,.1) 60%, rgba(7,7,10,.5) 100%);
+}
+/* Lebegő, elmosott izzás-foltok a hero fölött - lassan pulzálnak/vándorolnak,
+   ettől érzi a szem "élőnek" a hátteret a statikus kép mellett is. */
+.hero-glow { position: absolute; inset: 0; z-index: 1; overflow: hidden; pointer-events: none; }
+.hero-glow::before, .hero-glow::after {
+    content: ''; position: absolute; border-radius: 50%; filter: blur(80px); opacity: .55;
+}
+.hero-glow::before {
+    width: 46vw; height: 46vw; max-width: 620px; max-height: 620px;
+    background: radial-gradient(circle, var(--gold-glow), transparent 70%);
+    top: -12%; right: -8%; animation: heroGlowDrift 14s ease-in-out infinite;
+}
+.hero-glow::after {
+    width: 38vw; height: 38vw; max-width: 520px; max-height: 520px;
+    background: radial-gradient(circle, var(--acc-elyvientrum-glow), transparent 70%);
+    bottom: -14%; left: -6%; animation: heroGlowDrift 18s ease-in-out infinite reverse;
+}
+@keyframes heroGlowDrift {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-4%, 5%) scale(1.12); }
 }
 .hero-content { position: relative; z-index: 2; max-width: 720px; }
 .badge {
+    position: relative;
     background: rgba(255, 176, 32, 0.12); border: 1px solid rgba(255,176,32,.4); color: var(--gold);
     padding: 6px 18px; border-radius: 999px; font-weight: 600; display: inline-block;
     margin-bottom: 26px; font-size: 0.82rem; letter-spacing: 0.3px;
 }
-.hero-wordmark { width: min(560px, 80vw); margin: 0 auto 22px; filter: drop-shadow(0 10px 40px rgba(255,140,20,.25)); }
+.hero-wordmark { width: min(560px, 80vw); margin: 0 auto 22px; filter: drop-shadow(0 10px 46px rgba(255,140,20,.3)); }
 .hero-content p {
     color: var(--text-dim); font-size: 1.08rem; max-width: 560px; margin: 0 auto 36px;
 }
 .hero-actions { display: flex; align-items: center; justify-content: center; gap: 18px; flex-wrap: wrap; }
+
+/* Görgetésre buzdító nyíl a hero alján */
+.scroll-cue {
+    position: absolute; bottom: 26px; left: 50%; transform: translateX(-50%); z-index: 2;
+    color: var(--text-faint); opacity: .8; animation: scrollCueBounce 2.2s ease-in-out infinite;
+}
+@keyframes scrollCueBounce {
+    0%, 100% { transform: translate(-50%, 0); opacity: .5; }
+    50% { transform: translate(-50%, 8px); opacity: .9; }
+}
 
 .ip-container {
     background: var(--panel); border: 1px solid var(--line); border-radius: 14px;
@@ -111,6 +171,7 @@ nav {
 #ip-text { font-weight: 700; font-size: 1.05rem; color: var(--gold); }
 
 .btn-glow-download {
+    position: relative; overflow: hidden;
     display: inline-flex; align-items: center; gap: 10px;
     padding: 14px 28px; border-radius: 14px; border: none; cursor: pointer; text-decoration: none;
     font-weight: 700; font-size: 0.95rem; color: #1a1206;
@@ -121,26 +182,43 @@ nav {
 .btn-glow-download:hover { filter: brightness(1.06); transform: translateY(-2px); box-shadow: 0 14px 38px var(--gold-glow); }
 .btn-glow-download:active { transform: translateY(0); }
 
+/* Fény-söprés hover-effekt a fő gombokon - egy ferde, halvány csík fut
+   végig a gombon, amikor az egér fölé ér. */
+.btn-glow-download::before, .btn-nav-download::before {
+    content: ''; position: absolute; top: 0; left: -60%; width: 40%; height: 100%;
+    background: linear-gradient(115deg, transparent, rgba(255,255,255,.45), transparent);
+    transform: skewX(-20deg); transition: left .55s ease;
+}
+.btn-glow-download:hover::before, .btn-nav-download:hover::before { left: 130%; }
+
 /* ── Stats ── */
 .stats {
     display: flex; justify-content: space-around; padding: 46px 10%;
     background: linear-gradient(180deg, var(--panel), var(--bg-2));
     margin: -60px 10% 0; border-radius: 22px;
     box-shadow: 0 30px 80px rgba(0,0,0,.5);
-    border: 1px solid var(--line);
+    border: 1px solid var(--line); position: relative; overflow: hidden;
     flex-wrap: wrap; gap: 20px;
 }
-.stat-item { text-align: center; }
+.stats::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), var(--orange-2), var(--gold), transparent);
+}
+.stat-item { text-align: center; position: relative; }
+.stat-item:not(:last-child)::after {
+    content: ''; position: absolute; right: -20px; top: 10%; bottom: 10%; width: 1px;
+    background: var(--line);
+}
 .stat-item h2 {
     background: linear-gradient(180deg, var(--gold), var(--gold-2));
     -webkit-background-clip: text; background-clip: text; color: transparent;
-    font-size: 2.4rem; font-weight: 800;
+    font-family: var(--font-display); font-size: 2.5rem; font-weight: 800;
 }
 .stat-item p { color: var(--text-dim); font-size: 0.9rem; margin-top: 4px; }
 
 /* ── Rólunk / feature grid ── */
 .info-section { padding: 130px 10% 90px; }
-.info-text h2 { font-size: 2.4rem; font-weight: 800; margin-bottom: 18px; }
+.info-text h2 { font-family: var(--font-display); font-size: 2.5rem; font-weight: 800; margin-bottom: 18px; }
 .info-text > p { color: var(--text-dim); font-size: 1.05rem; max-width: 760px; margin-bottom: 46px; }
 .highlight {
     background: linear-gradient(180deg, var(--gold), var(--gold-2));
@@ -149,36 +227,78 @@ nav {
 .feature-grid {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 26px;
 }
-.feature-item { display: flex; gap: 18px; align-items: flex-start; }
+.feature-item {
+    display: flex; gap: 18px; align-items: flex-start;
+    padding: 18px; margin: -18px; border-radius: 18px;
+    transition: background .25s, transform .25s;
+}
+.feature-item:hover { background: rgba(255,255,255,.03); transform: translateY(-3px); }
 .feature-icon {
     width: 52px; height: 52px; flex-shrink: 0; border-radius: 14px; font-size: 1.4rem;
     background: rgba(255,176,32,.10); border: 1px solid rgba(255,176,32,.22);
     display: flex; align-items: center; justify-content: center;
+    transition: transform .3s, box-shadow .3s;
 }
+.feature-item:hover .feature-icon { transform: scale(1.1) rotate(-6deg); box-shadow: 0 0 22px var(--gold-glow); }
 .feature-title { font-weight: 700; font-size: 1.02rem; margin-bottom: 6px; }
 .feature-desc { color: var(--text-dim); font-size: 0.92rem; line-height: 1.65; }
 
 /* ── Játékmódok ── */
 .gamemodes-section { padding: 40px 10% 100px; text-align: center; }
-.section-title { font-size: 2.4rem; font-weight: 800; margin-bottom: 12px; }
-.section-subtitle { color: var(--text-dim); font-size: 1.02rem; margin-bottom: 60px; }
+.section-title {
+    font-family: var(--font-display); font-size: 2.5rem; font-weight: 800; margin-bottom: 16px;
+    position: relative; display: inline-block;
+}
+.section-title::after {
+    content: ''; position: absolute; left: 50%; bottom: -14px; transform: translateX(-50%);
+    width: 64px; height: 3px; border-radius: 2px;
+    background: linear-gradient(90deg, var(--gold), var(--orange-2));
+    box-shadow: 0 0 14px var(--gold-glow);
+}
+.section-subtitle { color: var(--text-dim); font-size: 1.02rem; margin: 26px 0 60px; }
 
 .gamemode-row {
+    --acc: var(--gold); --acc-glow: var(--gold-glow);
     display: grid; grid-template-columns: 1.1fr 1fr; gap: 50px; align-items: center;
     text-align: left; margin-bottom: 90px;
+    position: relative;
+}
+.gamemode-row::before {
+    content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 70%; height: 140%; max-width: 900px;
+    background: radial-gradient(ellipse at center, var(--acc-glow), transparent 68%);
+    opacity: .35; filter: blur(10px); z-index: -1; pointer-events: none;
 }
 .gamemode-row:last-child { margin-bottom: 0; }
 .gamemode-row.reverse { direction: rtl; }
 .gamemode-row.reverse > * { direction: ltr; }
+.gamemode-row.accent-kingdoms { --acc: var(--acc-kingdoms); --acc-glow: var(--acc-kingdoms-glow); }
+.gamemode-row.accent-momentum { --acc: var(--acc-momentum); --acc-glow: var(--acc-momentum-glow); }
+.gamemode-row.accent-elyvientrum { --acc: var(--acc-elyvientrum); --acc-glow: var(--acc-elyvientrum-glow); }
+.gamemode-row.accent-foci { --acc: var(--acc-foci); --acc-glow: var(--acc-foci-glow); }
+
+.gamemode-image { position: relative; border-radius: 20px; }
 .gamemode-image img {
     width: 100%; height: 340px; object-fit: cover; border-radius: 20px;
     border: 1px solid var(--line);
     box-shadow: 0 20px 50px rgba(0,0,0,.5);
-    transition: transform 0.3s;
+    transition: transform 0.4s, box-shadow .4s;
 }
-.gamemode-image:hover img { transform: scale(1.02); }
-.gamemode-icon { font-size: 2.2rem; margin-bottom: 14px; }
-.gamemode-text h3 { font-size: 1.9rem; font-weight: 800; margin-bottom: 16px; }
+.gamemode-image::after {
+    content: ''; position: absolute; inset: 0; border-radius: 20px; pointer-events: none;
+    background: linear-gradient(180deg, transparent 55%, color-mix(in srgb, var(--acc) 25%, transparent) 100%);
+    opacity: 0; transition: opacity .4s;
+}
+.gamemode-image:hover img { transform: scale(1.035); box-shadow: 0 24px 60px var(--acc-glow); }
+.gamemode-image:hover::after { opacity: 1; }
+.gamemode-icon {
+    width: 54px; height: 54px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.7rem; margin-bottom: 16px; border-radius: 14px;
+    background: color-mix(in srgb, var(--acc) 14%, transparent);
+    border: 1px solid color-mix(in srgb, var(--acc) 40%, transparent);
+    box-shadow: 0 0 22px var(--acc-glow);
+}
+.gamemode-text h3 { font-family: var(--font-display); font-size: 1.85rem; font-weight: 700; margin-bottom: 16px; color: var(--acc); }
 .gamemode-text p { color: var(--text-dim); font-size: 0.98rem; line-height: 1.75; }
 
 @media (max-width: 900px) {
@@ -188,11 +308,17 @@ nav {
 
 /* ── Kliens / letöltés ── */
 .client-section {
-    padding: 100px 10%; text-align: center;
-    background: linear-gradient(180deg, transparent, rgba(255,176,32,.04) 40%, transparent);
+    padding: 100px 10%; text-align: center; position: relative; overflow: hidden;
+    background: linear-gradient(180deg, transparent, rgba(255,176,32,.05) 40%, transparent);
     border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
 }
-.client-inner { max-width: 760px; margin: 0 auto; }
+.client-section::before {
+    content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 900px; height: 500px; max-width: 140%;
+    background: radial-gradient(ellipse at center, var(--gold-glow), transparent 70%);
+    opacity: .18; filter: blur(30px); pointer-events: none;
+}
+.client-inner { position: relative; max-width: 760px; margin: 0 auto; }
 .client-warning {
     max-width: 640px; margin: 0 auto 40px;
     background: rgba(255,90,60,.06); border: 1px solid rgba(255,90,60,.25);
@@ -206,12 +332,14 @@ nav {
 }
 .client-step {
     background: var(--panel); border: 1px solid var(--line); border-radius: 16px;
-    padding: 26px 20px;
+    padding: 26px 20px; transition: transform .25s, border-color .25s, box-shadow .25s;
 }
+.client-step:hover { transform: translateY(-5px); border-color: rgba(255,176,32,.35); box-shadow: 0 16px 34px rgba(0,0,0,.35); }
 .client-step-num {
     width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 14px;
     background: linear-gradient(180deg, var(--gold), var(--gold-2)); color: #1a1206;
     font-weight: 800; display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 0 0 4px rgba(255,176,32,.12);
 }
 .client-step-title { font-weight: 700; margin-bottom: 6px; }
 .client-step-desc { color: var(--text-dim); font-size: 0.87rem; }
@@ -243,14 +371,22 @@ nav {
 .faq-answer p { color: var(--text-dim); font-size: 0.93rem; line-height: 1.7; }
 
 /* ── Footer ── */
-footer { padding: 70px 10% 40px; text-align: center; border-top: 1px solid var(--line); }
+footer { padding: 70px 10% 40px; text-align: center; border-top: 1px solid var(--line); position: relative; }
+footer::before {
+    content: ''; position: absolute; top: -1px; left: 15%; right: 15%; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-glow), transparent);
+}
 .footer-logo-icon { width: 46px; height: 46px; margin: 0 auto 14px; filter: drop-shadow(0 0 10px var(--gold-glow)); }
-.footer-logo { font-size: 1.3rem; font-weight: 800; margin-bottom: 8px; }
+.footer-logo { font-family: var(--font-display); font-size: 1.3rem; font-weight: 800; margin-bottom: 8px; }
 .footer-content p { color: var(--text-dim); font-size: 0.92rem; }
-.socials { margin-top: 18px; display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
-.socials a { color: var(--gold); text-decoration: none; font-weight: 600; font-size: 0.92rem; transition: color 0.2s; }
-.socials a:hover { color: var(--gold-2); }
-.socials-sep { color: var(--text-faint); }
+.socials { margin-top: 22px; display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; }
+.socials a {
+    color: var(--text-dim); text-decoration: none; font-weight: 600; font-size: 0.86rem;
+    padding: 8px 18px; border-radius: 999px; border: 1px solid var(--line);
+    transition: color 0.2s, border-color .2s, transform .2s, background .2s;
+}
+.socials a:hover { color: var(--gold); border-color: rgba(255,176,32,.4); background: rgba(255,176,32,.08); transform: translateY(-2px); }
+.socials-sep { display: none; }
 .footer-copy { margin-top: 30px; color: var(--text-faint); font-size: 0.8rem; }
 
 @media (max-width: 640px) {
@@ -332,10 +468,17 @@ footer { padding: 70px 10% 40px; text-align: center; border-top: 1px solid var(-
     max-width: 900px; margin: 0 auto;
 }
 .team-card {
+    position: relative; overflow: hidden;
     background: var(--panel); border: 1px solid var(--line); border-radius: 20px;
     padding: 26px 20px 24px; transition: transform .25s, border-color .25s, box-shadow .25s;
 }
+.team-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--orange-2));
+    opacity: 0; transition: opacity .25s;
+}
 .team-card:hover { transform: translateY(-6px); border-color: var(--gold-2); box-shadow: 0 18px 40px rgba(0,0,0,.4); }
+.team-card:hover::before { opacity: 1; }
 .team-card canvas { margin: 0 auto 16px; border-radius: 14px; background: var(--panel-2); border: 1px solid var(--line); cursor: grab; }
 .team-card canvas:active { cursor: grabbing; }
 .team-card-name { font-weight: 800; font-size: 1.05rem; }
@@ -356,9 +499,16 @@ footer { padding: 70px 10% 40px; text-align: center; border-top: 1px solid var(-
 .footer-legal-links a:hover { color: var(--gold); }
 .footer-legal-sep { color: var(--text-faint); font-size: 0.8rem; }
 
-/* ── Alacsonyabb, belső oldalak (Jogi dokumentumok / SolarNet) közös fejléce ── */
-.subpage-hero { padding: 150px 10% 60px; text-align: center; }
-.subpage-hero h1 { font-size: 2.6rem; font-weight: 800; }
+/* ── Alacsonyabb, belső oldalak (Jogi dokumentumok / SolarNet / Szabályzat) közös fejléce ── */
+.subpage-hero { padding: 150px 10% 60px; text-align: center; position: relative; overflow: hidden; }
+.subpage-hero::before {
+    content: ''; position: absolute; top: -10%; left: 50%; transform: translateX(-50%);
+    width: 700px; height: 400px; max-width: 130%;
+    background: radial-gradient(ellipse at center, var(--gold-glow), transparent 70%);
+    opacity: .25; filter: blur(20px); pointer-events: none; z-index: 0;
+}
+.subpage-hero > * { position: relative; z-index: 1; }
+.subpage-hero h1 { font-family: var(--font-display); font-size: 2.7rem; font-weight: 800; }
 .subpage-hero p { color: var(--text-dim); margin-top: 14px; max-width: 640px; margin-left: auto; margin-right: auto; }
 .back-home {
     display: inline-flex; align-items: center; gap: 8px; color: var(--text-faint); text-decoration: none;
@@ -380,15 +530,46 @@ footer { padding: 70px 10% 40px; text-align: center; border-top: 1px solid var(-
     cursor: pointer; font-family: inherit; transition: all .2s; line-height: 1.4;
 }
 .legal-tab.active, .legal-tab:hover { background: rgba(255,176,32,.1); color: var(--gold); border-color: rgba(255,176,32,.4); }
-.legal-card { background: var(--panel); border: 1px solid var(--line); border-radius: 24px; padding: 56px; }
+.legal-card {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 24px; padding: 56px;
+    position: relative; overflow: hidden;
+}
+.legal-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), var(--orange-2), var(--gold), transparent);
+}
 .legal-panel { display: none; }
 .legal-panel.active { display: block; }
-.legal-panel h3 { font-size: 2rem; font-weight: 800; margin-bottom: 30px; color: var(--gold); }
+.legal-panel h3 { font-family: var(--font-display); font-size: 2.05rem; font-weight: 800; margin-bottom: 30px; color: var(--gold); }
 .legal-panel h4 { font-size: 1.15rem; font-weight: 700; margin: 32px 0 10px; }
 .legal-panel h4:first-of-type { margin-top: 0; }
 .legal-panel p, .legal-panel ul { color: var(--text-dim); font-size: 1rem; line-height: 1.85; }
 .legal-panel ul { padding-left: 22px; margin: 10px 0; }
 .legal-panel b { color: var(--text); }
+
+/* ── Szabályzat oldal - figyelmeztető sáv és szabálylisták ── */
+.rules-warning {
+    display: flex; gap: 16px; align-items: flex-start;
+    max-width: 1000px; margin: 0 auto 40px; padding: 22px 28px;
+    background: rgba(255, 77, 31, 0.08); border: 1px solid rgba(255, 90, 30, 0.35);
+    border-radius: 16px; text-align: left;
+}
+.rules-warning-icon { font-size: 1.6rem; line-height: 1; flex-shrink: 0; }
+.rules-warning b { color: var(--orange); display: block; margin-bottom: 4px; font-size: 1.02rem; }
+.rules-warning p { color: var(--text-dim); font-size: 0.94rem; line-height: 1.6; margin: 0; }
+.rules-list { list-style: none; padding: 0; margin: 14px 0 26px; display: flex; flex-direction: column; gap: 10px; }
+.rules-list li {
+    position: relative; padding: 12px 18px 12px 46px; border-radius: 12px;
+    background: rgba(255,255,255,.02); border: 1px solid var(--line);
+    color: var(--text-dim); font-size: 0.96rem; line-height: 1.6;
+}
+.rules-list li::before {
+    content: attr(data-n); position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+    width: 22px; height: 22px; border-radius: 50%; font-size: 0.72rem; font-weight: 800;
+    background: rgba(255,176,32,.14); color: var(--gold); border: 1px solid rgba(255,176,32,.3);
+    display: flex; align-items: center; justify-content: center;
+}
+.rules-list li strong { color: var(--text); }
 
 @media (max-width: 900px) {
     .legal-layout { grid-template-columns: 1fr; }
@@ -399,7 +580,7 @@ footer { padding: 70px 10% 40px; text-align: center; border-top: 1px solid var(-
 /* ── SolarNet partnerprogram oldal - jóval nagyobb elemek, szélesebb
    elrendezés a korábbi kis, 4-oszlopos rácshoz képest. ── */
 .solarnet-hero { padding-bottom: 90px; }
-.solarnet-hero-title { font-size: 3.2rem; font-weight: 800; line-height: 1.15; max-width: 780px; margin: 0 auto; }
+.solarnet-hero-title { font-family: var(--font-display); font-size: 3rem; font-weight: 800; line-height: 1.2; max-width: 780px; margin: 0 auto; }
 .solarnet-hero-sub { font-size: 1.25rem !important; max-width: 700px !important; color: var(--text-dim); margin: 18px auto 0 !important; }
 
 .solarnet-cta { text-align: center; padding: 10px 6% 70px; }

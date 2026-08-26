@@ -1,3 +1,15 @@
+// ── Tiszta URL-ek: ha valaki egy "...index.html" végű linkről (pl. régi
+// könyvjelző, kereső-találat) érkezik, a címsorból eltüntetjük az
+// "index.html"-t, és a mappa gyökerét mutatjuk helyette (a hash/query
+// megtartásával), hogy a látogató sose lássa a fájlnevet a URL-ben.
+(function cleanIndexUrl() {
+    if (!window.history || !window.history.replaceState) return;
+    if (/\/index\.html$/i.test(window.location.pathname)) {
+        const cleanPath = window.location.pathname.replace(/index\.html$/i, '');
+        window.history.replaceState(null, '', cleanPath + window.location.search + window.location.hash);
+    }
+})();
+
 // ── Hulló parázs-szemcse háttéranimáció (ugyanaz, mint a SolarCenter/SolarLauncherben) ──
 (function initParticles() {
     const canvas = document.getElementById('particleCanvas');
@@ -43,6 +55,21 @@
         requestAnimationFrame(tick);
     }
     requestAnimationFrame(tick);
+})();
+
+// ── Görgetési előrehaladás-sáv a lap tetején ──
+(function initScrollProgress() {
+    const bar = document.querySelector('.scroll-progress');
+    if (!bar) return;
+    function update() {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        bar.style.width = pct + '%';
+    }
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
 })();
 
 function copyIP() {

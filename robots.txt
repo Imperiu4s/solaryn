@@ -1,0 +1,26 @@
+# Solaryn Network - www.solaryn.hu
+# Ez egy statikus, néhány oldalas marketing-weboldal - minden alrésze
+# nyilvános, indexelésre szánt tartalom, tehát nincs Disallow-listára
+# szoruló rész.
+
+User-agent: *
+Allow: /
+
+# Mesterséges intelligencia célú, tömeges tartalomgyűjtés - a weboldal
+# tartalma a Solaryn Networké, ezért ezt nem engedjük.
+User-agent: GPTBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+Sitemap: https://solaryn.hu/sitemap.xml

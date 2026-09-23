@@ -16,8 +16,6 @@
     --discord: #5865f2;
     --font-display: 'Cinzel', 'Poppins', serif;
 
-    /* Játékmódonkénti akcentszínek - a Kingdoms/Momentum/Elyvientrum/Foci
-       kártyák és ikonok ezekkel az egyedi izzásszínekkel különülnek el. */
     --acc-kingdoms: #ffc42e;
     --acc-kingdoms-glow: rgba(255, 196, 46, 0.35);
     --acc-momentum: #ff5a3d;
@@ -46,7 +44,6 @@ a { color: inherit; }
 img { max-width: 100%; display: block; }
 ::selection { background: var(--gold-2); color: #1a1206; }
 
-/* ── Görgetési előrehaladás-sáv a lap tetején ── */
 .scroll-progress {
     position: fixed; top: 0; left: 0; height: 3px; width: 0%;
     background: linear-gradient(90deg, var(--gold), var(--orange-2));
@@ -54,14 +51,12 @@ img { max-width: 100%; display: block; }
     z-index: 200; transition: width 0.1s linear;
 }
 
-/* ── Hulló parázs-szemcse háttéranimáció (ugyanaz, mint a SolarCenter/SolarLauncherben) ── */
 .particle-canvas { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
 
 nav, header, .stats, .info-section, .gamemodes-section, .client-section, .faq-section, footer {
     position: relative; z-index: 1;
 }
 
-/* ── Navigáció ── */
 nav {
     display: flex; justify-content: space-between; align-items: center;
     padding: 16px 6%; background: rgba(8, 8, 11, 0.75);
@@ -105,12 +100,16 @@ nav::after {
     .nav-links { display: none; }
 }
 
-/* ── Hero ── */
 .hero {
     min-height: 100vh; display: flex; align-items: center; justify-content: center;
     text-align: center; position: relative; isolation: isolate;
     background-size: cover; background-position: center 65%;
     padding: 100px 20px 60px;
+}
+
+.hero-bg-lobby {
+    background-image: url('assets/lobby.jpg');
+    background-image: image-set(url('assets/lobby.webp') type('image/webp'), url('assets/lobby.jpg') type('image/jpeg'));
 }
 .hero-overlay {
     position: absolute; inset: 0; z-index: 0;
@@ -118,8 +117,7 @@ nav::after {
         linear-gradient(180deg, rgba(7,7,10,.5) 0%, rgba(7,7,10,.8) 55%, var(--bg) 100%),
         linear-gradient(90deg, rgba(7,7,10,.5) 0%, rgba(7,7,10,.1) 40%, rgba(7,7,10,.1) 60%, rgba(7,7,10,.5) 100%);
 }
-/* Lebegő, elmosott izzás-foltok a hero fölött - lassan pulzálnak/vándorolnak,
-   ettől érzi a szem "élőnek" a hátteret a statikus kép mellett is. */
+
 .hero-glow { position: absolute; inset: 0; z-index: 1; overflow: hidden; pointer-events: none; }
 .hero-glow::before, .hero-glow::after {
     content: ''; position: absolute; border-radius: 50%; filter: blur(80px); opacity: .55;
@@ -151,7 +149,6 @@ nav::after {
 }
 .hero-actions { display: flex; align-items: center; justify-content: center; gap: 18px; flex-wrap: wrap; }
 
-/* Görgetésre buzdító nyíl a hero alján */
 .scroll-cue {
     position: absolute; bottom: 26px; left: 50%; transform: translateX(-50%); z-index: 2;
     color: var(--text-faint); opacity: .8; animation: scrollCueBounce 2.2s ease-in-out infinite;
@@ -182,8 +179,6 @@ nav::after {
 .btn-glow-download:hover { filter: brightness(1.06); transform: translateY(-2px); box-shadow: 0 14px 38px var(--gold-glow); }
 .btn-glow-download:active { transform: translateY(0); }
 
-/* Fény-söprés hover-effekt a fő gombokon - egy ferde, halvány csík fut
-   végig a gombon, amikor az egér fölé ér. */
 .btn-glow-download::before, .btn-nav-download::before {
     content: ''; position: absolute; top: 0; left: -60%; width: 40%; height: 100%;
     background: linear-gradient(115deg, transparent, rgba(255,255,255,.45), transparent);
@@ -191,7 +186,6 @@ nav::after {
 }
 .btn-glow-download:hover::before, .btn-nav-download:hover::before { left: 130%; }
 
-/* ── Stats ── */
 .stats {
     display: flex; justify-content: space-around; padding: 46px 10%;
     background: linear-gradient(180deg, var(--panel), var(--bg-2));
@@ -216,7 +210,6 @@ nav::after {
 }
 .stat-item p { color: var(--text-dim); font-size: 0.9rem; margin-top: 4px; }
 
-/* ── Rólunk / feature grid ── */
 .info-section { padding: 130px 10% 90px; }
 .info-text h2 { font-family: var(--font-display); font-size: 2.5rem; font-weight: 800; margin-bottom: 18px; }
 .info-text > p { color: var(--text-dim); font-size: 1.05rem; max-width: 760px; margin-bottom: 46px; }
@@ -243,7 +236,6 @@ nav::after {
 .feature-title { font-weight: 700; font-size: 1.02rem; margin-bottom: 6px; }
 .feature-desc { color: var(--text-dim); font-size: 0.92rem; line-height: 1.65; }
 
-/* ── Játékmódok ── */
 .gamemodes-section { padding: 40px 10% 100px; text-align: center; }
 .section-title {
     font-family: var(--font-display); font-size: 2.5rem; font-weight: 800; margin-bottom: 16px;
@@ -306,7 +298,6 @@ nav::after {
     .gamemode-image img { height: 240px; }
 }
 
-/* ── Kliens / letöltés ── */
 .client-section {
     padding: 100px 10%; text-align: center; position: relative; overflow: hidden;
     background: linear-gradient(180deg, transparent, rgba(255,176,32,.05) 40%, transparent);
@@ -348,7 +339,6 @@ nav::after {
     .client-steps { grid-template-columns: 1fr; }
 }
 
-/* ── GYIK ── */
 .faq-section { padding: 40px 10% 110px; }
 .faq-section .section-title { text-align: center; }
 .faq-container { max-width: 800px; margin: 0 auto; }
@@ -370,7 +360,6 @@ nav::after {
 .faq-item.open .faq-answer { max-height: 240px; padding: 0 24px 22px; }
 .faq-answer p { color: var(--text-dim); font-size: 0.93rem; line-height: 1.7; }
 
-/* ── Footer ── */
 footer { padding: 70px 10% 40px; text-align: center; border-top: 1px solid var(--line); position: relative; }
 footer::before {
     content: ''; position: absolute; top: -1px; left: 15%; right: 15%; height: 1px;
@@ -395,12 +384,6 @@ footer::before {
     .info-section, .gamemodes-section, .client-section, .faq-section { padding-left: 6%; padding-right: 6%; }
 }
 
-/* ══════════════════════════════════════════════════════════════
-   Smooth scroll-reveal animációk - .reveal elemek alapból lejjebb/
-   halványan állnak, a script.js IntersectionObserver-je adja hozzá a
-   .visible osztályt, amikor a nézetbe scrollnak. A stagger (késleltetés)
-   a --reveal-delay CSS változóval szabályozható elemenként (inline style).
-   ══════════════════════════════════════════════════════════════ */
 .reveal {
     opacity: 0; transform: translateY(32px);
     transition: opacity .8s cubic-bezier(.16,.84,.44,1), transform .8s cubic-bezier(.16,.84,.44,1);
@@ -422,13 +405,7 @@ footer::before {
 
 @media (prefers-reduced-motion: reduce) {
     .reveal { opacity: 1; transform: none; transition: none; }
-    /* JAVÍTVA: korábban itt csak az "animation"-t kapcsoltuk ki, de a
-       .hero-anim ALAP szabálya (lentebb) "opacity: 0"-val indul, amit csak
-       maga az animáció mozgat vissza 1-re - "animation: none" mellett ez a
-       visszaállítás sosem történt meg, ezért a hero-badge/wordmark/szöveg
-       PERMANENSEN láthatatlan maradt bárkinél, akinek a rendszerében be van
-       kapcsolva a "csökkentett mozgás" beállítás. Itt kell explicit
-       opacity/transform reset is, nem csak az animáció letiltása. */
+
     .hero-anim, .badge-pulse, .wordmark-float {
         animation: none !important;
         opacity: 1 !important;
@@ -436,12 +413,6 @@ footer::before {
     }
 }
 
-/* Hero belépő animáció - oldalbetöltéskor, nem scrollra.
-   SZÁNDÉKOSAN nincs itt statikus "opacity: 0" - a kezdő (láthatatlan)
-   állapotot kizárólag a "backwards" fill-mode adja, amíg az animáció fut.
-   Ha bármi okból (letiltott animáció, prefers-reduced-motion, egy jövőbeli
-   böngésző-kivétel) az animáció nem futna le, az elem az alapértelmezett
-   (teljesen látható) opacitásán marad, nem ragad örökre láthatatlanul. */
 .hero-anim { animation: heroIn .9s cubic-bezier(.16,.84,.44,1) both; }
 @keyframes heroIn { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
 .badge-pulse { animation: badgePulse 2.8s ease-in-out infinite; }
@@ -455,13 +426,11 @@ footer::before {
     50% { transform: translateY(-8px); }
 }
 
-/* Finomabb, egységes átmenetek mindenre, ami már eleve hover-transitiont kapott */
 .nav-links a, .btn-outline-nav, .btn-nav-download, .feature-item, .gamemode-image img,
 .client-step, .faq-item, .pill-link, .team-card {
     transition-timing-function: cubic-bezier(.16,.84,.44,1);
 }
 
-/* ── Csapat / Tulajdonosok ── */
 .team-section { padding: 20px 10% 110px; text-align: center; }
 .team-grid {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 26px;
@@ -488,7 +457,6 @@ footer::before {
     color: var(--gold); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px;
 }
 
-/* ── Jogi disclaimer + lábléc-linkek ── */
 .legal-disclaimer {
     max-width: 680px; margin: 0 auto 26px; padding: 14px 20px;
     border: 1px solid var(--line); border-radius: 12px; background: rgba(255,255,255,.02);
@@ -499,7 +467,6 @@ footer::before {
 .footer-legal-links a:hover { color: var(--gold); }
 .footer-legal-sep { color: var(--text-faint); font-size: 0.8rem; }
 
-/* ── Alacsonyabb, belső oldalak (Jogi dokumentumok / SolarNet / Szabályzat) közös fejléce ── */
 .subpage-hero { padding: 150px 10% 60px; text-align: center; position: relative; overflow: hidden; }
 .subpage-hero::before {
     content: ''; position: absolute; top: -10%; left: 50%; transform: translateX(-50%);
@@ -516,9 +483,6 @@ footer::before {
 }
 .back-home:hover { color: var(--gold); }
 
-/* ── Jogi dokumentumok oldal - széles, oldalsávos elrendezés, hogy a
-   nagy képernyő szélessége is ki legyen használva, ne egy keskeny,
-   középre zsugorodott kártya legyen. ── */
 .legal-page { padding: 0 6% 120px; max-width: 1300px; margin: 0 auto; }
 .legal-layout { display: grid; grid-template-columns: 300px 1fr; gap: 36px; align-items: start; }
 .legal-sidebar {
@@ -547,7 +511,6 @@ footer::before {
 .legal-panel ul { padding-left: 22px; margin: 10px 0; }
 .legal-panel b { color: var(--text); }
 
-/* ── Szabályzat oldal - figyelmeztető sáv és szabálylisták ── */
 .rules-warning {
     display: flex; gap: 16px; align-items: flex-start;
     max-width: 1000px; margin: 0 auto 40px; padding: 22px 28px;
@@ -577,8 +540,6 @@ footer::before {
     .legal-card { padding: 32px 24px; }
 }
 
-/* ── SolarNet partnerprogram oldal - jóval nagyobb elemek, szélesebb
-   elrendezés a korábbi kis, 4-oszlopos rácshoz képest. ── */
 .solarnet-hero { padding-bottom: 90px; }
 .solarnet-hero-title { font-family: var(--font-display); font-size: 3rem; font-weight: 800; line-height: 1.2; max-width: 780px; margin: 0 auto; }
 .solarnet-hero-sub { font-size: 1.25rem !important; max-width: 700px !important; color: var(--text-dim); margin: 18px auto 0 !important; }

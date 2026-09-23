@@ -1,9 +1,3 @@
-// Minimális, saját WebGL-alapú Minecraft-skin 3D előnézet - külső könyvtár
-// nélkül (a CSP script-src 'self'-je amúgy sem engedne CDN-es three.js-t).
-// Az alap réteget ÉS a második (overlay) réteget is rajzolja - kalap, zakó,
-// ujjak, nadrág -, az overlay dobozok kicsit nagyobbra méretezve (lásd PAD),
-// hogy ne z-fighteljenek az alap réteggel ott, ahol a textúra átlátszatlan.
-
 const SkinPreview = (() => {
   const VERT_SRC = `
     attribute vec3 aPos;
@@ -36,18 +30,10 @@ const SkinPreview = (() => {
     return s;
   }
 
-  // Egy doboz (fej/törzs/kar/láb) UV-koordinátái a szabványos Minecraft
-  // skin-elrendezés szerint (egy UV-origóból az összes lap levezethető).
   function boxUvFaces(u, v, w, h, d) {
     return {
       top:    [u + d, v, w, d],
       bottom: [u + d + w, v, w, d],
-      // JAVÍTVA: a "right"/"left" UV-régiók fel voltak cserélve a geometriával -
-      // a textúra "right" (a karakter TÉNYLEGES jobb oldala) a +X (nézőnek jobbra
-      // eső) dobozlapra került, holott szemből nézve a karakter jobb oldala a
-      // néző BAL oldalán látszik (ugyanaz a szabály, amit a kar/láb elhelyezése
-      // már eddig is helyesen követett - ld. buildGeometry "jobb kar" megjegyzése).
-      // Emiatt a fej mindkét oldala (haj/fül-mintázat) tükrözve jelent meg.
       right:  [u + d + w, v + d, d, h],
       front:  [u + d, v + d, w, h],
       left:   [u, v + d, d, h],
@@ -55,19 +41,6 @@ const SkinPreview = (() => {
     };
   }
 
-  // A "pad" a geometria méretét (a doboz tényleges kirajzolt élhosszát) növeli
-  // meg egy kicsit, DE a textúra-UV mintavételezés az EREDETI (nem-paddelt)
-  // w/h/d alapján történik - enélkül a nagyobb doboz a textúrán is nagyobb,
-  // szomszédos régiót mintázna, ami rossz/csúszó textúrázást adna.
-  // ÚJ: "uvScale" - HD (64-nél szélesebb) skineknél a textúra-régiók (UV-
-  // origó ÉS a lap-méretek is) ennyiszer nagyobbak PIXELBEN, mint a
-  // "sztenderd" 64-alapú elrendezésben (2 egy 128 széles HD skinnél, stb.) -
-  // a 3D geometria (w/h/d világ-egységben) ETTŐL FÜGGETLENÜL változatlan
-  // marad, hiszen a modell alakja nem nő attól, hogy a skin-kép felbontása
-  // nagyobb. Enélkül egy HD skinnél a UV-régió mérete (w/h/d) nem lett
-  // felskálázva a nagyobb texW/texH-hoz képest, ezért a fej/test/kar/láb
-  // mindegyike csak a textúra bal-felső NEGYEDÉT mintázta volna (rossz,
-  // "összecsúszott" előnézetet adva).
   function addBox(positions, uvs, indices, cx, cy, cz, w, h, d, uvOrigin, texW, texH, pad = 0, uvScale = 1) {
     const hw = w / 2 + pad, hh = h / 2 + pad, hd = d / 2 + pad;
     const p = {
@@ -87,10 +60,6 @@ const SkinPreview = (() => {
     };
     for (const name of Object.keys(faceCorners)) {
       const [u, v, fw, fh] = faces[name];
-      // JAVÍTVA (2. kör): a puszta vízszintes tükrözés csak részben javította az
-      // állnál (front-bottom él) látszó hibát - a "bottom" lap valójában 180
-      // fokkal van elforgatva a textúrán a többi laphoz képest (mindkét
-      // tengelyen tükrözve), nem csak vízszintesen.
       const uvCorners = name === 'bottom' ? [
         [(u + fw) / texW, v / texH],
         [u / texW, v / texH],
@@ -115,48 +84,28 @@ const SkinPreview = (() => {
   function buildGeometry(slim, texW, texH) {
     const positions = [], uvs = [], indices = [];
     const armW = slim ? 3 : 4;
-    // A "modern" (64 magas) formátumban a bal kar/láb KÜLÖN UV-régiót kap a
-    // jobbtól, és van teljes overlay (zakó/ujjak/nadrág) réteg is; a régi 64x32
-    // formátumban a bal oldal a jobb oldal TÜKRE, és csak a fej kap kalap-overlayt.
-    // ÚJ: HD skin (64-nél szélesebb kép) esetén a valódi UV-régiók ennyi-
-    // szeresei a sztenderd 64-alapú elrendezésnek - ld. addBox uvScale
-    // paraméterének megjegyzését.
     const uvScale = texW / 64;
-    // "modern" (64x64-szerű, teljes overlay-réteggel) vs "legacy" (64x32-szerű,
-    // csak fej-overlayjel) - a HD-arányos ellenőrzés (texH > texW/2, nem a
-    // korábbi, csak a sztenderd méretre helyes "texH >= 64") ugyanígy
-    // megkülönbözteti a kettőt bármilyen felbontásban.
     const modern = texH > texW / 2;
     const PAD = 0.4;
 
-    // Alap réteg
-    addBox(positions, uvs, indices, 0, 10, 0, 8, 8, 8, [0, 0], texW, texH, 0, uvScale); // fej
-    addBox(positions, uvs, indices, 0, 0, 0, 8, 12, 4, [16, 16], texW, texH, 0, uvScale); // törzs
-    addBox(positions, uvs, indices, -(4 + armW / 2), 0, 0, armW, 12, 4, [40, 16], texW, texH, 0, uvScale); // jobb kar
-    // JAVÍTVA: korábban itt is [40,16]-ot (a jobb kar UV-ját) használtuk, azaz a
-    // bal kart a jobb kar textúrájával tükrözve rajzoltuk ki - modern formátumban
-    // a bal karnak saját, külön UV-régiója van ([32,48]).
-    addBox(positions, uvs, indices, (4 + armW / 2), 0, 0, armW, 12, 4, modern ? [32, 48] : [40, 16], texW, texH, 0, uvScale); // bal kar
-    addBox(positions, uvs, indices, -2, -12, 0, 4, 12, 4, [0, 16], texW, texH, 0, uvScale); // jobb láb
-    // JAVÍTVA: ugyanaz a hiba, mint a karnál - a bal lábnak modern formátumban
-    // saját UV-régiója van ([16,48]), nem a jobb láb tükrözése.
-    addBox(positions, uvs, indices, 2, -12, 0, 4, 12, 4, modern ? [16, 48] : [0, 16], texW, texH, 0, uvScale); // bal láb
+    addBox(positions, uvs, indices, 0, 10, 0, 8, 8, 8, [0, 0], texW, texH, 0, uvScale);
+    addBox(positions, uvs, indices, 0, 0, 0, 8, 12, 4, [16, 16], texW, texH, 0, uvScale);
+    addBox(positions, uvs, indices, -(4 + armW / 2), 0, 0, armW, 12, 4, [40, 16], texW, texH, 0, uvScale);
+    addBox(positions, uvs, indices, (4 + armW / 2), 0, 0, armW, 12, 4, modern ? [32, 48] : [40, 16], texW, texH, 0, uvScale);
+    addBox(positions, uvs, indices, -2, -12, 0, 4, 12, 4, [0, 16], texW, texH, 0, uvScale);
+    addBox(positions, uvs, indices, 2, -12, 0, 4, 12, 4, modern ? [16, 48] : [0, 16], texW, texH, 0, uvScale);
 
-    // Overlay réteg (kalap/zakó/ujjak/nadrág) - a base-nél kicsit nagyobb (PAD)
-    // dobozok, hogy ne z-fighteljenek, és csak ott látszódjanak, ahol a textúra
-    // nem átlátszó (lásd a fragment shader alpha-discard-ját).
-    addBox(positions, uvs, indices, 0, 10, 0, 8, 8, 8, [32, 0], texW, texH, PAD, uvScale); // fej overlay (kalap) - mindkét formátumban létezik
+    addBox(positions, uvs, indices, 0, 10, 0, 8, 8, 8, [32, 0], texW, texH, PAD, uvScale);
     if (modern) {
-      addBox(positions, uvs, indices, 0, 0, 0, 8, 12, 4, [16, 32], texW, texH, PAD, uvScale); // törzs overlay (zakó)
-      addBox(positions, uvs, indices, -(4 + armW / 2), 0, 0, armW, 12, 4, [40, 32], texW, texH, PAD, uvScale); // jobb kar overlay
-      addBox(positions, uvs, indices, (4 + armW / 2), 0, 0, armW, 12, 4, [48, 48], texW, texH, PAD, uvScale); // bal kar overlay
-      addBox(positions, uvs, indices, -2, -12, 0, 4, 12, 4, [0, 32], texW, texH, PAD, uvScale); // jobb láb overlay
-      addBox(positions, uvs, indices, 2, -12, 0, 4, 12, 4, [0, 48], texW, texH, PAD, uvScale); // bal láb overlay
+      addBox(positions, uvs, indices, 0, 0, 0, 8, 12, 4, [16, 32], texW, texH, PAD, uvScale);
+      addBox(positions, uvs, indices, -(4 + armW / 2), 0, 0, armW, 12, 4, [40, 32], texW, texH, PAD, uvScale);
+      addBox(positions, uvs, indices, (4 + armW / 2), 0, 0, armW, 12, 4, [48, 48], texW, texH, PAD, uvScale);
+      addBox(positions, uvs, indices, -2, -12, 0, 4, 12, 4, [0, 32], texW, texH, PAD, uvScale);
+      addBox(positions, uvs, indices, 2, -12, 0, 4, 12, 4, [0, 48], texW, texH, PAD, uvScale);
     }
     return { positions, uvs, indices };
   }
 
-  // ── Minimális 4x4 mátrix segédek (perspektíva + forgatás) ──
   function perspective(fovy, aspect, near, far) {
     const f = 1 / Math.tan(fovy / 2);
     const nf = 1 / (near - far);
@@ -188,8 +137,6 @@ const SkinPreview = (() => {
     return new Float32Array([1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, x, y, z, 1]);
   }
 
-  // Egy adott canvason indít (vagy újraindít) egy forgó 3D előnézetet a
-  // megadott kép (skin texture) alapján. Visszaad egy leállító függvényt.
   function start(canvas, img, slim) {
     const gl = canvas.getContext('webgl', { alpha: true, antialias: false });
     if (!gl) return () => {};
@@ -233,7 +180,7 @@ const SkinPreview = (() => {
 
     const uMVP = gl.getUniformLocation(program, 'uMVP');
     gl.enable(gl.DEPTH_TEST);
-    gl.disable(gl.CULL_FACE); // egyszerűbb, mint a lap-sorrendeket pontosan kiszámolni
+    gl.disable(gl.CULL_FACE);
     gl.clearColor(0, 0, 0, 0);
 
     let angle = 0.6;
@@ -274,14 +221,6 @@ const SkinPreview = (() => {
       canvas.removeEventListener('mousedown', onDown);
       window.removeEventListener('mousemove', onMove);
       window.removeEventListener('mouseup', onUp);
-      // JAVÍTVA: a frame() leállítása (stopped=true) MEGÁLLÍTJA az újrarajzolást,
-      // de az UTOLJÁRA kirajzolt kép a WebGL vászon pufferében marad, amíg valami
-      // ténylegesen ki nem törli - a hívó oldali "canvas.width = canvas.width"
-      // trükk erre a célra NEM megbízható (Chromium bizonyos esetekben nem
-      // veszi észre/hajtja végre a puffer-resetet, ha az érték változatlan
-      // marad), ezért itt, KÖZVETLENÜL a WebGL kontextuson töröljük a tartalmat,
-      // mielőtt visszaadnánk az irányítást - így a visszaállítás/fiókváltás után
-      // sosem ragadhat ott a régi skin képe.
       gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
     };
   }

@@ -3,18 +3,44 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://api.overclockgame.hu:8908; connect-src 'self' https://api.overclockgame.hu:8908; font-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
     <title>Játékszabályzat - Solaryn Network</title>
     <meta name="description" content="A Solaryn Network hivatalos játékszabályzata - általános, közösségi/Discord és játékmód-specifikus szabályok.">
+    <meta name="author" content="Solaryn Network">
+    <meta name="theme-color" content="#07070a">
+    <meta name="color-scheme" content="dark">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://solaryn.hu/szabalyzat/">
+
     <link rel="icon" type="image/png" href="../assets/solaryn-icon.png">
+    <link rel="apple-touch-icon" href="../assets/solaryn-icon.png">
+    <link rel="manifest" href="../site.webmanifest">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Solaryn Network">
+    <meta property="og:locale" content="hu_HU">
+    <meta property="og:url" content="https://solaryn.hu/szabalyzat/">
+    <meta property="og:title" content="Játékszabályzat - Solaryn Network">
+    <meta property="og:description" content="A Solaryn Network hivatalos játékszabályzata - általános, közösségi/Discord és játékmód-specifikus szabályok.">
+    <meta property="og:image" content="https://solaryn.hu/assets/solaryn-wordmark.png">
+    <meta property="og:image:alt" content="Solaryn Network">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Játékszabályzat - Solaryn Network">
+    <meta name="twitter:description" content="A Solaryn Network hivatalos játékszabályzata - általános, közösségi/Discord és játékmód-specifikus szabályok.">
+    <meta name="twitter:image" content="https://solaryn.hu/assets/solaryn-wordmark.png">
+
     <link rel="stylesheet" href="../style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Cinzel:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../ui.css">
+    <link rel="stylesheet" href="../assets/fonts/fonts.css">
 </head>
 
 <body>
+    <a class="skip-link" href="#main-content">Ugrás a tartalomra</a>
     <div class="scroll-progress"></div>
-    <canvas class="particle-canvas" id="particleCanvas"></canvas>
+    <canvas class="particle-canvas" id="particleCanvas" aria-hidden="true"></canvas>
 
     <nav>
         <a href="../#kezdolap" class="logo">
@@ -36,7 +62,7 @@
         </div>
     </nav>
 
-    <section class="subpage-hero">
+    <section id="main-content" class="subpage-hero">
         <a href="../" class="back-home">← Vissza a főoldalra</a>
         <h1>Játék<span class="highlight">szabályzat</span></h1>
         <p>Ezek a szabályok vonatkoznak mindenkire, aki a Solaryn Network szerverén, hivatalos kliensén vagy Discord
@@ -274,27 +300,9 @@
         </div>
     </footer>
 
-    <script src="../script.js"></script>
-    <script>
-        function openRulesTab(key, smooth) {
-            const targetTab = document.querySelector(`.legal-tab[data-legal="${key}"]`);
-            if (!targetTab) return;
-            document.querySelectorAll('.legal-tab').forEach((t) => t.classList.toggle('active', t === targetTab));
-            document.querySelectorAll('.legal-panel').forEach((p) => {
-                p.classList.toggle('active', p.getAttribute('data-legal-panel') === key);
-            });
-            if (smooth) document.querySelector('.legal-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-        document.querySelectorAll('.legal-tab').forEach((tab) => {
-            tab.addEventListener('click', () => openRulesTab(tab.getAttribute('data-legal'), true));
-        });
-        window.addEventListener('hashchange', () => {
-            const key = window.location.hash.replace('#', '');
-            if (key) openRulesTab(key, true);
-        });
-        const hash = window.location.hash.replace('#', '');
-        if (hash) openRulesTab(hash, false);
-    </script>
+    <script src="../script.js" defer></script>
+    <script src="../ui.js" defer></script>
+    <script src="../legal-tabs.js"></script>
 </body>
 
 </html>

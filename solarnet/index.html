@@ -3,18 +3,44 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://api.overclockgame.hu:8908; connect-src 'self' https://api.overclockgame.hu:8908; font-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
     <title>SolarNet partnerprogram - Solaryn Network</title>
-    <meta name="description" content="A Solaryn Network partnerprogramja - szerver-tulajdonosoknak, akik több játékost szeretnének.">
+    <meta name="description" content="A Solaryn Network partnerprogramja szerver-tulajdonosoknak - kerülj be a hivatalos Solaryn kliens szerverlistájába.">
+    <meta name="author" content="Solaryn Network">
+    <meta name="theme-color" content="#07070a">
+    <meta name="color-scheme" content="dark">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://solaryn.hu/solarnet/">
+
     <link rel="icon" type="image/png" href="../assets/solaryn-icon.png">
+    <link rel="apple-touch-icon" href="../assets/solaryn-icon.png">
+    <link rel="manifest" href="../site.webmanifest">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Solaryn Network">
+    <meta property="og:locale" content="hu_HU">
+    <meta property="og:url" content="https://solaryn.hu/solarnet/">
+    <meta property="og:title" content="SolarNet partnerprogram - Solaryn Network">
+    <meta property="og:description" content="A Solaryn Network partnerprogramja szerver-tulajdonosoknak - kerülj be a hivatalos Solaryn kliens szerverlistájába.">
+    <meta property="og:image" content="https://solaryn.hu/assets/solaryn-wordmark.png">
+    <meta property="og:image:alt" content="Solaryn Network">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SolarNet partnerprogram - Solaryn Network">
+    <meta name="twitter:description" content="A Solaryn Network partnerprogramja szerver-tulajdonosoknak - kerülj be a hivatalos Solaryn kliens szerverlistájába.">
+    <meta name="twitter:image" content="https://solaryn.hu/assets/solaryn-wordmark.png">
+
     <link rel="stylesheet" href="../style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Cinzel:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../ui.css">
+    <link rel="stylesheet" href="../assets/fonts/fonts.css">
 </head>
 
 <body>
+    <a class="skip-link" href="#main-content">Ugrás a tartalomra</a>
     <div class="scroll-progress"></div>
-    <canvas class="particle-canvas" id="particleCanvas"></canvas>
+    <canvas class="particle-canvas" id="particleCanvas" aria-hidden="true"></canvas>
 
     <nav>
         <a href="../#kezdolap" class="logo">
@@ -37,7 +63,7 @@
         </div>
     </nav>
 
-    <section class="subpage-hero solarnet-hero">
+    <section id="main-content" class="subpage-hero solarnet-hero">
         <a href="../" class="back-home">← Vissza a főoldalra</a>
         <div class="badge hero-anim badge-pulse">SolarNet partnerprogram</div>
         <h1 class="hero-anim solarnet-hero-title" style="animation-delay:.1s">Van egy jó szervered,<br>de kevés a
@@ -247,7 +273,8 @@
         </div>
     </footer>
 
-    <script src="../script.js"></script>
+    <script src="../script.js" defer></script>
+    <script src="../ui.js" defer></script>
 </body>
 
 </html>

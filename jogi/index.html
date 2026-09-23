@@ -3,18 +3,44 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://api.overclockgame.hu:8908; connect-src 'self' https://api.overclockgame.hu:8908; font-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
     <title>Jogi dokumentumok - Solaryn Network</title>
-    <meta name="description" content="Solaryn Network - ÁSZF, Adatkezelési Tájékoztató, Impresszum.">
+    <meta name="description" content="Solaryn Network - Általános Szerződési Feltételek, Adatkezelési Tájékoztató és Impresszum.">
+    <meta name="author" content="Solaryn Network">
+    <meta name="theme-color" content="#07070a">
+    <meta name="color-scheme" content="dark">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://solaryn.hu/jogi/">
+
     <link rel="icon" type="image/png" href="../assets/solaryn-icon.png">
+    <link rel="apple-touch-icon" href="../assets/solaryn-icon.png">
+    <link rel="manifest" href="../site.webmanifest">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Solaryn Network">
+    <meta property="og:locale" content="hu_HU">
+    <meta property="og:url" content="https://solaryn.hu/jogi/">
+    <meta property="og:title" content="Jogi dokumentumok - Solaryn Network">
+    <meta property="og:description" content="Solaryn Network - Általános Szerződési Feltételek, Adatkezelési Tájékoztató és Impresszum.">
+    <meta property="og:image" content="https://solaryn.hu/assets/solaryn-wordmark.png">
+    <meta property="og:image:alt" content="Solaryn Network">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Jogi dokumentumok - Solaryn Network">
+    <meta name="twitter:description" content="Solaryn Network - Általános Szerződési Feltételek, Adatkezelési Tájékoztató és Impresszum.">
+    <meta name="twitter:image" content="https://solaryn.hu/assets/solaryn-wordmark.png">
+
     <link rel="stylesheet" href="../style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Cinzel:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../ui.css">
+    <link rel="stylesheet" href="../assets/fonts/fonts.css">
 </head>
 
 <body>
+    <a class="skip-link" href="#main-content">Ugrás a tartalomra</a>
     <div class="scroll-progress"></div>
-    <canvas class="particle-canvas" id="particleCanvas"></canvas>
+    <canvas class="particle-canvas" id="particleCanvas" aria-hidden="true"></canvas>
 
     <nav>
         <a href="../#kezdolap" class="logo">
@@ -37,7 +63,7 @@
         </div>
     </nav>
 
-    <section class="subpage-hero">
+    <section id="main-content" class="subpage-hero">
         <a href="../" class="back-home">← Vissza a főoldalra</a>
         <h1>Jogi <span class="highlight">dokumentumok</span></h1>
         <p>Az alábbiakban találod a Solaryn Network hivatalos dokumentumait.</p>
@@ -145,7 +171,11 @@
                     <h4>10. Panasz benyújtása</h4>
                     <p>Ha úgy érzed, hogy az adatkezelés nem felel meg a jogszabályoknak, panaszt tehetsz a Nemzeti Adatvédelmi és Információszabadság Hatóságnál (NAIH).</p>
 
-                    <h4>11. A Tájékoztató módosítása</h4>
+                    <h4>11. Sütik és helyi tárolás</h4>
+                    <p>A <b>www.solaryn.hu</b> weboldal nem használ követő, statisztikai vagy hirdetési célú sütit, és harmadik féltől sem tölt be tartalmat (a betűkészletek is a saját szerverünkről érkeznek). Az egyetlen, amit a böngésződben, a saját eszközödön tárolunk: hogy a süti-tájékoztató sávot már bezártad-e (böngésző <i>localStorage</i>, nem hagyja el az eszközödet, nem küldjük el sehová). Ez bármikor törölhető a böngésződ beállításaiból, ez esetben a tájékoztató sáv a következő látogatáskor újra megjelenik.</p>
+                    <p>A SolarCenter (center.solaryn.hu) játékosportál ettől függetlenül, saját süti-kezeléssel működik - annak részleteit a SolarCenter felületén, a lábléc "Süti beállítások" pontjában találod.</p>
+
+                    <h4>12. A Tájékoztató módosítása</h4>
                     <p>A Solaryn Network fenntartja a jogot, hogy a jelen Adatkezelési Tájékoztatót bármikor módosítsa. A módosításokról a felhasználók a Discord szerveren értesülhetnek.</p>
                 </div>
 
@@ -196,32 +226,9 @@
         </div>
     </footer>
 
-    <script src="../script.js"></script>
-    <script>
-        // ── Legal-tab váltás (ugyanaz a data-legal / data-legal-panel minta,
-        // mint a SolarCenter jogi nézetében). Ha az URL-ben van #aszf/
-        // #adatkezeles/#impresszum horgony, azzal a taggal nyit.
-        function openLegalTab(key, smooth) {
-            const targetTab = document.querySelector(`.legal-tab[data-legal="${key}"]`);
-            if (!targetTab) return;
-            document.querySelectorAll('.legal-tab').forEach((t) => t.classList.toggle('active', t === targetTab));
-            document.querySelectorAll('.legal-panel').forEach((p) => {
-                p.classList.toggle('active', p.getAttribute('data-legal-panel') === key);
-            });
-            if (smooth) document.querySelector('.legal-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-        document.querySelectorAll('.legal-tab').forEach((tab) => {
-            tab.addEventListener('click', () => openLegalTab(tab.getAttribute('data-legal'), true));
-        });
-        // Footer/külső linkek is a #aszf / #adatkezeles / #impresszum horgonnyal navigálnak ide -
-        // ezért nem csak betöltéskor, hanem hashchange-re is újra kell nyitni a megfelelő fület.
-        window.addEventListener('hashchange', () => {
-            const key = window.location.hash.replace('#', '');
-            if (key) openLegalTab(key, true);
-        });
-        const hash = window.location.hash.replace('#', '');
-        if (hash) openLegalTab(hash, false);
-    </script>
+    <script src="../script.js" defer></script>
+    <script src="../ui.js" defer></script>
+    <script src="../legal-tabs.js"></script>
 </body>
 
 </html>

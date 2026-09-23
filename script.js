@@ -1,7 +1,3 @@
-// ── Tiszta URL-ek: ha valaki egy "...index.html" végű linkről (pl. régi
-// könyvjelző, kereső-találat) érkezik, a címsorból eltüntetjük az
-// "index.html"-t, és a mappa gyökerét mutatjuk helyette (a hash/query
-// megtartásával), hogy a látogató sose lássa a fájlnevet a URL-ben.
 (function cleanIndexUrl() {
     if (!window.history || !window.history.replaceState) return;
     if (/\/index\.html$/i.test(window.location.pathname)) {
@@ -10,7 +6,6 @@
     }
 })();
 
-// ── Hulló parázs-szemcse háttéranimáció (ugyanaz, mint a SolarCenter/SolarLauncherben) ──
 (function initParticles() {
     const canvas = document.getElementById('particleCanvas');
     const ctx = canvas.getContext('2d');
@@ -57,7 +52,6 @@
     requestAnimationFrame(tick);
 })();
 
-// ── Görgetési előrehaladás-sáv a lap tetején ──
 (function initScrollProgress() {
     const bar = document.querySelector('.scroll-progress');
     if (!bar) return;
@@ -72,25 +66,22 @@
     update();
 })();
 
-function copyIP() {
-    const ip = document.getElementById('ip-text').innerText;
-    navigator.clipboard.writeText(ip);
-    alert('Szerver IP másolva: ' + ip);
-}
-
-// ── GYIK accordion - egyszerre csak egy kérdés van nyitva ──
 document.querySelectorAll('.faq-question').forEach((btn) => {
+    btn.setAttribute('aria-expanded', 'false');
     btn.addEventListener('click', () => {
         const item = btn.closest('.faq-item');
         const wasOpen = item.classList.contains('open');
-        document.querySelectorAll('.faq-item.open').forEach((el) => el.classList.remove('open'));
-        if (!wasOpen) item.classList.add('open');
+        document.querySelectorAll('.faq-item.open').forEach((el) => {
+            el.classList.remove('open');
+            el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        });
+        if (!wasOpen) {
+            item.classList.add('open');
+            btn.setAttribute('aria-expanded', 'true');
+        }
     });
 });
 
-// ── Scroll-reveal: minden .reveal elem csak akkor kapja meg a .visible
-// osztályt (ld. style.css), amikor először a nézetbe scrollódik - utána
-// nem figyeljük tovább (unobserve), hogy vissza-görgetéskor ne villanjon.
 (function initRevealObserver() {
     const revealEls = document.querySelectorAll('.reveal');
     if (!('IntersectionObserver' in window) || revealEls.length === 0) {
@@ -108,10 +99,6 @@ document.querySelectorAll('.faq-question').forEach((btn) => {
     revealEls.forEach((el) => observer.observe(el));
 })();
 
-// ── Statisztika-számlálók: 0-ból számolnak fel a data-count értékig,
-// amint a stat-sáv a nézetbe kerül (a suffix, pl. "+"/"%"/"/7", a
-// data-suffix attribútumból jön, ez a számláláson KÍVÜL, változatlanul
-// jelenik meg a szám mögött).
 (function initCountUp() {
     const counters = document.querySelectorAll('[data-count]');
     if (counters.length === 0) return;
@@ -145,9 +132,6 @@ document.querySelectorAll('.faq-question').forEach((btn) => {
     counters.forEach((el) => observer.observe(el));
 })();
 
-// ── Csapat 3D skin-előnézetek - ugyanaz a WebGL-alapú skin3d.js, amit a
-// SolarCenter is használ a saját profil-nézetéhez, csak itt statikus,
-// helyi PNG-kből tölti be a textúrákat (nincs mögötte backend-lekérdezés).
 (function initTeamSkins() {
     if (typeof SkinPreview === 'undefined') return;
     const members = [
@@ -164,10 +148,6 @@ document.querySelectorAll('.faq-question').forEach((btn) => {
     });
 })();
 
-// ── Jobb klikk (kontextusmenü) letiltása + a fejlesztői eszközök gyors
-// billentyűinek blokkolása. Ez csak visszatartó erejű - egy technikailag
-// jártas látogató a böngésző saját menüjéből még mindig megnyithatja a
-// fejlesztői eszközöket, ezt kliensoldali JS nem tudja garantáltan megakadályozni.
 document.addEventListener('contextmenu', (e) => e.preventDefault());
 document.addEventListener('keydown', (e) => {
     const key = e.key.toLowerCase();

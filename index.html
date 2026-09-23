@@ -3,18 +3,64 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://api.overclockgame.hu:8908; connect-src 'self' https://api.overclockgame.hu:8908; font-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
     <title>Solaryn Network</title>
-    <meta name="description" content="A Solaryn Network hivatalos oldala - egyedi játékmódok, saját kliens, aktív magyar közösség.">
+    <meta name="description" content="A Solaryn Network hivatalos oldala - egyedi, saját fejlesztésű játékmódok, saját kliens és anticheat, aktív magyar közösség. Ingyenesen játszható.">
+    <meta name="author" content="Solaryn Network">
+    <meta name="theme-color" content="#07070a">
+    <meta name="color-scheme" content="dark">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://solaryn.hu/">
+
     <link rel="icon" type="image/png" href="assets/solaryn-icon.png">
+    <link rel="apple-touch-icon" href="assets/solaryn-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Solaryn Network">
+    <meta property="og:locale" content="hu_HU">
+    <meta property="og:url" content="https://solaryn.hu/">
+    <meta property="og:title" content="Solaryn Network">
+    <meta property="og:description" content="A Solaryn Network hivatalos oldala - egyedi, saját fejlesztésű játékmódok, saját kliens és anticheat, aktív magyar közösség. Ingyenesen játszható.">
+    <meta property="og:image" content="https://solaryn.hu/assets/solaryn-wordmark.png">
+    <meta property="og:image:alt" content="Solaryn Network">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Solaryn Network">
+    <meta name="twitter:description" content="A Solaryn Network hivatalos oldala - egyedi, saját fejlesztésű játékmódok, saját kliens és anticheat, aktív magyar közösség. Ingyenesen játszható.">
+    <meta name="twitter:image" content="https://solaryn.hu/assets/solaryn-wordmark.png">
+
     <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Cinzel:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="ui.css">
+    <link rel="stylesheet" href="assets/fonts/fonts.css">
+
+    <link rel="preload" as="image" href="assets/lobby.jpg" fetchpriority="high">
+    <link rel="preconnect" href="https://api.overclockgame.hu:8908">
+    <link rel="dns-prefetch" href="https://api.overclockgame.hu">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Solaryn Network",
+      "url": "https://solaryn.hu/",
+      "inLanguage": "hu",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Solaryn Network",
+        "url": "https://solaryn.hu/",
+        "logo": "https://solaryn.hu/assets/solaryn-icon.png"
+      }
+    }
+    </script>
 </head>
 
 <body>
+    <a class="skip-link" href="#kezdolap">Ugrás a tartalomra</a>
     <div class="scroll-progress"></div>
-    <canvas class="particle-canvas" id="particleCanvas"></canvas>
+    <canvas class="particle-canvas" id="particleCanvas" aria-hidden="true"></canvas>
 
     <nav>
         <a href="#kezdolap" class="logo">
@@ -37,7 +83,7 @@
         </div>
     </nav>
 
-    <header id="kezdolap" class="hero" style="background-image: url('assets/lobby.jpg');">
+    <header id="kezdolap" class="hero hero-bg-lobby">
         <div class="hero-overlay"></div>
         <div class="hero-glow"></div>
         <div class="hero-content">
@@ -46,10 +92,11 @@
             <p class="hero-anim" style="animation-delay:.3s">Egyedi fejlesztésű játékmódok, saját kliens, saját anticheat - fedezd fel a Solaryn Networköt a magyar
                 közösséggel együtt.</p>
             <div class="hero-actions hero-anim" style="animation-delay:.45s">
-                <div class="ip-container" onclick="copyIP()">
+                <button type="button" class="ip-container" id="btnCopyIp" aria-label="Szerver IP-cím másolása vágólapra">
                     <span class="ip-label">Szerver IP</span>
                     <span id="ip-text">play.solaryn.hu</span>
-                </div>
+                    <svg class="ip-copied-tick" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="M4 12.5l5.2 5.2L20 7"/></svg>
+                </button>
                 <a href="#kliens" class="btn-glow-download">
                     <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 3a1 1 0 0 1 1 1v9.59l3.3-3.3a1 1 0 1 1 1.4 1.42l-5 5a1 1 0 0 1-1.4 0l-5-5a1 1 0 1 1 1.4-1.42l3.3 3.3V4a1 1 0 0 1 1-1Zm-7 15a1 1 0 0 1 1 1v1h12v-1a1 1 0 1 1 2 0v2a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1Z"/></svg>
                     Launcher letöltése
@@ -129,7 +176,10 @@
 
         <div class="gamemode-row accent-kingdoms reveal">
             <div class="gamemode-image">
-                <img src="assets/kingdoms.jpg" alt="Kingdoms spawn" loading="lazy">
+                <picture>
+                    <source srcset="assets/kingdoms.webp" type="image/webp">
+                    <img src="assets/kingdoms.jpg" alt="Kingdoms spawn" loading="lazy">
+                </picture>
             </div>
             <div class="gamemode-text">
                 <div class="gamemode-icon">👑</div>
@@ -145,7 +195,10 @@
 
         <div class="gamemode-row reverse accent-momentum reveal">
             <div class="gamemode-image">
-                <img src="assets/momentum.jpg" alt="Momentum PvP spawn" loading="lazy">
+                <picture>
+                    <source srcset="assets/momentum.webp" type="image/webp">
+                    <img src="assets/momentum.jpg" alt="Momentum PvP spawn" loading="lazy">
+                </picture>
             </div>
             <div class="gamemode-text">
                 <div class="gamemode-icon">🔱</div>
@@ -162,7 +215,10 @@
 
         <div class="gamemode-row accent-elyvientrum reveal">
             <div class="gamemode-image">
-                <img src="assets/elyvientrum.jpg" alt="Elyvientrum spawn" loading="lazy">
+                <picture>
+                    <source srcset="assets/elyvientrum.webp" type="image/webp">
+                    <img src="assets/elyvientrum.jpg" alt="Elyvientrum spawn" loading="lazy">
+                </picture>
             </div>
             <div class="gamemode-text">
                 <div class="gamemode-icon">🪄</div>
@@ -178,7 +234,10 @@
 
         <div class="gamemode-row reverse accent-foci reveal">
             <div class="gamemode-image">
-                <img src="assets/foci.png" alt="Foci pálya" loading="lazy">
+                <picture>
+                    <source srcset="assets/foci.webp" type="image/webp">
+                    <img src="assets/foci.jpg" alt="Foci pálya" loading="lazy">
+                </picture>
             </div>
             <div class="gamemode-text">
                 <div class="gamemode-icon">⚽</div>
@@ -376,8 +435,9 @@
         </div>
     </footer>
 
-    <script src="skin3d.js"></script>
-    <script src="script.js"></script>
+    <script src="skin3d.js" defer></script>
+    <script src="script.js" defer></script>
+    <script src="ui.js" defer></script>
 </body>
 
 </html>

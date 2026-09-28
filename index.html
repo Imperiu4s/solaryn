@@ -35,6 +35,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="ui.css">
     <link rel="stylesheet" href="design.css">
+    <link rel="stylesheet" href="components.css">
 
     <link rel="preload" as="image" href="assets/lobby.jpg" fetchpriority="high">
     <link rel="preconnect" href="https://api.overclockgame.hu:8908">
@@ -51,7 +52,13 @@
         "@type": "Organization",
         "name": "Solaryn Network",
         "url": "https://solaryn.hu/",
-        "logo": "https://solaryn.hu/assets/solaryn-icon.png"
+        "logo": "https://solaryn.hu/assets/solaryn-icon.png",
+        "sameAs": [
+          "https://dc.solaryn.hu",
+          "https://www.youtube.com/@SolarynNetwork",
+          "https://www.instagram.com/solarynnetwork/",
+          "https://www.tiktok.com/@solaryn.network"
+        ]
       }
     }
     </script>
@@ -134,11 +141,19 @@
                         <p>Aktív staff csapat</p>
                     </div>
                 </div>
-                <a href="https://dc.solaryn.hu" class="hero-panel-discord">
+                <a href="https://dc.solaryn.hu" class="hero-panel-discord" target="_blank" rel="noopener">
                     <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M19.6 5.3A17 17 0 0 0 15.4 4l-.5 1a15.7 15.7 0 0 0-5.8 0L8.6 4a17 17 0 0 0-4.2 1.3C1.7 9.3 1 13.2 1.3 17a17.1 17.1 0 0 0 5.2 2.6l1.1-1.7a11 11 0 0 1-1.7-.8l.4-.3a12.2 12.2 0 0 0 11.4 0l.4.3a11 11 0 0 1-1.7.8l1.1 1.7a17 17 0 0 0 5.2-2.6c.4-4.4-.7-8.3-3.1-11.7ZM8.5 14.7c-1 0-1.9-1-1.9-2.2s.8-2.2 1.9-2.2 1.9 1 1.9 2.2-.8 2.2-1.9 2.2Zm7 0c-1 0-1.9-1-1.9-2.2s.8-2.2 1.9-2.2 1.9 1 1.9 2.2-.8 2.2-1.9 2.2Z"/></svg>
                     <span>Csatlakozz a Discordhoz</span>
                     <svg class="hero-panel-arrow" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </a>
+                <div class="hero-panel-socials">
+                    <span>Kövess minket</span>
+                    <div class="social-icons">
+                        <a href="https://www.youtube.com/@SolarynNetwork" class="social-app-icon social-youtube" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8.8 6.6v10.8l8.9-5.4z"/></svg></a>
+                        <a href="https://www.instagram.com/solarynnetwork/" class="social-app-icon social-instagram" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3.9" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.2" cy="6.8" r="1.2" fill="currentColor"/></svg></a>
+                        <a href="https://www.tiktok.com/@solaryn.network" class="social-app-icon social-tiktok" target="_blank" rel="noopener" aria-label="TikTok" title="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.6 5.8A4.3 4.3 0 0 1 15.5 3h-3.1v12.4a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.7a5.7 5.7 0 1 0 4.9 5.7V9.1a7.3 7.3 0 0 0 4.3 1.4V7.4a4.3 4.3 0 0 1-3.2-1.6Z"/></svg></a>
+                    </div>
+                </div>
             </aside>
         </div>
         <a href="#rolunk" class="scroll-cue" aria-label="Görgess lejjebb">
@@ -219,7 +234,7 @@
                 </div>
                 <div class="mode-card-body">
                     <h3>Momentum PvP</h3>
-                    <p>A Momentum PvP Magyarország egyik legegyedibb, mozgás-alapú harci játékmódja - itt nem csak a kardforgatás, hanem a taktikai mozgás dönt a csatákban. Válassz egyet a különböző kasztok (kitek) közül: mindegyiknek saját aktív és passzív képessége van. Robbanj előre Sebességlökettel, tűnj el Láthatatlansággal, zúzz nagyobbat Erőlöket alatt, védd magad Védelmi löketttel, törj az égbe Égbetöréssel, vagy csapj le egy Üstökös-zuhanással és rázd meg a csatateret egy Lökéshullámmal. A passzív képességek - Falfutás, Ugrásnövelés, Elnyelő pajzs, Kombó-roham és társaik - tovább mélyítik a harcstílusokat: minden kit egy teljesen más játékstílust nyit meg.</p>
+                    <p>A Momentum PvP Magyarország egyik legegyedibb, mozgás-alapú harci játékmódja - itt nem csak a kardforgatás, hanem a taktikai mozgás dönt a csatákban. Válassz egyet a különböző kasztok (kitek) közül: mindegyiknek saját aktív és passzív képessége van. Robbanj előre Sebességlökettel, tűnj el Láthatatlansággal, zúzz nagyobbat Erőlöket alatt, védd magad Védelmi lökettel, törj az égbe Égbetöréssel, vagy csapj le egy Üstökös-zuhanással és rázd meg a csatateret egy Lökéshullámmal. A passzív képességek - Falfutás, Ugrásnövelés, Elnyelő pajzs, Kombó-roham és társaik - tovább mélyítik a harcstílusokat: minden kit egy teljesen más játékstílust nyit meg.</p>
                 </div>
             </article>
 
@@ -308,24 +323,32 @@
     <section id="csapat" class="team-section">
         <div class="section-head section-head-center reveal">
             <span class="eyebrow">Csapat</span>
-            <h2 class="section-title">Akik mögötte állnak</h2>
-            <p class="section-subtitle">A Solaryn Network mögött álló tulajdonosok.</p>
+            <h2 class="section-title">A csapat vezetői</h2>
+            <p class="section-subtitle">Ismerd meg a Solaryn Network tulajdonosait - kik ők, mivel foglalkoznak, és miért felelnek a hálózaton.</p>
         </div>
         <div class="team-grid">
             <div class="team-card reveal">
                 <div class="team-card-stage"><canvas id="teamSkinKisskorboy" width="150" height="200"></canvas></div>
-                <div class="team-card-name">Kisskorboy</div>
-                <div class="team-card-role">Tulajdonos</div>
+                <a href="https://kisskorboy.hu" class="team-card-name" target="_blank" rel="noopener">Kisskorboy <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M8 16L16 8M9.5 8H16v6.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                <div class="team-card-role">Tulajdonos · Fejlesztő</div>
+                <p class="team-card-bio">Több éve vagyok fejlesztő, és rengeteg projektben vettem már részt. Saját játékom is van, ami az <strong>Overclock</strong> névre hallgat. A Solarynon a fejlesztésért és a technikai háttérért felelek, hogy minden gyorsan, stabilan és biztonságosan fusson.</p>
+                <div class="team-card-tags"><span>Fejlesztés</span><span>Technikai háttér</span><span>Overclock</span></div>
+                <a href="https://kisskorboy.hu" class="team-card-site" target="_blank" rel="noopener">kisskorboy.hu <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M8 16L16 8M9.5 8H16v6.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
             </div>
             <div class="team-card reveal" style="--reveal-delay:.08s">
                 <div class="team-card-stage"><canvas id="teamSkinImperiussss" width="150" height="200"></canvas></div>
-                <div class="team-card-name">Imperiussss</div>
-                <div class="team-card-role">Tulajdonos</div>
+                <a href="https://imperius.hu" class="team-card-name" target="_blank" rel="noopener">Imperiussss <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M8 16L16 8M9.5 8H16v6.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                <div class="team-card-role">Tulajdonos · Tartalomgyártó</div>
+                <p class="team-card-bio">Több éve készítek videókat, a YouTube-csatornámon már <strong>15 ezer feliratkozó</strong> követ, és mellette ugyanennyi ideje fejlesztek is. A Solarynon a fejlesztés mellett a közösségért és a tartalmakért felelek.</p>
+                <div class="team-card-tags"><span>YouTube · 15e</span><span>Fejlesztés</span><span>Közösség</span></div>
+                <a href="https://imperius.hu" class="team-card-site" target="_blank" rel="noopener">imperius.hu <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M8 16L16 8M9.5 8H16v6.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
             </div>
             <div class="team-card reveal" style="--reveal-delay:.16s">
                 <div class="team-card-stage"><canvas id="teamSkinDistance" width="150" height="200"></canvas></div>
                 <div class="team-card-name">Distance</div>
-                <div class="team-card-role">Tulajdonos</div>
+                <div class="team-card-role">Tulajdonos · Pénzügy &amp; jog</div>
+                <p class="team-card-bio">Én vezetem a Solaryn pénzügyeit és jogi ügyeit, és én szabályozom a szerver gazdaságát, hogy minden átlátható, szabályos és kiegyensúlyozott maradjon, a játékon belül és azon kívül is.</p>
+                <div class="team-card-tags"><span>Pénzügyek</span><span>Jogi ügyek</span><span>Gazdaság</span></div>
             </div>
         </div>
     </section>
@@ -422,19 +445,37 @@
                         barátaidat és jelvényeidet is, egy helyen.</p>
                 </div>
             </div>
-        
         </div>
     </section>
 
-    <section class="cta-band reveal" aria-label="Csatlakozás">
-        <div class="cta-band-inner">
-            <div>
-                <h2>Készen állsz a kezdésre?</h2>
-                <p>Töltsd le a launchert, regisztrálj egy ingyenes fiókot, és pár perc múlva már játszol is.</p>
+    <section id="kozosseg" class="community-band reveal" aria-labelledby="kozosseg-title">
+        <div class="community-inner">
+            <div class="community-copy">
+                <span class="eyebrow">Közösség</span>
+                <h2 id="kozosseg-title">Kövess minket <span class="highlight">mindenhol</span></h2>
+                <p>Hírek, frissítések, eventek, nyereményjátékok és a legjobb pillanatok a szerverről - elsőként a közösségi oldalainkon. Csatlakozz, és légy része a Solaryn közösségnek!</p>
             </div>
-            <div class="cta-band-actions">
-                <a href="https://api.overclockgame.hu:8908/updates/download-latest" class="btn-glow-download">Launcher letöltése</a>
-                <a href="https://dc.solaryn.hu" class="btn-ghost">Discord</a>
+            <div class="community-grid">
+                <a href="https://dc.solaryn.hu" class="community-card social-discord" target="_blank" rel="noopener">
+                    <span class="social-app-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M19.6 5.3A17 17 0 0 0 15.4 4l-.5 1a15.7 15.7 0 0 0-5.8 0L8.6 4a17 17 0 0 0-4.2 1.3C1.7 9.3 1 13.2 1.3 17a17.1 17.1 0 0 0 5.2 2.6l1.1-1.7a11 11 0 0 1-1.7-.8l.4-.3a12.2 12.2 0 0 0 11.4 0l.4.3a11 11 0 0 1-1.7.8l1.1 1.7a17 17 0 0 0 5.2-2.6c.4-4.4-.7-8.3-3.1-11.7ZM8.5 14.7c-1 0-1.9-1-1.9-2.2s.8-2.2 1.9-2.2 1.9 1 1.9 2.2-.8 2.2-1.9 2.2Zm7 0c-1 0-1.9-1-1.9-2.2s.8-2.2 1.9-2.2 1.9 1 1.9 2.2-.8 2.2-1.9 2.2Z"/></svg></span>
+                    <span class="community-card-text"><strong>Discord</strong><small>Közösség, ticketek, hírek</small></span>
+                    <svg class="community-card-arrow" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+                <a href="https://www.youtube.com/@SolarynNetwork" class="community-card social-youtube" target="_blank" rel="noopener">
+                    <span class="social-app-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8.8 6.6v10.8l8.9-5.4z"/></svg></span>
+                    <span class="community-card-text"><strong>YouTube</strong><small>Videók, trailerek, frissítések</small></span>
+                    <svg class="community-card-arrow" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+                <a href="https://www.instagram.com/solarynnetwork/" class="community-card social-instagram" target="_blank" rel="noopener">
+                    <span class="social-app-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3.9" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.2" cy="6.8" r="1.2" fill="currentColor"/></svg></span>
+                    <span class="community-card-text"><strong>Instagram</strong><small>Képek, hírek, eventek</small></span>
+                    <svg class="community-card-arrow" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+                <a href="https://www.tiktok.com/@solaryn.network" class="community-card social-tiktok" target="_blank" rel="noopener">
+                    <span class="social-app-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.6 5.8A4.3 4.3 0 0 1 15.5 3h-3.1v12.4a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.7a5.7 5.7 0 1 0 4.9 5.7V9.1a7.3 7.3 0 0 0 4.3 1.4V7.4a4.3 4.3 0 0 1-3.2-1.6Z"/></svg></span>
+                    <span class="community-card-text"><strong>TikTok</strong><small>Rövid klipek a szerverről</small></span>
+                    <svg class="community-card-arrow" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
             </div>
         </div>
     </section>
@@ -447,17 +488,18 @@
                         <img src="assets/solaryn-icon.png" alt="Solaryn" class="footer-logo-icon">
                         <span class="footer-logo">Solaryn Network</span>
                     </a>
-                    <p>Egyedi játékmódok, saját kliens és egy közösség, ami minden nap tovább épül. Csatlakozz a Discord szerverünkhöz a legfrissebb hírekért!</p>
-                    <div class="socials">
-                        <a href="https://dc.solaryn.hu">Discord</a>
-                        <a href="https://www.instagram.com/solarynnetwork/">Instagram</a>
-                        <a href="https://www.tiktok.com/@solaryn.network">TikTok</a>
+                    <p>Egyedi játékmódok, saját kliens és egy közösség, ami minden nap tovább épül. Kövess minket a közösségi oldalainkon a legfrissebb hírekért!</p>
+                    <div class="social-apps">
+                        <a href="https://dc.solaryn.hu" class="social-app social-discord" target="_blank" rel="noopener"><span class="social-app-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M19.6 5.3A17 17 0 0 0 15.4 4l-.5 1a15.7 15.7 0 0 0-5.8 0L8.6 4a17 17 0 0 0-4.2 1.3C1.7 9.3 1 13.2 1.3 17a17.1 17.1 0 0 0 5.2 2.6l1.1-1.7a11 11 0 0 1-1.7-.8l.4-.3a12.2 12.2 0 0 0 11.4 0l.4.3a11 11 0 0 1-1.7.8l1.1 1.7a17 17 0 0 0 5.2-2.6c.4-4.4-.7-8.3-3.1-11.7ZM8.5 14.7c-1 0-1.9-1-1.9-2.2s.8-2.2 1.9-2.2 1.9 1 1.9 2.2-.8 2.2-1.9 2.2Zm7 0c-1 0-1.9-1-1.9-2.2s.8-2.2 1.9-2.2 1.9 1 1.9 2.2-.8 2.2-1.9 2.2Z"/></svg></span>Discord</a>
+                        <a href="https://www.youtube.com/@SolarynNetwork" class="social-app social-youtube" target="_blank" rel="noopener"><span class="social-app-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8.8 6.6v10.8l8.9-5.4z"/></svg></span>YouTube</a>
+                        <a href="https://www.instagram.com/solarynnetwork/" class="social-app social-instagram" target="_blank" rel="noopener"><span class="social-app-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3.9" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.2" cy="6.8" r="1.2" fill="currentColor"/></svg></span>Instagram</a>
+                        <a href="https://www.tiktok.com/@solaryn.network" class="social-app social-tiktok" target="_blank" rel="noopener"><span class="social-app-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.6 5.8A4.3 4.3 0 0 1 15.5 3h-3.1v12.4a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.7a5.7 5.7 0 1 0 4.9 5.7V9.1a7.3 7.3 0 0 0 4.3 1.4V7.4a4.3 4.3 0 0 1-3.2-1.6Z"/></svg></span>TikTok</a>
                     </div>
                 </div>
                 <div class="footer-col">
                     <div class="footer-col-title">Oldalak</div>
                     <a href="#jatekmodok">Játékmódok</a>
-                    <a href="#kliens">Kliens letöltése</a>
+                    <a href="#csapat">Csapat</a>
                     <a href="#gyik">GYIK</a>
                     <a href="solarnet/">SolarNet partnerprogram</a>
                 </div>

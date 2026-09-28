@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
     <title>Játékszabályzat - Solaryn Network</title>
-    <meta name="description" content="A Solaryn Network hivatalos játékszabályzata - általános, közösségi/Discord és játékmód-specifikus szabályok.">
+    <meta name="description" content="A Solaryn Network hivatalos játékszabályzata - általános, chat, Discord és játékmód-specifikus szabályok, büntetési tételek, fellebbezés, vásárlás és tartalomkészítés.">
     <meta name="author" content="Solaryn Network">
     <meta name="theme-color" content="#07070a">
     <meta name="color-scheme" content="dark">
@@ -24,17 +24,18 @@
     <meta property="og:locale" content="hu_HU">
     <meta property="og:url" content="https://solaryn.hu/szabalyzat/">
     <meta property="og:title" content="Játékszabályzat - Solaryn Network">
-    <meta property="og:description" content="A Solaryn Network hivatalos játékszabályzata - általános, közösségi/Discord és játékmód-specifikus szabályok.">
+    <meta property="og:description" content="A Solaryn Network hivatalos játékszabályzata - általános, chat, Discord és játékmód-specifikus szabályok, büntetési tételek, fellebbezés, vásárlás és tartalomkészítés.">
     <meta property="og:image" content="https://solaryn.hu/assets/solaryn-wordmark.png">
     <meta property="og:image:alt" content="Solaryn Network">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Játékszabályzat - Solaryn Network">
-    <meta name="twitter:description" content="A Solaryn Network hivatalos játékszabályzata - általános, közösségi/Discord és játékmód-specifikus szabályok.">
+    <meta name="twitter:description" content="A Solaryn Network hivatalos játékszabályzata - általános, chat, Discord és játékmód-specifikus szabályok, büntetési tételek, fellebbezés, vásárlás és tartalomkészítés.">
     <meta name="twitter:image" content="https://solaryn.hu/assets/solaryn-wordmark.png">
 
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../ui.css">
     <link rel="stylesheet" href="../design.css">
+    <link rel="stylesheet" href="../components.css">
 </head>
 
 <body class="page-sub">
@@ -55,6 +56,7 @@
             <li><a href="../#csapat">Csapat</a></li>
             <li><a href="../#gyik">GYIK</a></li>
             <li><a href="../solarnet/">SolarNet</a></li>
+            <li><a href="../szabalyzat/" aria-current="page">Szabályzat</a></li>
         </ul>
         <div class="nav-actions">
             <a href="https://center.solaryn.hu" class="btn-outline-nav">Webshop</a>
@@ -66,217 +68,467 @@
         <a href="../" class="back-home">← Vissza a főoldalra</a>
         <h1>Játék<span class="highlight">szabályzat</span></h1>
         <p>Ezek a szabályok vonatkoznak mindenkire, aki a Solaryn Network szerverén, hivatalos kliensén vagy Discord
-            szerverén tartózkodik. Utolsó módosítás: 2026.08.26.</p>
+            szerverén tartózkodik. Utolsó módosítás: 2026.09.28.</p>
     </section>
 
-    <section class="legal-page">
+    <section class="legal-page rules-page">
+        <div class="rules-intro">
+            <div class="rules-intro-item">
+                <div class="rules-intro-icon" aria-hidden="true">🎮</div>
+                <div><b>Csak hivatalos kliens</b><p>A szerverre kizárólag a SolarClient launcherrel lehet csatlakozni.</p></div>
+            </div>
+            <div class="rules-intro-item">
+                <div class="rules-intro-icon" aria-hidden="true">🛡️</div>
+                <div><b>Tiszta játék</b><p>Csalás, segédprogram és bugkihasználás nálunk nem fér bele.</p></div>
+            </div>
+            <div class="rules-intro-item">
+                <div class="rules-intro-icon" aria-hidden="true">🤝</div>
+                <div><b>Tisztelet mindenkinek</b><p>Játékosnak és staffnak egyaránt - sértegetés és zaklatás nélkül.</p></div>
+            </div>
+            <div class="rules-intro-item">
+                <div class="rules-intro-icon" aria-hidden="true">🎫</div>
+                <div><b>Minden ügy ticketben</b><p>Jelentés, fellebbezés, kérdés: Discord ticketben intézzük.</p></div>
+            </div>
+        </div>
+
         <div class="rules-warning">
             <div class="rules-warning-icon">⚠️</div>
             <div>
                 <b>Figyelem</b>
-                <p>A szabályzat megszegése kitiltást von maga után. Reklamációt kizárólag <b>Discord Ticket</b>
-                    formájában fogadunk el - a szabályzat nem ismerete nem mentesít a büntetés alól.</p>
+                <p>A szabályzat megszegése büntetést, súlyos esetben végleges kitiltást von maga után. Reklamációt
+                    kizárólag <strong>Discord ticket</strong> formájában fogadunk el - a szabályzat nem ismerete nem mentesít a
+                    büntetés alól.</p>
             </div>
+        </div>
+
+        <div class="rules-toolbar">
+            <label class="rules-search">
+                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 16l4.5 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                <span class="sr-only">Keresés a szabályzatban</span>
+                <input type="search" id="rulesSearch" placeholder="Keresés a szabályzatban (pl. VPN, spam, fellebbezés)..." autocomplete="off">
+            </label>
+            <span class="rules-search-count" id="rulesSearchCount" aria-live="polite"></span>
         </div>
 
         <div class="legal-layout">
             <div class="legal-sidebar">
-                <button class="legal-tab active" data-legal="altalanos">1. Általános szabályzat</button>
-                <button class="legal-tab" data-legal="kozossegi">2. Közösségi &amp; chat szabályzat</button>
-                <button class="legal-tab" data-legal="discord">3. Discord szabályzat</button>
-                <button class="legal-tab" data-legal="jatekmodok">4. Játékmód-specifikus szabályok</button>
+                <button class="legal-tab active" data-legal="altalanos">1. Általános szabályok</button>
+                <button class="legal-tab" data-legal="kozossegi">2. Chat &amp; kommunikáció</button>
+                <button class="legal-tab" data-legal="discord">3. Discord &amp; ticketek</button>
+                <button class="legal-tab" data-legal="jatekmodok">4. Játékmódok</button>
+                <button class="legal-tab" data-legal="buntetesek">5. Büntetések</button>
+                <button class="legal-tab" data-legal="fellebbezes">6. Jelentés &amp; fellebbezés</button>
+                <button class="legal-tab" data-legal="vasarlas">7. Vásárlás &amp; PrémiumPont</button>
+                <button class="legal-tab" data-legal="tartalom">8. Tartalomkészítők</button>
             </div>
 
             <div class="card legal-card">
                 <div class="legal-panel active" data-legal-panel="altalanos">
-                    <h3>1. Általános szabályzat</h3>
-                    <p style="margin-bottom: 20px;">Ez a szabályzat a Solaryn Network szerverére, weboldalára és
-                        hivatalos kliensére (SolarClient) vonatkozik. A szabályzat bármikor, előzetes értesítés
-                        nélkül módosítható, és az aktuális állapot mindig a legfrissebb változat szerint
-                        érvényesíthető.</p>
+                    <h3>1. Általános szabályok</h3>
+                    <p class="panel-lead">Ez a szabályzat a Solaryn Network szerverére, weboldalára, Discord
+                        szerverére és hivatalos kliensére (SolarClient) vonatkozik. A szabályzat bármikor, előzetes
+                        értesítés nélkül módosítható - mindig a legfrissebb változat az irányadó.</p>
 
-                    <h4>1.1 Elfogadás és érvényesség</h4>
+                    <h4>Elfogadás és érvényesség</h4>
                     <ul class="rules-list">
-                        <li data-n="1">A szerverre csatlakozva, illetve a Solaryn Network bármely szolgáltatásának
+                        <li data-n="1.1">A szerverre csatlakozva, illetve a Solaryn Network bármely szolgáltatásának
                             (weboldal, kliens, Discord) használatával <strong>automatikusan elfogadod</strong> a
                             jelen szabályzatot.</li>
-                        <li data-n="2">A szabályzat <strong>nem ismerete nem mentesít</strong> a büntetés alól.</li>
-                        <li data-n="3">Kitiltás (ideiglenes vagy végleges) esetén tilos a büntetés ideje alatt
-                            bármilyen formában - másik fiókkal, más eszközzel vagy más személy közreműködésével - a
-                            szerveren tartózkodni.</li>
-                        <li data-n="4">Ha egy háztartásban (pl. testvérek) többen is játszanak, és közülük valaki
+                        <li data-n="1.2">A szabályzat <strong>nem ismerete nem mentesít</strong> a büntetés alól.</li>
+                        <li data-n="1.3">A staff jogosult olyan, a közösségre ártalmas viselkedést is szankcionálni,
+                            amely szó szerint nem szerepel a szabályzatban - a szabályok kijátszása (kiskapuk keresése)
+                            is szabályszegésnek minősül.</li>
+                        <li data-n="1.4">A staff tagjainak utasításait a játékon belül is kötelező betartani. Ha
+                            szerinted egy döntés téves, azt ne a chaten vitasd, hanem
+                            <a href="#fellebbezes">ticketben fellebbezz</a>.</li>
+                    </ul>
+
+                    <h4>Fiók és karakter</h4>
+                    <ul class="rules-list">
+                        <li data-n="1.5">Csak a hivatalos <strong>Solaryn kliens (SolarClient)</strong> és launcher
+                            használható a csatlakozáshoz - más klienssel (vanilla, Lunar, Badlion stb.) a szerver
+                            nem enged be.</li>
+                        <li data-n="1.6">Egyidejűleg <strong>egynél több karakterrel</strong> (multi-account) tartózkodni
+                            szigorúan tilos.</li>
+                        <li data-n="1.7">A játékosnév, a skin és a köpeny nem tartalmazhat sértő, trágár, önkényuralmi
+                            jelképet ábrázoló vagy 18+ kategóriába sorolható tartalmat.</li>
+                        <li data-n="1.8">Más játékos fiókjába belépni szigorúan tilos, ahogy mások jelszavával vagy
+                            személyes adataival való visszaélés is.</li>
+                        <li data-n="1.9">A fiókok adás-vétele, cseréje vagy átadása szigorúan tilos.</li>
+                        <li data-n="1.10">A fiókod biztonságáért te felelsz. Egy fiókot csak akkor tekintünk a
+                            tiédnek, ha a hozzá tartozó e-mail fiók is a birtokodban van. Nem tudjuk garantálni a
+                            visszaszerzését, ha a hivatalos kliensen/weboldalon kívül jelentkezel be vele, vagy ha más
+                            is hozzáfér a jelszavadhoz - ezért javasoljuk a kétlépcsős azonosítás használatát.</li>
+                        <li data-n="1.11">Ha a fiókoddal valaki más szeg szabályt (pl. testvér, barát), a büntetés
+                            a fiókot éri - a "nem én voltam" nem mentesít.</li>
+                    </ul>
+
+                    <h4>Segédprogramok és technikai visszaélések</h4>
+                    <ul class="rules-list">
+                        <li data-n="1.12">Mindenféle csaló szoftver, módosított kliens, makró, autoclicker vagy más,
+                            játékon belüli előnyt adó eszköz használata tilos (kivéve az alapértelmezett
+                            perifériákat).</li>
+                        <li data-n="1.13">Tilos a Solaryn kliensével egyidejűleg bármilyen csalásra alkalmas
+                            segédprogramot futtatni a háttérben, illetve a klienst vagy az anticheatet módosítani,
+                            visszafejteni vagy megkerülni.</li>
+                        <li data-n="1.14">Proxy vagy VPN használata a szerveren tilos.</li>
+                        <li data-n="1.15">Tilos a játék és/vagy a szerver hibáit (bugjait, exploitjait) kihasználni.
+                            Ha hibát találsz, <strong>kötelességed azonnal jelenteni</strong> egy Discord
+                            ticketben.</li>
+                        <li data-n="1.16">Tilos a szerver, a kliens vagy a weboldal működésének szándékos
+                            megzavarása, túlterhelése (pl. lag-gépek, DDoS, bot-fiókok).</li>
+                    </ul>
+
+                    <h4>Kitiltás és megkerülés</h4>
+                    <ul class="rules-list">
+                        <li data-n="1.17">Kitiltás (ideiglenes vagy végleges) idején tilos bármilyen formában -
+                            másik fiókkal, más eszközzel vagy más személy közreműködésével - a szerveren tartózkodni.</li>
+                        <li data-n="1.18">Ha egy háztartásban (pl. testvérek) többen is játszanak, és közülük valaki
                             <strong>kliens- vagy IP-alapú kitiltást</strong> kap, a többiek sem csatlakozhatnak a
                             szerverre, amíg a büntetés le nem jár.</li>
                     </ul>
 
-                    <h4>1.2 Fiók és karakter</h4>
+                    <h4>Egyéb</h4>
                     <ul class="rules-list">
-                        <li data-n="5">Csak a hivatalos <strong>Solaryn kliens (SolarClient)</strong> és launcher
-                            használható a csatlakozáshoz - más klienssel (vanilla, Lunar, Badlion, stb.) a szerver
-                            nem enged be.</li>
-                        <li data-n="6">Egyidejűleg <strong>egynél több karakterrel</strong> (multi-account) tartózkodni
-                            szigorúan tilos.</li>
-                        <li data-n="7">A játékosnév, a skin és a köpeny nem tartalmazhat sértő, trágár, önkényuralmi
-                            jelképet ábrázoló vagy 18+ kategóriába sorolható tartalmat.</li>
-                        <li data-n="8">Más játékos karakterébe (fiókjába) belépni szigorúan tilos, ahogy mások
-                            jelszavával vagy személyes adataival való visszaélés is.</li>
-                        <li data-n="9">Karakter-kereskedelem (fiók adás-vétele, átadása) szigorúan tilos.</li>
-                        <li data-n="10">Egy karaktert csak akkor tekintünk a tiédnek, ha a hozzá tartozó e-mail
-                            fiók is a birtokodban van. Nem tudjuk garantálni a karakter visszaszerzését, ha nem a
-                            hivatalos kliensen/weboldalon kívül jelentkezel be vele, vagy ha bárki más
-                            hozzáfér a jelszavadhoz - ezért javasoljuk a kétlépcsős azonosítás használatát.</li>
-                    </ul>
-
-                    <h4>1.3 Segédprogramok és technikai visszaélések</h4>
-                    <ul class="rules-list">
-                        <li data-n="11">Mindenféle segédprogram, modifikáció vagy más, játékon belüli előnyt adó
-                            eszköz használata tilos (kivéve az alapértelmezett perifériákat).</li>
-                        <li data-n="12">Tilos a Solaryn kliensével egyidejűleg bármilyen segédprogramot futtatni a
-                            háttérben.</li>
-                        <li data-n="13">Proxy vagy VPN használata a szerveren tilos.</li>
-                        <li data-n="14">Tilos bármilyen tevékenység, amivel a játék és/vagy a szerver hibáit
-                            (exploitjait) kihasználod. Ha hibát vagy hiányosságot találsz, <strong>kötelességed
-                                azonnal jelenteni</strong> a Solaryn Network csapatának egy Discord ticketben.</li>
-                    </ul>
-
-                    <h4>1.4 Egyéb</h4>
-                    <ul class="rules-list">
-                        <li data-n="15">Tilos a szervert bármilyen formában (a játékon belül is) lejáratni, pl.
-                            kifejezetten erre a célra készült videók, tartalmak formájában.</li>
-                        <li data-n="16">Tilos a Solaryn Network munkatársainak felhasználóneveivel illetéktelen
-                            személyeknek további fiókokat létrehozni, vagy magukat staffnak kiadni.</li>
-                        <li data-n="17">A Solaryn Network nem vállal felelősséget, ha szabálysértés miatt károsodást
+                        <li data-n="1.19">Tilos a szervert bármilyen formában (a játékon belül is) szándékosan
+                            lejáratni, például kifejezetten erre a célra készült videókkal, tartalmakkal.</li>
+                        <li data-n="1.20">Tilos a Solaryn Network munkatársainak nevével további fiókokat létrehozni,
+                            vagy magadat staffnak kiadni.</li>
+                        <li data-n="1.21">A Solaryn Network nem vállal felelősséget, ha szabálysértés miatt károsodást
                             szenvedsz, illetve ha a hivatalos <a href="https://center.solaryn.hu">SolarCenter</a>
-                            felületén kívüli forrásból próbálsz PrémiumPont egyenleghez jutni.</li>
+                            felületén kívüli forrásból próbálsz PrémiumPont-egyenleghez jutni.</li>
                     </ul>
-                    <p style="margin-top: 10px; font-size: 0.85rem;">A szolgáltató jogi és cégadatai, valamint a
-                        részletes Általános Szerződési Feltételek a <a href="../jogi/#aszf">Jogi dokumentumok</a>
-                        oldalon érhetők el.</p>
+                    <p style="margin-top: 10px; font-size: 0.85rem;">A szolgáltató adatai és a részletes Általános
+                        Szerződési Feltételek a <a href="../jogi/#aszf">Jogi dokumentumok</a> oldalon érhetők el.</p>
                 </div>
 
                 <div class="legal-panel" data-legal-panel="kozossegi">
-                    <h3>2. Közösségi &amp; chat szabályzat</h3>
-                    <p style="margin-bottom: 20px;">Az alábbi szabályok a szerver in-game chatjére, valamint minden
+                    <h3>2. Chat &amp; kommunikáció</h3>
+                    <p class="panel-lead">Az alábbi szabályok a szerver in-game chatjére, a privát üzenetekre és minden
                         olyan felületre vonatkoznak, ahol a Solaryn Network játékosai kommunikálnak egymással.</p>
 
+                    <h4>Viselkedés</h4>
                     <ul class="rules-list">
-                        <li data-n="1">Tilos más játékszerverek, Discord szerverek, YouTube- vagy Twitch-tartalmak
-                            hirdetése (kivéve a Solaryn Network saját tartalmait).</li>
-                        <li data-n="2">Trágár kifejezések használata tilos.</li>
-                        <li data-n="3">Tilos más játékosokat, a szerver munkatársait vagy magát a szervert sértegetni,
+                        <li data-n="2.1">Trágár kifejezések használata tilos.</li>
+                        <li data-n="2.2">Tilos más játékosokat, a szerver munkatársait vagy magát a szervert sértegetni,
                             provokálni.</li>
-                        <li data-n="4">Tilos bármiféle politikai szervezet említése, pártolása, szidalmazása vagy
+                        <li data-n="2.3">Tilos más játékosok vagy a szerver munkatársainak zaklatása.</li>
+                        <li data-n="2.4">Tilos a megkülönböztetés: negatív megjegyzések mások bőrszínével, nemével,
+                            vallásával, szexuális irányultságával vagy más személyes tulajdonságával kapcsolatban.</li>
+                        <li data-n="2.5">Tilos bármilyen rasszista megnyilvánulás, bármilyen kontextusban.</li>
+                        <li data-n="2.6">Tilos más játékosok kiparodizálása (megszemélyesítése).</li>
+                        <li data-n="2.7">Tilos felnőtt (18+) tartalom megosztása, illetve erre utaló linkek
+                            küldése.</li>
+                        <li data-n="2.8">Tilos bármiféle politikai szervezet említése, pártolása, szidalmazása vagy
                             kritizálása a közösségi felületeinken.</li>
-                        <li data-n="5">Tilos a spam - ugyanannak vagy nagyon hasonló szövegnek a többszöri
-                            kiírása.</li>
-                        <li data-n="6">A szerver munkatársainak <strong>tilos privát üzenetet (/msg)</strong> küldeni,
-                            kivéve ha ők kezdeményezik az adott beszélgetést.</li>
-                        <li data-n="7">Tilos más játékosok kiparodizálása (megszemélyesítése).</li>
-                        <li data-n="8">Tilos felnőtt (18+) tartalom megosztása a chatben.</li>
-                        <li data-n="9">Tilos a káromkodásszűrő szándékos megkerülése (pl. speciális karakterekkel,
-                            szóközökkel).</li>
-                        <li data-n="10">Tilos más játékosok vagy a szerver munkatársainak zaklatása.</li>
-                        <li data-n="11">Tilos a kéregetés - PrémiumPont, rang, event-tárgy vagy felszerelés
+                    </ul>
+
+                    <h4>Chat-használat</h4>
+                    <ul class="rules-list">
+                        <li data-n="2.9">Tilos a spam és a flood - ugyanannak vagy nagyon hasonló szövegnek a
+                            többszöri kiírása, illetve a csupa nagybetűs (caps) üzenetek halmozása.</li>
+                        <li data-n="2.10">Tilos a káromkodásszűrő szándékos megkerülése (pl. speciális karakterekkel,
+                            szóközökkel, elírásokkal).</li>
+                        <li data-n="2.11">Tilos más játékszerverek, Discord szerverek, YouTube- vagy Twitch-tartalmak
+                            hirdetése (kivéve a Solaryn Network saját tartalmait).</li>
+                        <li data-n="2.12">Tilos a kéregetés - PrémiumPont, rang, event-tárgy vagy felszerelés
                             kéregetése.</li>
-                        <li data-n="12">Tilos a megkülönböztetés: negatív megjegyzések mások bőrszínével, nemével
-                            vagy más személyes tulajdonságával kapcsolatban.</li>
-                        <li data-n="13">Tilos bármilyen rasszista megnyilvánulás, bármilyen kontextusban.</li>
+                        <li data-n="2.13">A szerver munkatársainak <strong>tilos privát üzenetet (/msg)</strong>
+                            küldeni, kivéve ha ők kezdeményezik az adott beszélgetést.</li>
+                    </ul>
+
+                    <h4>Személyes adatok és biztonság</h4>
+                    <ul class="rules-list">
+                        <li data-n="2.14">Tilos mások személyes adatainak (valódi név, lakcím, telefonszám, fotó,
+                            IP-cím stb.) megosztása vagy ezzel való fenyegetőzés.</li>
+                        <li data-n="2.15">Tilos gyanús, kártékony vagy adathalász linkek, fájlok küldése, illetve
+                            mások jelszavának, belépési adatainak elkérése.</li>
+                        <li data-n="2.16">Tilos a valós pénzért történő kereskedelem (RMT) felajánlása vagy
+                            szervezése.</li>
                     </ul>
                 </div>
 
                 <div class="legal-panel" data-legal-panel="discord">
-                    <h3>3. Discord szabályzat</h3>
-                    <p style="margin-bottom: 20px;">A hivatalos Solaryn Network Discord szerverére ugyanazok a
-                        közösségi szabályok érvényesek, mint az in-game chatre (lásd előző fül), az alábbi
-                        kiegészítésekkel együtt.</p>
+                    <h3>3. Discord &amp; ticketek</h3>
+                    <p class="panel-lead">A hivatalos Solaryn Network Discord szerverére ugyanazok a közösségi szabályok
+                        érvényesek, mint az in-game chatre (lásd 2. pont), az alábbi kiegészítésekkel.</p>
 
-                    <h4>3.1 Megjelenés és profil</h4>
+                    <h4>Megjelenés és csatornák</h4>
                     <ul class="rules-list">
-                        <li data-n="1">A felhasználó avatárja, egyéni állapota (státusza) és felhasználóneve sem
+                        <li data-n="3.1">A felhasználó avatárja, egyéni állapota (státusza) és felhasználóneve sem
                             tartalmazhat önkényuralmi jelképet, sértő, trágár vagy 18+ kategóriába sorolható
                             tartalmat.</li>
-                        <li data-n="2">Discord-kitiltás esetén a Discord szerver fórumán/fellebbezési csatornáján
-                            keresztül nyújthatsz be fellebbezést.</li>
+                        <li data-n="3.2">Minden csatornát a rendeltetésének megfelelően használj - off-topic
+                            beszélgetés az erre kijelölt csatornákban.</li>
+                        <li data-n="3.3">Hangcsatornákban tilos a hangtorzító, a zajkeltés és a szándékos
+                            fülzúgás-okozás (earrape), valamint mások beszélgetésének folyamatos megzavarása.</li>
+                        <li data-n="3.4">Tilos staffot, rangokat vagy tömegeket (@everyone, @here) indokolatlanul
+                            megemlíteni.</li>
+                        <li data-n="3.5">Discord-kitiltás esetén a Discord szerver fellebbezési csatornáján keresztül
+                            nyújthatsz be fellebbezést.</li>
                     </ul>
 
-                    <h4>3.2 Ticket rendszer</h4>
+                    <h4>Ticket rendszer</h4>
                     <ul class="rules-list">
-                        <li data-n="3">Ne írj a szerver munkatársainak privát üzenetben Solaryn-ügyekkel kapcsolatban
-                            - minden ügyintézéshez a <strong>ticket rendszert</strong> használd.</li>
-                        <li data-n="4">Ne említs meg (@mention) szerver munkatársakat egy ticketben - ez azonnali
+                        <li data-n="3.6">Ne írj a szerver munkatársainak privát üzenetben Solaryn-ügyekkel
+                            kapcsolatban - minden ügyintézéshez a <strong>ticket rendszert</strong> használd.</li>
+                        <li data-n="3.7">Ne említs meg (@mention) szerver munkatársakat egy ticketben - ez azonnali
                             ticket-bezárást von maga után.</li>
-                        <li data-n="5">Csak akkor nyiss ticketet, ha valós kérdésed vagy problémád van.</li>
-                        <li data-n="6">Ne kérdezgesd folyamatosan, hogy mikor érkezik válasz - légy türelemmel, a
+                        <li data-n="3.8">Csak akkor nyiss ticketet, ha valós kérdésed vagy problémád van, és egy
+                            ügyre egyszerre csak egy ticketet nyiss.</li>
+                        <li data-n="3.9">Ne kérdezgesd folyamatosan, hogy mikor érkezik válasz - légy türelemmel, a
                             csapatunk a beérkezés sorrendjében dolgozza fel a ticketeket.</li>
-                        <li data-n="7">Ha csapattagnak (staff) szeretnél jelentkezni, azt <strong>ne
+                        <li data-n="3.10">Ha csapattagnak (staff) szeretnél jelentkezni, azt <strong>ne
                                 ticketben</strong>, hanem a Discordon meghirdetett, dedikált jelentkezési
                             csatornán keresztül tedd.</li>
-                        <li data-n="8">Ne kérdezd a szerver munkatársait személyes ügyeikről.</li>
-                        <li data-n="9">Nem kérheted a Solaryn Network üzemeltetőit és munkatársait, hogy segítsenek
+                        <li data-n="3.11">Ne kérdezd a szerver munkatársait személyes ügyeikről.</li>
+                        <li data-n="3.12">Nem kérheted a Solaryn Network üzemeltetőit és munkatársait, hogy segítsenek
                             a saját szervered fejlesztésében vagy üzemeltetésében - erre a
                             <a href="../solarnet/">SolarNet partnerprogram</a> szolgál.</li>
-                        <li data-n="10">A Solaryn Network munkatársai csak akkor kötelesek segítséget nyújtani, ha
+                        <li data-n="3.13">A Solaryn Network munkatársai csak akkor kötelesek segítséget nyújtani, ha
                             velük szemben megvan az alapvető tisztelet - ellenkező esetben jogosultak a ticket
                             lezárására.</li>
                     </ul>
                 </div>
 
                 <div class="legal-panel" data-legal-panel="jatekmodok">
-                    <h3>4. Játékmód-specifikus szabályok</h3>
-                    <p style="margin-bottom: 20px;">A fenti általános és közösségi szabályok minden játékmódban
-                        érvényesek. Az alábbiak kifejezetten az adott játékmódra vonatkozó, kiegészítő szabályok.</p>
+                    <h3>4. Játékmódok</h3>
+                    <p class="panel-lead">Az általános és a chat-szabályok minden játékmódban érvényesek. Az alábbiak
+                        kifejezetten az adott játékmódra vonatkozó, kiegészítő szabályok.</p>
 
                     <h4 style="color: var(--acc-kingdoms);">👑 Kingdoms</h4>
                     <ul class="rules-list">
-                        <li data-n="1">Egy karakter egyidejűleg csak <strong>egy királyságnak</strong> lehet a tagja -
-                            a kettős tagság (pl. beépülés kémkedés céljából) szabályszegésnek minősül.</li>
-                        <li data-n="2">A királyság vezetője felelős azért, amit a tagjai a királyság nevében,
+                        <li data-n="4.1">Egy karakter egyidejűleg csak <strong>egy királyságnak</strong> lehet a tagja -
+                            a kettős tagság (pl. beépülés kémkedés céljából másodfiókkal) szabályszegésnek
+                            minősül.</li>
+                        <li data-n="4.2">A királyság vezetője felelős azért, amit a tagjai a királyság nevében,
                             szervezetten tesznek.</li>
-                        <li data-n="3">Tilos az ún. "spawn camping" - egy másik királyság spawn- vagy
+                        <li data-n="4.3">Tilos az ún. "spawn camping" - egy másik királyság spawn- vagy
                             core-pontjának folyamatos, a kilépést/visszatérést ellehetetlenítő ostromlása.</li>
-                        <li data-n="4">A királyságok közti diplomácia (szövetség, hadüzenet) kizárólag az in-game
+                        <li data-n="4.4">A királyságok közti diplomácia (szövetség, hadüzenet) kizárólag az in-game
                             rendszeren keresztül érvényes - egy szóbeli megállapodás megszegése önmagában nem
                             staff-ügy, azt a királyságok egymás közt rendezik.</li>
-                        <li data-n="5">Tilos a staff-ot arra kérni, hogy avatkozzon be királyságok közötti csatákba
-                            vagy kereskedelmi vitákba - ez alól kivétel, ha a fenti általános szabályok valamelyike
-                            sérül.</li>
+                        <li data-n="4.5">Tilos a staffot arra kérni, hogy avatkozzon be királyságok közötti csatákba
+                            vagy kereskedelmi vitákba - kivéve, ha az általános szabályok valamelyike sérül.</li>
+                        <li data-n="4.6">A királyság nevében, címerében, leírásában és az épületekben ugyanazok a
+                            tartalmi szabályok érvényesek, mint a chatben (nem lehet sértő, trágár, 18+ vagy
+                            önkényuralmi).</li>
                     </ul>
 
                     <h4 style="color: var(--acc-momentum);">🔱 Momentum PvP</h4>
                     <ul class="rules-list">
-                        <li data-n="6">Minden kaszt (kit) és képesség kizárólag a hivatalos Solaryn kliensen keresztül
+                        <li data-n="4.7">Minden kaszt (kit) és képesség kizárólag a hivatalos Solaryn kliensen keresztül
                             használható - a visszatöltési idő (cooldown) bármilyen kliensoldali kihasználása,
                             megkerülése tilos.</li>
-                        <li data-n="7">Duel vagy arena közben a szándékos kilépés az ellenfél elől (combat logging)
-                            ismétlődő esetben időszakos harci tiltást (PvP-ban) von maga után.</li>
-                        <li data-n="8">Csapatos módokban a csapatváltás (team switching) csalás céljából tilos.</li>
-                        <li data-n="9">A ranglista/rating manipulálása - például barátok közötti szándékos
+                        <li data-n="4.8">Duel vagy aréna közben a szándékos kilépés az ellenfél elől (combat logging)
+                            ismétlődő esetben időszakos PvP-tiltást von maga után.</li>
+                        <li data-n="4.9">Csapatos módokban a csapatváltás (team switching) csalás céljából tilos.</li>
+                        <li data-n="4.10">A ranglista/rating manipulálása - például barátok közötti szándékos
                             vesztés (boosting) - tilos.</li>
                     </ul>
 
                     <h4 style="color: var(--acc-elyvientrum);">🪄 Elyvientrum</h4>
                     <ul class="rules-list">
-                        <li data-n="10">Dungeon- vagy boss-harc közben a szándékos AFK-zás csapatban, amivel a
+                        <li data-n="4.11">Dungeon- vagy boss-harc közben a szándékos AFK-zás csapatban, amivel a
                             harc terhét a többiekre hárítod, ismétlődés esetén szankcionált.</li>
-                        <li data-n="11">Tilos a mana-rendszer vagy bármely képesség-cooldown hibájának (bugjának)
+                        <li data-n="4.12">Tilos a mana-rendszer vagy bármely képesség-cooldown hibájának (bugjának)
                             kihasználása.</li>
-                        <li data-n="12">A játékosok közti kereskedelem az Elyvientrum piacterén megengedett, de a
+                        <li data-n="4.13">A játékosok közti kereskedelem az Elyvientrum piacterén megengedett, de a
                             csalás - például fizetés nélküli áru átvétele - tilos.</li>
-                        <li data-n="13">A kifejezetten PvP-zónának kijelölt területeken a más játékosoktól
+                        <li data-n="4.14">A kifejezetten PvP-zónának kijelölt területeken a más játékosoktól
                             szerzett dungeon-/próba-tárgyak kifosztása szabályos része a játékmenetnek.</li>
                     </ul>
 
                     <h4 style="color: var(--acc-foci);">⚽ Foci</h4>
                     <ul class="rules-list">
-                        <li data-n="14">Tilos a pálya elhagyása, illetve a labda fizikai motorjának hibáit
+                        <li data-n="4.15">Tilos a pálya elhagyása, illetve a labda fizikai motorjának hibáit
                             kihasználó bármilyen exploit.</li>
-                        <li data-n="15">A Gyorsulás-képesség (dash) szándékos, más játékosok akadályozására vagy
+                        <li data-n="4.16">A Gyorsulás-képesség (dash) szándékos, más játékosok akadályozására vagy
                             a pálya széléről való eltávolítására való visszaélése tilos.</li>
-                        <li data-n="16">A mérkőzés szándékos feladása vagy AFK-zás csapatjáték közben tilos.</li>
-                        <li data-n="17">A statisztikák (gólok, meccsek, győzelmek) manipulálása, illetve a
+                        <li data-n="4.17">A mérkőzés szándékos feladása vagy AFK-zás csapatjáték közben tilos.</li>
+                        <li data-n="4.18">A statisztikák (gólok, meccsek, győzelmek) manipulálása, illetve a
                             barátok közötti szándékos vesztés (boosting) tilos.</li>
                     </ul>
                 </div>
+
+                <div class="legal-panel" data-legal-panel="buntetesek">
+                    <h3>5. Büntetések</h3>
+                    <p class="panel-lead">A büntetések célja nem a kiközösítés, hanem hogy mindenkinek jó legyen a
+                        játék. Az alábbi táblázat <strong>irányadó</strong> - a konkrét büntetésről a szabálysértés
+                        súlya, szándékossága és az előzmények alapján a staff dönt.</p>
+
+                    <h4>Büntetési fokozatok</h4>
+                    <div class="sanction-levels">
+                        <div class="sanction-level">
+                            <span class="sanction sanction-warn">Figyelmeztetés</span>
+                            <p>Kisebb, első alkalommal elkövetett szabálysértésért. Rögzítjük, és ismétlésnél
+                                súlyosbít.</p>
+                        </div>
+                        <div class="sanction-level">
+                            <span class="sanction sanction-mute">Némítás</span>
+                            <p>A chat (és szükség esetén a Discord) használatának ideiglenes korlátozása.</p>
+                        </div>
+                        <div class="sanction-level">
+                            <span class="sanction sanction-temp">Ideiglenes kitiltás</span>
+                            <p>A szerverről vagy egy adott játékmódból meghatározott időre.</p>
+                        </div>
+                        <div class="sanction-level">
+                            <span class="sanction sanction-perm">Végleges kitiltás</span>
+                            <p>Súlyos vagy ismétlődő szabálysértésért, lejárati idő nélkül.</p>
+                        </div>
+                    </div>
+
+                    <h4>Irányadó büntetési tételek</h4>
+                    <div class="rules-table-wrap">
+                        <table class="rules-table">
+                            <thead>
+                                <tr><th>Szabálysértés</th><th>Első alkalom</th><th>Ismétlés esetén</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Spam, flood, caps, szűrő megkerülése</td><td><span class="sanction sanction-warn">Figyelmeztetés</span></td><td><span class="sanction sanction-mute">Némítás 1-24 óra</span></td></tr>
+                                <tr><td>Trágárság, sértegetés, provokálás</td><td><span class="sanction sanction-mute">Némítás 1-24 óra</span></td><td><span class="sanction sanction-mute">Némítás 1-7 nap</span></td></tr>
+                                <tr><td>Kéregetés, staff zaklatása /msg-ben</td><td><span class="sanction sanction-warn">Figyelmeztetés</span></td><td><span class="sanction sanction-mute">Némítás 1-3 nap</span></td></tr>
+                                <tr><td>Más szerver vagy tartalom hirdetése</td><td><span class="sanction sanction-mute">Némítás 1-7 nap</span></td><td><span class="sanction sanction-temp">Kitiltás 7-30 nap</span></td></tr>
+                                <tr><td>Zaklatás, rasszizmus, diszkrimináció, személyes adatok kiadása</td><td><span class="sanction sanction-temp">Kitiltás 7-30 nap</span></td><td><span class="sanction sanction-perm">Végleges kitiltás</span></td></tr>
+                                <tr><td>Sértő név, skin, királyságnév</td><td><span class="sanction sanction-warn">Figyelmeztetés + módosítás</span></td><td><span class="sanction sanction-temp">Kitiltás 1-7 nap</span></td></tr>
+                                <tr><td>Combat logging, boosting, AFK csapatjátékban</td><td><span class="sanction sanction-warn">Figyelmeztetés</span></td><td><span class="sanction sanction-temp">Játékmód-tiltás 1-7 nap</span></td></tr>
+                                <tr><td>Bug/exploit kihasználása, be nem jelentése</td><td><span class="sanction sanction-temp">Kitiltás 7-30 nap</span></td><td><span class="sanction sanction-perm">Végleges kitiltás</span></td></tr>
+                                <tr><td>Multi-account, VPN/proxy használata</td><td><span class="sanction sanction-temp">Kitiltás 7-30 nap</span></td><td><span class="sanction sanction-perm">Végleges kitiltás</span></td></tr>
+                                <tr><td>Csaló szoftver, kliens- vagy anticheat-módosítás</td><td colspan="2"><span class="sanction sanction-perm">Végleges kitiltás</span></td></tr>
+                                <tr><td>Kitiltás megkerülése</td><td colspan="2"><span class="sanction sanction-perm">Végleges kitiltás (minden érintett fiókra)</span></td></tr>
+                                <tr><td>Fiók-kereskedelem, más fiókjába belépés, RMT</td><td colspan="2"><span class="sanction sanction-perm">Végleges kitiltás</span></td></tr>
+                                <tr><td>Chargeback, visszaélés fizetéssel</td><td colspan="2"><span class="sanction sanction-perm">Végleges kitiltás</span></td></tr>
+                                <tr><td>A szerver működésének megzavarása (DDoS, lag-gép, botok)</td><td colspan="2"><span class="sanction sanction-perm">Végleges kitiltás</span></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h4>Alapelvek</h4>
+                    <ul class="rules-list">
+                        <li data-n="5.1">A táblázat irányadó: a staff a körülmények mérlegelésével enyhébb vagy
+                            súlyosabb büntetést is kiszabhat.</li>
+                        <li data-n="5.2">Ismétlődő szabálysértés esetén a büntetés fokozatosan súlyosbodik; a korábbi
+                            büntetéseket nyilvántartjuk.</li>
+                        <li data-n="5.3">Súlyos esetben (csalás, zaklatás, a szerver elleni támadás) előzetes
+                            figyelmeztetés nélkül, azonnal végleges kitiltás is kiszabható.</li>
+                        <li data-n="5.4">A büntetés megkerülése esetén az eredeti büntetés véglegessé válhat, és a
+                            megkerüléshez használt fiókok is kitiltásra kerülnek.</li>
+                        <li data-n="5.5">Rang vagy vásárolt tartalom nem mentesít a büntetés alól, és a kitiltás vagy
+                            rangvesztés nem jogosít visszatérítésre (lásd <a href="#vasarlas">7. pont</a>).</li>
+                        <li data-n="5.6">A büntetésről a staffal a chaten vagy a Discord nyilvános csatornáin
+                            vitatkozni tilos - erre a <a href="#fellebbezes">fellebbezés</a> szolgál.</li>
+                    </ul>
+                </div>
+
+                <div class="legal-panel" data-legal-panel="fellebbezes">
+                    <h3>6. Jelentés &amp; fellebbezés</h3>
+                    <p class="panel-lead">Szabálysértőt láttál, vagy úgy érzed, igazságtalanul büntettünk meg? Mindkét
+                        esetben Discord ticketben tudunk segíteni.</p>
+
+                    <h4>Szabálysértő jelentése</h4>
+                    <ol class="rules-steps">
+                        <li><strong>Rögzíts bizonyítékot</strong> - videót vagy képernyőképet, amin látszik a
+                            játékosnév, az időpont és a szabálysértés. Csalásnál videó szükséges.</li>
+                        <li><strong>Nyiss ticketet</strong> a Discord szerverünkön a jelentés kategóriában.</li>
+                        <li><strong>Add meg az adatokat</strong>: a játékos nevét, a játékmódot, a pontos időpontot és
+                            röviden, mi történt.</li>
+                        <li><strong>Légy türelemmel</strong> - minden jelentést kivizsgálunk, de a kiszabott
+                            büntetés részleteiről nem minden esetben adunk tájékoztatást.</li>
+                    </ol>
+                    <ul class="rules-list">
+                        <li data-n="6.1">Hamis vagy rosszhiszemű jelentés, illetve szerkesztett, félrevezető
+                            bizonyíték beküldése büntetést von maga után.</li>
+                        <li data-n="6.2">Tilos a chaten vagy a Discordon nyilvánosan "csalózni", megszégyeníteni
+                            másokat - a gyanúdat ticketben jelezd.</li>
+                    </ul>
+
+                    <h4>Büntetés fellebbezése</h4>
+                    <ol class="rules-steps">
+                        <li><strong>Nyiss fellebbezési ticketet</strong> a Discordon (Discord-kitiltás esetén a
+                            fellebbezési csatornán keresztül).</li>
+                        <li><strong>Add meg a részleteket</strong>: a játékosneved, a büntetés típusát és idejét,
+                            valamint az indokot, amit kaptál.</li>
+                        <li><strong>Írd le őszintén</strong>, miért gondolod, hogy a büntetés téves, vagy miért
+                            érdemelsz második esélyt - ha van, csatolj bizonyítékot.</li>
+                    </ol>
+                    <ul class="rules-list">
+                        <li data-n="6.3">Büntetésenként egy fellebbezést bírálunk el - újra csak akkor, ha új
+                            bizonyíték merül fel.</li>
+                        <li data-n="6.4">A fellebbezést a büntetéstől számított <strong>30 napon belül</strong>
+                            nyújthatod be.</li>
+                        <li data-n="6.5">A fellebbezés elbírálásáig a büntetés érvényben marad.</li>
+                        <li data-n="6.6">A fellebbezésben tett valótlan állítás a fellebbezés elutasítását, és akár
+                            a büntetés súlyosbítását is eredményezheti.</li>
+                        <li data-n="6.7">Lehetőség szerint nem az a staff tag bírálja el a fellebbezést, aki a
+                            büntetést kiszabta.</li>
+                    </ul>
+                </div>
+
+                <div class="legal-panel" data-legal-panel="vasarlas">
+                    <h3>7. Vásárlás &amp; PrémiumPont</h3>
+                    <p class="panel-lead">A webshopos vásárlások legfontosabb szabályai röviden. A kötelező érvényű
+                        feltételeket az <a href="../jogi/#aszf">Általános Szerződési Feltételek</a> tartalmazzák.</p>
+
+                    <ul class="rules-list">
+                        <li data-n="7.1">Rangot, csomagot és PrémiumPontot kizárólag a hivatalos
+                            <a href="https://center.solaryn.hu">SolarCenter</a> felületén vásárolj. Más forrásból
+                            szerzett tartalomért nem vállalunk felelősséget, és az külön értesítés nélkül
+                            visszavonható.</li>
+                        <li data-n="7.2">A megvásárolt termékek digitális termékek, teljesítésük automatikus
+                            (általában 2-5 percen belül). Ha nem érkezik meg, nyiss ticketet, és add meg a fizetési
+                            azonosítót.</li>
+                        <li data-n="7.3">A digitális termékek nem visszatéríthetők, kivéve, ha a szolgáltató
+                            hibájából nem kerülnek teljesítésre.</li>
+                        <li data-n="7.4">A vásárlás nem mentesít a szabályok alól: a kitiltás vagy rangvesztés nem
+                            jogosít visszatérítésre, kivéve, ha az a szolgáltató hibájából történt.</li>
+                        <li data-n="7.5">A fizetés jogosulatlan visszaterhelése (chargeback) vagy bármilyen
+                            visszaélés a fizetési rendszerekkel az érintett fiókok végleges kitiltását vonja maga
+                            után.</li>
+                        <li data-n="7.6">A PrémiumPont és a vásárolt tartalmak nem válthatók vissza valódi pénzre, és
+                            nem adhatók el valódi pénzért vagy más szerver valutájáért.</li>
+                        <li data-n="7.7">Kiskorúként csak szülői (törvényes képviselői) beleegyezéssel vásárolj, és
+                            mindig csak a saját vagy engedéllyel használt fizetési eszközzel.</li>
+                    </ul>
+                </div>
+
+                <div class="legal-panel" data-legal-panel="tartalom">
+                    <h3>8. Tartalomkészítők</h3>
+                    <p class="panel-lead">Örülünk minden videónak, streamnek és rövid klipnek, ami a Solarynon
+                        készül! Hogy mindenki jól járjon, néhány szabályt azért itt is kérünk betartani.</p>
+
+                    <ul class="rules-list">
+                        <li data-n="8.1">A szerveren szabadon készíthetsz videót, streamet vagy rövid tartalmat - a
+                            felvétel közben is érvényes a teljes szabályzat.</li>
+                        <li data-n="8.2">Tilos olyan tartalmat közzétenni, amely bugot, exploitot vagy csalási
+                            módszert mutat be vagy tanít - a hibát előbb jelentsd ticketben.</li>
+                        <li data-n="8.3">Tilos a még nem publikus információk (fejlesztés alatt álló funkciók,
+                            belső staff-ügyek, tesztszerverek) kiszivárogtatása.</li>
+                        <li data-n="8.4">Tilos más játékosokat tartalom kedvéért célzottan zaklatni, provokálni vagy
+                            a beleegyezésük nélkül nevetségessé tenni.</li>
+                        <li data-n="8.5">Tilos a szervert, a staffot vagy a játékosokat szándékosan lejárató,
+                            valótlan vagy félrevezető tartalom (lásd 1.19).</li>
+                        <li data-n="8.6">A Solaryn nevét és logóját használhatod a tartalmaidban, de nem úgy, hogy az
+                            hivatalos Solaryn-tartalomnak tűnjön, és nem más szerver hirdetésére.</li>
+                        <li data-n="8.7">Rendszeresen készítesz tartalmat a Solarynról? Keress minket ticketben - a
+                            közös lehetőségeket ott egyeztetjük.</li>
+                    </ul>
+                </div>
+
+                <div class="rules-empty">Nincs a keresésnek megfelelő szabálypont. Próbálj más kifejezést, vagy kérdezz
+                    minket ticketben!</div>
+            </div>
+        </div>
+
+        <div class="rules-help">
+            <div>
+                <h2>Kérdésed van egy szabállyal kapcsolatban?</h2>
+                <p>Nyiss ticketet a Discordon, és hivatkozz a szabálypont számára (pl. "1.14").</p>
+            </div>
+            <div class="rules-help-actions">
+                <a href="https://dc.solaryn.hu" class="btn-discord" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.6 5.3A17 17 0 0 0 15.4 4l-.5 1a15.7 15.7 0 0 0-5.8 0L8.6 4a17 17 0 0 0-4.2 1.3C1.7 9.3 1 13.2 1.3 17a17.1 17.1 0 0 0 5.2 2.6l1.1-1.7a11 11 0 0 1-1.7-.8l.4-.3a12.2 12.2 0 0 0 11.4 0l.4.3a11 11 0 0 1-1.7.8l1.1 1.7a17 17 0 0 0 5.2-2.6c.4-4.4-.7-8.3-3.1-11.7ZM8.5 14.7c-1 0-1.9-1-1.9-2.2s.8-2.2 1.9-2.2 1.9 1 1.9 2.2-.8 2.2-1.9 2.2Zm7 0c-1 0-1.9-1-1.9-2.2s.8-2.2 1.9-2.2 1.9 1 1.9 2.2-.8 2.2-1.9 2.2Z"/></svg>
+                    Ticket nyitása
+                </a>
             </div>
         </div>
     </section>
@@ -289,17 +541,18 @@
                         <img src="../assets/solaryn-icon.png" alt="Solaryn" class="footer-logo-icon">
                         <span class="footer-logo">Solaryn Network</span>
                     </a>
-                    <p>Egyedi játékmódok, saját kliens és egy közösség, ami minden nap tovább épül. Csatlakozz a Discord szerverünkhöz a legfrissebb hírekért!</p>
-                    <div class="socials">
-                        <a href="https://dc.solaryn.hu">Discord</a>
-                        <a href="https://www.instagram.com/solarynnetwork/">Instagram</a>
-                        <a href="https://www.tiktok.com/@solaryn.network">TikTok</a>
+                    <p>Egyedi játékmódok, saját kliens és egy közösség, ami minden nap tovább épül. Kövess minket a közösségi oldalainkon a legfrissebb hírekért!</p>
+                    <div class="social-apps">
+                        <a href="https://dc.solaryn.hu" class="social-app social-discord" target="_blank" rel="noopener"><span class="social-app-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M19.6 5.3A17 17 0 0 0 15.4 4l-.5 1a15.7 15.7 0 0 0-5.8 0L8.6 4a17 17 0 0 0-4.2 1.3C1.7 9.3 1 13.2 1.3 17a17.1 17.1 0 0 0 5.2 2.6l1.1-1.7a11 11 0 0 1-1.7-.8l.4-.3a12.2 12.2 0 0 0 11.4 0l.4.3a11 11 0 0 1-1.7.8l1.1 1.7a17 17 0 0 0 5.2-2.6c.4-4.4-.7-8.3-3.1-11.7ZM8.5 14.7c-1 0-1.9-1-1.9-2.2s.8-2.2 1.9-2.2 1.9 1 1.9 2.2-.8 2.2-1.9 2.2Zm7 0c-1 0-1.9-1-1.9-2.2s.8-2.2 1.9-2.2 1.9 1 1.9 2.2-.8 2.2-1.9 2.2Z"/></svg></span>Discord</a>
+                        <a href="https://www.youtube.com/@SolarynNetwork" class="social-app social-youtube" target="_blank" rel="noopener"><span class="social-app-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8.8 6.6v10.8l8.9-5.4z"/></svg></span>YouTube</a>
+                        <a href="https://www.instagram.com/solarynnetwork/" class="social-app social-instagram" target="_blank" rel="noopener"><span class="social-app-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3.9" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.2" cy="6.8" r="1.2" fill="currentColor"/></svg></span>Instagram</a>
+                        <a href="https://www.tiktok.com/@solaryn.network" class="social-app social-tiktok" target="_blank" rel="noopener"><span class="social-app-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.6 5.8A4.3 4.3 0 0 1 15.5 3h-3.1v12.4a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.7a5.7 5.7 0 1 0 4.9 5.7V9.1a7.3 7.3 0 0 0 4.3 1.4V7.4a4.3 4.3 0 0 1-3.2-1.6Z"/></svg></span>TikTok</a>
                     </div>
                 </div>
                 <div class="footer-col">
                     <div class="footer-col-title">Oldalak</div>
                     <a href="../#jatekmodok">Játékmódok</a>
-                    <a href="../#kliens">Kliens letöltése</a>
+                    <a href="../#csapat">Csapat</a>
                     <a href="../#gyik">GYIK</a>
                     <a href="../solarnet/">SolarNet partnerprogram</a>
                 </div>

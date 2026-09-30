@@ -353,6 +353,20 @@ section { position: relative; }
 }
 .client-warning strong { color: var(--gold); }
 .btn-download-big { height: 56px; padding: 0 30px; font-size: 15.5px; margin: 0 0 30px; }
+.client-lock { margin: 0 0 30px; }
+.client-lock-btn {
+    display: inline-flex; align-items: center; gap: 10px; height: 56px; padding: 0 12px 0 26px;
+    border-radius: 999px; font: inherit; font-size: 15.5px; font-weight: 800; color: var(--text-dim);
+    background: rgba(255, 255, 255, .04); border: 1px dashed var(--stroke-3); cursor: not-allowed;
+}
+.client-lock-date {
+    margin-left: 6px; padding: 7px 12px; border-radius: 999px; font-size: 13px; font-weight: 800;
+    color: var(--btn-ink); background: var(--brand-grad);
+}
+.client-lock-note { margin: 12px 0 0; font-size: 14px; line-height: 1.6; color: var(--text-dim); }
+.client-lock-note strong { color: var(--gold); }
+.client-lock-note b { color: var(--text); }
+.client-lock-note a { color: var(--gold); text-decoration: underline; text-underline-offset: 3px; }
 .client-steps { display: flex; flex-direction: column; gap: 10px; margin: 0; }
 .client-step {
     display: flex; align-items: flex-start; gap: 14px; text-align: left;
@@ -381,15 +395,6 @@ section { position: relative; }
     transition: transform .6s var(--ease-out);
 }
 .client-preview:hover .client-window { transform: perspective(1400px) rotateY(-2deg) rotateX(1deg); }
-.client-window-bar {
-    display: flex; align-items: center; gap: 7px; height: 34px; padding: 0 14px;
-    background: #111117; border-bottom: 1px solid var(--stroke);
-}
-.client-window-bar span { width: 10px; height: 10px; border-radius: 50%; background: #2a2a33; }
-.client-window-bar span:first-child { background: #ff5f57; }
-.client-window-bar span:nth-child(2) { background: #febc2e; }
-.client-window-bar span:nth-child(3) { background: #28c840; }
-.client-window-bar em { margin-left: 8px; font-style: normal; font-size: 12px; font-weight: 600; color: var(--text-faint); }
 .client-window img { display: block; width: 100%; height: auto; }
 .client-perks { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; list-style: none; margin: 22px 0 0; padding: 0; position: relative; }
 .client-perks li {

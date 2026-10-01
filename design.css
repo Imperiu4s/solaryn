@@ -514,11 +514,11 @@ footer { margin-top: 110px; padding: 0 0 36px; background: none; border: none; t
     width: min(var(--container), calc(100% - 48px)); margin: 0 auto; padding: 150px 0 40px;
     text-align: center; background: none;
 }
-.subpage-hero h1, .subpage-hero .section-title, .solarnet-hero-title {
+.subpage-hero h1, .subpage-hero .section-title {
     font-family: var(--font-display); font-size: clamp(32px, 4.2vw, 54px); font-weight: 800; letter-spacing: -.02em;
     text-transform: none; line-height: 1.1; color: var(--text); background: none; -webkit-text-fill-color: currentColor;
 }
-.subpage-hero p, .solarnet-hero-sub { color: var(--text-dim); font-size: 16.5px; }
+.subpage-hero p { color: var(--text-dim); font-size: 16.5px; }
 .back-home {
     display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 999px; margin-bottom: 18px;
     font-size: 13px; font-weight: 700; color: var(--text-dim); text-decoration: none;
@@ -557,26 +557,6 @@ footer { margin-top: 110px; padding: 0 0 36px; background: none; border: none; t
     box-shadow: none;
 }
 
-.solarnet-hero { padding-top: 150px; }
-.solarnet-benefit-card, .solarnet-condition, .solarnet-price-tile {
-    border-radius: var(--r-lg); background: linear-gradient(180deg, rgba(22, 22, 30, .75), rgba(15, 15, 20, .6));
-    border: 1px solid var(--stroke); box-shadow: none; transition: transform .2s var(--ease-out), border-color .2s;
-}
-.solarnet-benefit-card:hover, .solarnet-condition:hover, .solarnet-price-tile:hover { transform: translateY(-3px); border-color: var(--stroke-3); }
-.solarnet-benefit-card::before, .solarnet-price-tile::before, .solarnet-condition::before { display: none; }
-.solarnet-benefit-icon {
-    width: 50px; height: 50px; border-radius: 15px; display: flex; align-items: center; justify-content: center;
-    background: var(--brand-soft); border: 1px solid var(--brand-line); font-size: 24px;
-}
-.solarnet-benefit-tag, .solarnet-condition-num {
-    background: var(--brand-grad); color: var(--btn-ink); border-radius: 999px; border: none;
-}
-.solarnet-price-tile.featured { border-color: var(--brand-line); background: linear-gradient(160deg, rgba(255, 196, 46, .12), rgba(18, 18, 24, .7)); }
-.solarnet-price-tile-value {
-    font-family: var(--font-display); background: var(--brand-grad); -webkit-background-clip: text; background-clip: text;
-    color: transparent; -webkit-text-fill-color: transparent;
-}
-.solarnet-cta { border-radius: 999px; }
 
 .err-wrap { font-family: var(--font-text); }
 .err-code { font-family: var(--font-display); letter-spacing: -.04em; }

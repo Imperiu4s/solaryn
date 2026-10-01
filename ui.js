@@ -42,7 +42,7 @@
 
   function initCardSpotlight() {
     if (window.matchMedia('(pointer: coarse)').matches || reduced()) return;
-    $$('.feature-item, .gamemode-image, .team-card, .client-step, .solarnet-benefit-card, .solarnet-condition, .solarnet-price-tile, .legal-card')
+    $$('.feature-item, .gamemode-image, .team-card, .client-step, .sn-card, .sn-step, .sn-criterion, .legal-card')
       .forEach((el) => el.classList.add('fx-spot'));
 
     let pending = null;

@@ -540,59 +540,7 @@ footer::before {
     .legal-card { padding: 32px 24px; }
 }
 
-.solarnet-hero { padding-bottom: 90px; }
-.solarnet-hero-title { font-family: var(--font-display); font-size: 3rem; font-weight: 800; line-height: 1.2; max-width: 780px; margin: 0 auto; }
-.solarnet-hero-sub { font-size: 1.25rem !important; max-width: 700px !important; color: var(--text-dim); margin: 18px auto 0 !important; }
-
-.solarnet-cta { text-align: center; padding: 10px 6% 70px; }
-.solarnet-benefits { padding: 20px 6% 30px; max-width: 1280px; margin: 0 auto; }
-.solarnet-benefit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(460px, 1fr)); gap: 30px; }
-.solarnet-benefit-card {
-    background: var(--panel); border: 1px solid var(--line); border-radius: 22px; padding: 44px 40px;
-    transition: transform .25s, border-color .25s;
-}
-.solarnet-benefit-card:hover { transform: translateY(-6px); border-color: var(--gold-2); }
-.solarnet-benefit-icon { font-size: 2.8rem; margin-bottom: 18px; }
-.solarnet-benefit-tag {
-    display: inline-block; padding: 4px 14px; border-radius: 999px; font-size: 0.72rem; font-weight: 800;
-    text-transform: uppercase; letter-spacing: .6px; color: #1a1206;
-    background: linear-gradient(180deg, var(--gold), var(--gold-2)); margin-bottom: 16px;
-}
-.solarnet-benefit-card h3 { font-size: 1.5rem; font-weight: 800; margin-bottom: 16px; }
-.solarnet-benefit-card p { color: var(--text-dim); font-size: 1.05rem; line-height: 1.8; }
-
-.solarnet-conditions { padding: 90px 6%; max-width: 1100px; margin: 0 auto; }
-.solarnet-condition {
-    display: flex; gap: 30px; align-items: flex-start; margin-bottom: 30px;
-    background: var(--panel); border: 1px solid var(--line); border-radius: 20px; padding: 38px 42px;
-}
-.solarnet-condition-num {
-    width: 60px; height: 60px; flex-shrink: 0; border-radius: 16px; font-size: 1.5rem;
-    background: rgba(255,176,32,.1); border: 1px solid rgba(255,176,32,.25);
-    display: flex; align-items: center; justify-content: center; font-weight: 800; color: var(--gold);
-}
-.solarnet-condition h4 { font-size: 1.35rem; font-weight: 800; margin-bottom: 12px; }
-.solarnet-condition p { color: var(--text-dim); font-size: 1.05rem; line-height: 1.8; }
-
-.solarnet-pricing { text-align: center; padding: 80px 6%; max-width: 1000px; margin: 0 auto; }
-.solarnet-price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; margin-top: 46px; }
-.solarnet-price-tile {
-    background: linear-gradient(180deg, var(--panel), var(--bg-2)); border: 1px solid var(--line);
-    border-radius: 26px; padding: 50px 30px; transition: transform .25s, border-color .25s;
-}
-.solarnet-price-tile:hover { transform: translateY(-6px); }
-.solarnet-price-tile.featured { border-color: rgba(255,176,32,.4); box-shadow: 0 20px 55px rgba(255,176,32,.12); }
-.solarnet-price-tile-label { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-faint); font-weight: 700; }
-.solarnet-price-tile-value { font-size: 3rem; font-weight: 800; color: var(--gold); margin-top: 14px; }
-.solarnet-price-tile-value span { font-size: 1.1rem; color: var(--text-dim); font-weight: 600; }
-.solarnet-price-tile-note { margin-top: 12px; color: var(--text-dim); font-size: 0.95rem; }
-
-@media (max-width: 760px) {
-    .solarnet-hero-title { font-size: 2.1rem; }
-    .solarnet-benefit-grid { grid-template-columns: 1fr; }
-}
-
 @media (max-width: 640px) {
-    .team-section, .solarnet-benefits, .solarnet-conditions, .solarnet-pricing, .legal-page { padding-left: 6%; padding-right: 6%; }
+    .team-section, .legal-page { padding-left: 6%; padding-right: 6%; }
     .subpage-hero h1 { font-size: 2rem; }
 }

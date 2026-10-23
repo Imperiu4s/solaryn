@@ -89,6 +89,8 @@ a.team-card-name:hover svg { color: var(--gold); transform: translate(2px, -2px)
     padding: 4px 10px; border-radius: 999px; font-size: 11.5px; font-weight: 700; color: var(--text-dim);
     background: rgba(255, 255, 255, .04); border: 1px solid var(--stroke);
 }
+.team-card-sites { margin-top: auto; padding-top: 16px; display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 16px; }
+.team-card-sites .team-card-site { margin-top: 0; padding-top: 0; }
 .team-card-site {
     margin-top: auto; padding-top: 16px;
     display: inline-flex; align-items: center; gap: 6px;

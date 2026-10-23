@@ -38,6 +38,7 @@
     --acc-momentum: #ff5757;
     --acc-elyvientrum: #4ade80;
     --acc-foci: #3d8bff;
+    --acc-minigames: #c084fc;
 }
 
 * { font-family: inherit; }
@@ -206,6 +207,7 @@ nav .logo-word {
 .mode-momentum { --c: var(--acc-momentum); }
 .mode-elyvientrum { --c: var(--acc-elyvientrum); }
 .mode-foci { --c: var(--acc-foci); }
+.mode-minigames { --c: var(--acc-minigames); }
 
 .hero-panel {
     justify-self: end; width: 100%; max-width: 380px;
@@ -303,6 +305,7 @@ section { position: relative; }
 .feature-cta:hover .feature-link svg { transform: translateX(3px); }
 
 .modes-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.modes-grid > .mode-card:last-child:nth-child(odd) { grid-column: 1 / -1; justify-self: center; width: calc((100% - 20px) / 2); }
 .mode-card {
     --c: var(--gold);
     position: relative; display: flex; flex-direction: column; overflow: hidden;
@@ -339,6 +342,7 @@ section { position: relative; }
 .accent-momentum { --c: var(--acc-momentum); }
 .accent-elyvientrum { --c: var(--acc-elyvientrum); }
 .accent-foci { --c: var(--acc-foci); }
+.accent-minigames { --c: var(--acc-minigames); }
 
 .client-section { padding-top: 120px; }
 .client-inner {
@@ -597,6 +601,7 @@ footer { margin-top: 110px; padding: 0 0 36px; background: none; border: none; t
         width: calc(100% - 32px);
     }
     .feature-grid, .modes-grid { grid-template-columns: minmax(0, 1fr); }
+    .modes-grid > .mode-card:last-child:nth-child(odd) { width: auto; justify-self: stretch; }
     .team-grid { grid-template-columns: minmax(0, 280px); }
     .info-section, .gamemodes-section, .client-section, .team-section, .faq-section { padding-top: 80px; }
     .mode-card-body { padding: 18px 20px 22px; }

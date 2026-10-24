@@ -1,4 +1,3 @@
-/* ---------- Közösségi "app" ikonok ---------- */
 .social-app-icon {
     --tile: #2a2a33;
     flex-shrink: 0; width: 30px; height: 30px; border-radius: 9px;
@@ -38,7 +37,6 @@
 .social-icons .social-app-icon { width: 38px; height: 38px; border-radius: 11px; text-decoration: none; }
 .social-icons .social-app-icon:hover { transform: translateY(-2px) rotate(-6deg); }
 
-/* ---------- Közösség sáv (főoldal) ---------- */
 .community-band { width: min(var(--container), calc(100% - 48px)); margin: 120px auto 0; }
 .community-inner {
     position: relative; overflow: hidden;
@@ -74,7 +72,6 @@
 .community-card.social-instagram { --accent: #d62976; }
 .community-card.social-tiktok { --accent: #25f4ee; }
 
-/* ---------- Csapat kártyák ---------- */
 .team-grid { grid-template-columns: repeat(3, minmax(0, 360px)); align-items: stretch; }
 .team-card { text-align: center; }
 .team-card-name { text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
@@ -100,7 +97,6 @@ a.team-card-name:hover svg { color: var(--gold); transform: translate(2px, -2px)
 .team-card-site:hover { text-decoration: underline; text-underline-offset: 3px; }
 .team-card-site:hover svg { transform: translate(2px, -2px); }
 
-/* ---------- SolarNet ---------- */
 .sn-hero {
     width: min(var(--container), calc(100% - 48px)); margin: 0 auto; padding: 140px 0 70px;
     display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: 56px; align-items: center;
@@ -284,7 +280,6 @@ a.team-card-name:hover svg { color: var(--gold); transform: translate(2px, -2px)
     .sn-list-row-you .sn-list-tag { display: inline-flex; padding: 4px 9px; font-size: 10.5px; }
 }
 
-/* ---------- Szabályzat ---------- */
 .rules-intro { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin: 0 0 22px; }
 .rules-intro-item {
     display: flex; align-items: flex-start; gap: 12px; padding: 16px; border-radius: var(--r-md);
@@ -407,7 +402,6 @@ a.team-card-name:hover svg { color: var(--gold); transform: translate(2px, -2px)
     .rules-help { padding: 22px; }
 }
 
-/* Jogi oldal: adatkezelési táblázat, hatály-sor */
 .legal-card .legal-meta { margin: -4px 0 18px; font-size: 13px; color: var(--text-faint); }
 .legal-card .legal-table-wrap { overflow-x: auto; margin: 8px 0 16px; }
 .legal-card .legal-table { width: 100%; min-width: 640px; border-collapse: collapse; font-size: 13.5px; line-height: 1.6; }

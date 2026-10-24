@@ -9,7 +9,6 @@ function openLegalTab(key, smooth) {
     return true;
 }
 
-// Szabálypontok: "1.5" -> id="pont-1-5", így egy-egy pontra közvetlenül lehet hivatkozni (pl. ticketben).
 document.querySelectorAll('.rules-list li[data-n]').forEach((li) => {
     if (!li.id) li.id = 'pont-' + li.getAttribute('data-n').replace(/\./g, '-');
 });

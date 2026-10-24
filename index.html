@@ -34,7 +34,7 @@
 
     <link rel="stylesheet" href="style.css?v=20261001">
     <link rel="stylesheet" href="ui.css?v=20261001">
-    <link rel="stylesheet" href="design.css?v=20261001">
+    <link rel="stylesheet" href="design.css?v=20261024">
     <link rel="stylesheet" href="components.css?v=20261001">
 
     <link rel="preload" as="image" href="assets/lobby.jpg" fetchpriority="high">
@@ -290,13 +290,22 @@
                 <h2 class="section-title reveal">Töltsd le a hivatalos klienst</h2>
                 <p class="section-subtitle client-warning reveal">A Solaryn hálózatra <strong>kizárólag a saját, hivatalos launcherünkön keresztül</strong> lehet csatlakozni - más kliensről (pl. vanilla, Lunar, Badlion, FyreMC) a szerver nem fogad kapcsolatot. Ez biztosítja az egységes anticheat-védelmet és az egyedi funkciókat mindenki számára.</p>
 
-                <div class="client-lock reveal">
-                    <button type="button" class="client-lock-btn" disabled>
-                        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8.5 10.5V7.5a3.5 3.5 0 0 1 7 0v3" fill="none" stroke="currentColor" stroke-width="2"/></svg>
-                        Kliens letöltése
-                        <span class="client-lock-date">okt. 25.</span>
-                    </button>
-                    <p class="client-lock-note"><strong>A kliens október 25-én lesz letölthető.</strong> Addig a <a href="https://dc.solaryn.hu" target="_blank" rel="noopener">Discord szerverünk</a> <b>#spoilerek</b> csatornájában mutatunk meg 1-2 érdekességet.</p>
+                <div class="client-lock reveal" id="clientRelease" data-release="2026-10-25T14:00:00+01:00">
+                    <div class="client-lock-wait" id="clientWait">
+                        <button type="button" class="client-lock-btn" disabled>
+                            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8.5 10.5V7.5a3.5 3.5 0 0 1 7 0v3" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+                            Kliens letöltése
+                            <span class="client-lock-date" id="clientCountdown">okt. 25. 14:00</span>
+                        </button>
+                        <p class="client-lock-note"><strong>A kliens október 25-én, vasárnap 14:00-kor lesz letölthető.</strong> Addig a <a href="https://dc.solaryn.hu" target="_blank" rel="noopener">Discord szerverünk</a> <b>#spoilerek</b> csatornájában mutatunk meg 1-2 érdekességet.</p>
+                    </div>
+                    <div class="client-lock-open" id="clientOpen" hidden>
+                        <a class="btn-glow-download btn-download-big" href="https://api.solaryn.hu:25572/updates/download-latest" rel="noopener" download>
+                            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19.5h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            Kliens letöltése
+                        </a>
+                        <p class="client-lock-note">Windows 10/11, 64 bit · ingyenes · a telepítő kb. 80 MB, a játékfájlokat az első indításkor tölti le.</p>
+                    </div>
                 </div>
 
                 <div class="client-steps">
@@ -547,6 +556,7 @@
     <script src="skin3d.js?v=20261001" defer></script>
     <script src="script.js?v=20261001" defer></script>
     <script src="ui.js?v=20261002" defer></script>
+    <script src="release.js?v=20261024" defer></script>
 </body>
 
 </html>

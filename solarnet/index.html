@@ -3,15 +3,15 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://api.overclockgame.hu:8908; connect-src 'self' https://api.overclockgame.hu:8908; font-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://api.solaryn.hu:25572; connect-src 'self' https://api.solaryn.hu:25572; font-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
     <title>SolarNet partnerprogram - Solaryn Network</title>
-    <meta name="description" content="SolarNet: a Solaryn Network partnerprogramja Minecraft-szervereknek - hely a hivatalos Solaryn kliens szerverlistáján, tanácsadás és átlátható díjak.">
+    <meta name="description" content="SolarNet: a Solaryn Network partnerprogramja Minecraft-szervereknek. Hely a hivatalos Solaryn kliens szerverlistáján, tanácsadás és fix díjak.">
     <meta name="author" content="Solaryn Network">
-    <meta name="theme-color" content="#07070a">
-    <meta name="color-scheme" content="dark">
+    <meta name="theme-color" content="#0e0e13">
+    <meta name="color-scheme" content="dark light">
     <meta name="robots" content="index, follow, max-image-preview:large">
     <link rel="canonical" href="https://solaryn.hu/solarnet/">
 
@@ -24,358 +24,215 @@
     <meta property="og:locale" content="hu_HU">
     <meta property="og:url" content="https://solaryn.hu/solarnet/">
     <meta property="og:title" content="SolarNet partnerprogram - Solaryn Network">
-    <meta property="og:description" content="SolarNet: a Solaryn Network partnerprogramja Minecraft-szervereknek - hely a hivatalos Solaryn kliens szerverlistáján, tanácsadás és átlátható díjak.">
-    <meta property="og:image" content="https://solaryn.hu/assets/solaryn-wordmark.png">
-    <meta property="og:image:alt" content="Solaryn Network">
+    <meta property="og:description" content="SolarNet: a Solaryn Network partnerprogramja Minecraft-szervereknek. Hely a hivatalos Solaryn kliens szerverlistáján, tanácsadás és fix díjak.">
+    <meta property="og:image" content="https://solaryn.hu/assets/og.png">
+    <meta property="og:image:alt" content="A Solaryn spawn pixel-világa">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="SolarNet partnerprogram - Solaryn Network">
-    <meta name="twitter:description" content="SolarNet: a Solaryn Network partnerprogramja Minecraft-szervereknek - hely a hivatalos Solaryn kliens szerverlistáján, tanácsadás és átlátható díjak.">
-    <meta name="twitter:image" content="https://solaryn.hu/assets/solaryn-wordmark.png">
+    <meta name="twitter:description" content="SolarNet: a Solaryn Network partnerprogramja Minecraft-szervereknek. Hely a hivatalos Solaryn kliens szerverlistáján, tanácsadás és fix díjak.">
+    <meta name="twitter:image" content="https://solaryn.hu/assets/og.png">
 
-    <link rel="stylesheet" href="../style.css?v=20261001">
-    <link rel="stylesheet" href="../ui.css?v=20261001">
-    <link rel="stylesheet" href="../design.css?v=20261001">
-    <link rel="stylesheet" href="../components.css?v=20261001">
+    <link rel="preload" as="font" href="../assets/fonts/solaryn-block.woff" type="font/woff" crossorigin>
+    <link rel="stylesheet" href="../block.css?v=20261106b">
+    <link rel="stylesheet" href="../docs.css?v=20261106b">
+    <script src="../theme.js?v=20261106"></script>
 </head>
 
-<body class="page-sub">
+<body class="page-sub page-solarnet" data-page="solarnet" data-view="market" data-root="../">
     <a class="skip-link" href="#main-content">Ugrás a tartalomra</a>
-    <div class="scroll-progress"></div>
-    <canvas class="particle-canvas" id="particleCanvas" aria-hidden="true"></canvas>
 
-    <nav>
-        <a href="../#kezdolap" class="logo">
-            <img src="../assets/solaryn-icon.png" alt="Solaryn" class="logo-icon">
-            <span class="logo-word">Solaryn</span>
+    <div class="world" aria-hidden="true">
+        <canvas id="worldSky"></canvas>
+        <div class="world-under">
+            <div class="stratum s-a"></div>
+            <div class="stratum s-b"></div>
+            <div class="stratum s-c"></div>
+            <div class="shaft"><div class="shaft-top"></div></div>
+            <div class="stratum s-bed"></div>
+        </div>
+    </div>
+
+    <header class="topbar">
+        <a href="../" class="topbar-brand">
+            <img src="../assets/solaryn-icon.png" alt="" width="32" height="32">
+            <span>Solaryn</span>
         </a>
-        <ul class="nav-links">
-            <li><a href="../#kezdolap">Kezdőlap</a></li>
-            <li><a href="../#rolunk">Rólunk</a></li>
-            <li><a href="../#jatekmodok">Játékmódok</a></li>
-            <li><a href="../#kliens">Kliens</a></li>
-            <li><a href="../#csapat">Csapat</a></li>
-            <li><a href="../#gyik">GYIK</a></li>
-            <li><a href="../solarnet/" aria-current="page">SolarNet</a></li>
-            <li><a href="../szabalyzat/">Szabályzat</a></li>
-        </ul>
-        <div class="nav-actions">
-            <a href="https://center.solaryn.hu" class="btn-outline-nav">SolarCenter</a>
-            <a href="../#kliens" class="btn-nav-download">Letöltés</a>
-        </div>
-    </nav>
+        <div class="topbar-spacer"></div>
+        <button type="button" class="chip" id="themeBtn" aria-label="Világválasztó"><span class="chip-ico"></span><span class="chip-label">Világok</span></button>
+        <a href="https://center.solaryn.hu" class="chip chip-center"><span data-ico="crown"></span><span class="chip-label">SolarCenter</span></a>
+        <a href="../#kliens" class="btn btn-gold topbar-dl"><span data-ico="download"></span>Letöltés</a>
+    </header>
 
-    <section id="main-content" class="sn-hero">
-        <div class="sn-hero-copy">
-            <a href="../" class="back-home">← Vissza a főoldalra</a>
-            <div class="badge hero-anim"><span class="badge-dot"></span>SolarNet · partnerprogram szervereknek</div>
-            <h1 class="sn-hero-title hero-anim" style="animation-delay:.1s">Vidd a szervered oda, ahol a <span class="highlight">játékosok már ott vannak.</span></h1>
-            <p class="sn-hero-lead hero-anim" style="animation-delay:.2s">A <strong>SolarNet</strong> a Solaryn Network partnerprogramja Minecraft-szerverek tulajdonosainak. Helyet adunk a szerverednek a hivatalos kliensünkben, és megosztjuk veled mindazt, amit a saját hálózatunk felépítése közben megtanultunk.</p>
-            <div class="sn-hero-actions hero-anim" style="animation-delay:.3s">
-                <a href="https://dc.solaryn.hu" class="btn-glow-download btn-download-big" target="_blank" rel="noopener">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M19.6 5.3A17 17 0 0 0 15.4 4l-.5 1a15.7 15.7 0 0 0-5.8 0L8.6 4a17 17 0 0 0-4.2 1.3C1.7 9.3 1 13.2 1.3 17a17.1 17.1 0 0 0 5.2 2.6l1.1-1.7a11 11 0 0 1-1.7-.8l.4-.3a12.2 12.2 0 0 0 11.4 0l.4.3a11 11 0 0 1-1.7.8l1.1 1.7a17 17 0 0 0 5.2-2.6c.4-4.4-.7-8.3-3.1-11.7ZM8.5 14.7c-1 0-1.9-1-1.9-2.2s.8-2.2 1.9-2.2 1.9 1 1.9 2.2-.8 2.2-1.9 2.2Zm7 0c-1 0-1.9-1-1.9-2.2s.8-2.2 1.9-2.2 1.9 1 1.9 2.2-.8 2.2-1.9 2.2Z"/></svg>
-                    Jelentkezés Discordon
-                </a>
-                <a href="#dijak" class="sn-btn-ghost">Díjak megtekintése</a>
-            </div>
-            <ul class="sn-hero-facts hero-anim" style="animation-delay:.4s">
-                <li><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7.5"/></svg>Havonta lemondható</li>
-                <li><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7.5"/></svg>Nincs kizárólagosság</li>
-                <li><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7.5"/></svg>Nem kérünk hozzáférést</li>
-            </ul>
-        </div>
-        <div class="sn-hero-visual hero-anim" style="animation-delay:.35s" aria-hidden="true">
-            <div class="sn-list-glow"></div>
-            <div class="sn-list">
-                <div class="sn-list-head">
-                    <img src="../assets/solaryn-icon.png" alt="">
-                    <span>Solaryn kliens</span>
-                    <em>Szerverlista</em>
-                </div>
-                <div class="sn-list-row">
-                    <span class="sn-list-icon"><img src="../assets/solaryn-icon.png" alt=""></span>
-                    <span class="sn-list-text"><b>Solaryn Network</b><small>play.solaryn.hu</small></span>
-                    <span class="sn-list-tag">Hivatalos</span>
-                </div>
-                <div class="sn-list-row sn-list-row-you">
-                    <span class="sn-list-icon">?</span>
-                    <span class="sn-list-text"><b>A te szervered</b><small>play.teszervered.hu</small></span>
-                    <span class="sn-list-tag sn-list-tag-partner">SolarNet partner</span>
-                </div>
-                <div class="sn-list-row sn-list-row-ghost">
-                    <span class="sn-list-icon"></span>
-                    <span class="sn-list-text"><b>Szabad hely</b><small>a következő partnernek</small></span>
+    <main>
+        <section class="sn-hero" id="main-content">
+            <div>
+                <h1 class="sn-title">SolarNet: partnerprogram Minecraft-szervereknek</h1>
+                <p class="sn-lead">Ha saját szervered van, felkerülhet a Solaryn kliens szerverlistájára, és ha elakadsz, elmondjuk, nekünk mi vált be. Havi díjért, hűségidő nélkül.</p>
+                <div class="sn-actions">
+                    <a href="https://dc.solaryn.hu" class="btn btn-gold btn-big" target="_blank" rel="noopener"><span data-ico="discord"></span>Jelentkezés Discordon</a>
+                    <a href="#dijak" class="chip">Díjak</a>
                 </div>
             </div>
-        </div>
-    </section>
+            <div class="sn-list" aria-hidden="true">
+                <div class="sn-list-head"><img src="../assets/solaryn-icon.png" alt=""><span>Solaryn kliens</span><em>Szerverlista</em></div>
+                <div class="sn-row">
+                    <span class="sn-row-ico"><img src="../assets/solaryn-icon.png" alt=""></span>
+                    <span class="sn-row-text"><b>Solaryn Network</b><small>play.solaryn.hu</small></span>
+                    <span class="sn-pill">Hivatalos</span>
+                </div>
+                <div class="sn-row sn-row-you">
+                    <span class="sn-row-ico">?</span>
+                    <span class="sn-row-text"><b>A te szervered</b><small>play.teszervered.hu</small></span>
+                    <span class="sn-pill">SolarNet partner</span>
+                </div>
+                <div class="sn-row sn-row-ghost">
+                    <span class="sn-row-ico"></span>
+                    <span class="sn-row-text"><b>Szabad hely</b><small>a következő partnernek</small></span>
+                </div>
+            </div>
+        </section>
 
-    <section class="sn-section">
-        <div class="section-head section-head-center reveal">
-            <span class="eyebrow">Előnyök</span>
-            <h2 class="section-title">Mit kapsz a partnerségtől?</h2>
-            <p class="section-subtitle">Láthatóságot egy aktív közösség előtt, és egy csapatot, amelyik már végigjárta azt az utat, amin most te indulsz el.</p>
-        </div>
-        <div class="sn-bento">
-            <article class="sn-card sn-card-main reveal">
-                <div class="sn-card-icon"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M7 9h10M7 13h10M7 17h6"/></svg></div>
-                <h3>Helyed lesz a Solaryn kliensben</h3>
-                <p>A szervered felkerül a hivatalos Solaryn kliens szerverlistájára. Ezt a klienst naponta több százan, forgalmasabb időszakokban több ezren nyitják meg - vagyis egy összeszokott, aktív magyar közönség elé kerülsz, ahol a csatlakozás csak egy kattintás.</p>
-                <span class="sn-card-note">A partnerség legfontosabb része</span>
-            </article>
-            <article class="sn-card reveal" style="--reveal-delay:.08s">
-                <div class="sn-card-icon"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.2L4 16.8V20h3.2l5.3-5.3a4 4 0 0 0 5.2-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/></svg></div>
-                <h3>Technikai tanácsok</h3>
-                <p>Hosting, teljesítmény, felépítés: ha elakadsz egy nagyobb döntésnél, elmondjuk, nekünk mi vált be. A szerveredre nem lépünk be helyetted javítani - a tanács viszont jár.</p>
-            </article>
-            <article class="sn-card reveal" style="--reveal-delay:.16s">
-                <div class="sn-card-icon"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18l6-6 4 4 6-8"/><path d="M15 8h5v5"/></svg></div>
-                <h3>Növekedés és marketing</h3>
-                <p>Közösségépítés, kommunikáció, vezetés - átadjuk a saját tapasztalatainkat, hogy gyorsabban juss előre, és kevesebb zsákutcába fuss bele.</p>
-            </article>
-            <article class="sn-card reveal" style="--reveal-delay:.24s">
-                <div class="sn-card-icon"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l8-8M16 7l2 2M14 9l2 2"/></svg></div>
-                <h3>Te maradsz a főnök</h3>
-                <p>Nem kötünk kizárólagossághoz: a játékosaid bármilyen klienssel csatlakozhatnak hozzád. A csapatod, a rangjaid, a weboldalad és a géped a tiéd marad - hozzáférést nem kérünk.</p>
-            </article>
-        </div>
-    </section>
+        <section class="sec" data-slot="solarnet" data-label="Mit kapsz">
+            <div class="wrap">
+                <div class="sec-head">
+                    <h2 class="sec-title">Mit kapsz?</h2>
+                </div>
+                <div class="feats card">
+                    <article class="feat"><span data-ico="list"></span><div><h3>Helyet a kliensben</h3><p>A szervered felkerül a hivatalos Solaryn kliens szerverlistájára. A klienst naponta több százan, forgalmasabb időszakokban több ezren nyitják meg, és egy kattintással csatlakozhatnak hozzád.</p></div></article>
+                    <article class="feat"><span data-ico="wrench"></span><div><h3>Technikai tanácsokat</h3><p>Hosting, teljesítmény, felépítés: ha elakadsz egy nagyobb döntésnél, elmondjuk, nekünk mi vált be. A szerveredre nem lépünk be helyetted javítani.</p></div></article>
+                    <article class="feat"><span data-ico="chart"></span><div><h3>Tapasztalatot a növekedéshez</h3><p>Közösségépítés, kommunikáció, vezetés: elmondjuk, nálunk mi működött és mi nem.</p></div></article>
+                    <article class="feat"><span data-ico="key"></span><div><h3>Te maradsz a főnök</h3><p>Nem kötünk kizárólagossághoz, a játékosaid bármilyen klienssel csatlakozhatnak hozzád. A csapatod, a rangjaid, a weboldalad és a géped a tiéd marad, hozzáférést nem kérünk.</p></div></article>
+                </div>
+            </div>
+        </section>
 
-    <section class="sn-section">
-        <div class="section-head section-head-center reveal">
-            <span class="eyebrow">Folyamat</span>
-            <h2 class="section-title">Így lesz belőled partner</h2>
-            <p class="section-subtitle">Négy lépés a jelentkezéstől addig, hogy a szervered megjelenjen a kliensben.</p>
-        </div>
-        <ol class="sn-steps">
-            <li class="sn-step reveal">
-                <span class="sn-step-num">01</span>
-                <h3>Nyiss ticketet</h3>
-                <p>A Discord szerverünkön írj pár sort a szerveredről, a csapatodról és a terveidről - a nevével és az IP-címével együtt.</p>
-            </li>
-            <li class="sn-step reveal" style="--reveal-delay:.08s">
-                <span class="sn-step-num">02</span>
-                <h3>Megnézzük a szervered</h3>
-                <p>Felcsatlakozunk és körülnézünk, hogy megalapozott döntést hozhassunk. Általában néhány napon belül jelentkezünk.</p>
-            </li>
-            <li class="sn-step reveal" style="--reveal-delay:.16s">
-                <span class="sn-step-num">03</span>
-                <h3>Egyeztetünk</h3>
-                <p>Ha minden rendben van, a ticketben megbeszéljük a részleteket és azt is, hogyan fizetsz.</p>
-            </li>
-            <li class="sn-step reveal" style="--reveal-delay:.24s">
-                <span class="sn-step-num">04</span>
-                <h3>Bekerülsz a kliensbe</h3>
-                <p>A szervered megjelenik a Solaryn kliens szerverlistáján, és onnantól közösen dolgozunk a fejlődéseden.</p>
-            </li>
-        </ol>
-    </section>
-
-    <section class="sn-section sn-criteria">
-        <div class="sn-criteria-intro reveal">
-            <span class="eyebrow">Elvárások</span>
-            <h2 class="section-title">Nem mennyiséget, hanem minőséget keresünk.</h2>
-            <p class="section-subtitle">Nem a játékosszám a döntő. Olyan szervereket várunk, amelyek mögött elkötelezett csapat áll, és amelyeket a saját játékosainknak is jó szívvel ajánlunk. Ehhez három dolgot nézünk meg.</p>
-        </div>
-        <div class="sn-criteria-list">
-            <div class="sn-criterion reveal">
-                <div class="sn-criterion-icon"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></div>
+        <section class="sec" data-slot="solarnet" data-label="Folyamat">
+            <div class="wrap sn-split">
                 <div>
-                    <h3>Megbízható üzemeltetés</h3>
-                    <p>Stabil szerver, ritka leállások, rendes védelem és rendszeres frissítések. A csapatod gyorsan reagál, ha egy játékosnak gondja van.</p>
+                    <h2 class="sec-title">Így lesz belőled partner</h2>
                 </div>
+                <ol class="sn-steps card">
+                    <li><h3>Nyiss ticketet</h3><p>A Discordon írj pár sort a szerveredről, a csapatodról és a terveidről, a nevével és az IP-címével együtt.</p></li>
+                    <li><h3>Megnézzük a szervered</h3><p>Felcsatlakozunk és körülnézünk. Általában néhány napon belül jelentkezünk.</p></li>
+                    <li><h3>Egyeztetünk</h3><p>Ha minden rendben van, a ticketben megbeszéljük a részleteket és azt is, hogyan fizetsz.</p></li>
+                    <li><h3>Bekerülsz a kliensbe</h3><p>A szervered megjelenik a Solaryn kliens szerverlistáján.</p></li>
+                </ol>
             </div>
-            <div class="sn-criterion reveal" style="--reveal-delay:.08s">
-                <div class="sn-criterion-icon"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.2 5.8L20 11l-5.8 2.2L12 19l-2.2-5.8L4 11l5.8-2.2z"/></svg></div>
+        </section>
+
+        <section class="sec" data-slot="solarnet" data-label="Elvárások">
+            <div class="wrap sn-split">
                 <div>
-                    <h3>Saját arculat</h3>
-                    <p>Valami, ami kiemel a tömegből: egyedi minijáték, kihívás, plugin vagy világ - és nyitottság arra, hogy a közösség visszajelzései alapján folyamatosan fejlődj.</p>
+                    <h2 class="sec-title">Kit keresünk?</h2>
+                    <p class="sec-lead">Nem a játékosszám a döntő. Olyan szervereket várunk, amelyeket a saját játékosainknak is jó szívvel ajánlunk. Három dolgot nézünk meg.</p>
+                </div>
+                <div class="sn-crit">
+                    <div><span class="sn-ico" data-ico="shield"></span><div><h3>Megbízható üzemeltetés</h3><p>Stabil szerver, ritka leállások, rendes védelem és rendszeres frissítések. A csapatod gyorsan reagál, ha egy játékosnak gondja van.</p></div></div>
+                    <div><span class="sn-ico" data-ico="gem"></span><div><h3>Saját arculat</h3><p>Valami, ami kiemel a többi közül: egyedi minijáték, kihívás, plugin vagy világ. És nyitottság arra, amit a közösség visszajelez.</p></div></div>
+                    <div><span class="sn-ico" data-ico="discord"></span><div><h3>Élő kommunikáció</h3><p>Aktív Discord és közösségi média, rendszeres hírek a frissítésekről és eseményekről, moderátorok, akik figyelnek a szabályokra és a játékosokra.</p></div></div>
                 </div>
             </div>
-            <div class="sn-criterion reveal" style="--reveal-delay:.16s">
-                <div class="sn-criterion-icon"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9.5h8M8 12.5h5"/></svg></div>
+        </section>
+
+        <section id="dijak" class="sec" data-slot="solarnet" data-label="Díjak">
+            <div class="wrap">
+                <div class="sec-head">
+                    <h2 class="sec-title">Díjak</h2>
+                    <p class="sec-lead">Egy egyszeri csatlakozási díj, utána fix havi összeg.</p>
+                </div>
+                <div class="sn-price card">
+                    <div class="sn-price-row">
+                        <div class="sn-price-item">
+                            <span class="sn-price-label">Csatlakozási díj</span>
+                            <span class="sn-price-value">5 000 <small>Ft</small></span>
+                            <span class="sn-price-note">egyszer, a partnerség indulásakor</span>
+                        </div>
+                        <span class="sn-plus" aria-hidden="true">+</span>
+                        <div class="sn-price-item">
+                            <span class="sn-price-label">Havi díj</span>
+                            <span class="sn-price-value">2 500 <small>Ft / hó</small></span>
+                            <span class="sn-price-note">ezt követően, minden hónapban</span>
+                        </div>
+                    </div>
+                    <p class="sn-price-foot">Nincs hűségidő, bármikor lemondható, felmondási díj nélkül. A fizetés módját a ticketben egyeztetjük.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="gyik" class="sec" data-slot="solarnet" data-label="GYIK">
+            <div class="wrap sn-split">
                 <div>
-                    <h3>Élő kommunikáció</h3>
-                    <p>Aktív Discord és közösségi média, rendszeres hírek a frissítésekről és eseményekről, valamint moderátorok, akik a szabályokra és a játékosok biztonságára is figyelnek.</p>
+                    <h2 class="sec-title">Kérdésed van?</h2>
+                    <p class="sec-lead">Ha itt nem találod a választ, nyiss egy ticketet.</p>
+                </div>
+                <div class="faq-list">
+                    <details class="faq-item" name="snfaq"><summary>Meddig tart a partnerség?<span data-ico="arrow"></span></summary><p>Ameddig mindkét félnek megéri. Nincs határozott időtartam: a partnerség havonta megújul, és bármikor felmondhatod, külön díj nélkül.</p></details>
+                    <details class="faq-item" name="snfaq"><summary>Ki jelentkezhet a programba?<span data-ico="arrow"></span></summary><p>Bármelyik Minecraft-szerver tulajdonosa, akinek a szervere stabilan fut, és van saját, egyedi tartalma.</p></details>
+                    <details class="faq-item" name="snfaq"><summary>Felcsatlakoztok a szerveremre a jelentkezés után?<span data-ico="arrow"></span></summary><p>Igen. Mielőtt döntünk, mindenképp megnézzük a szervert belülről is.</p></details>
+                    <details class="faq-item" name="snfaq"><summary>Mennyi idő alatt kapok választ?<span data-ico="arrow"></span></summary><p>A ticketekre általában néhány napon belül reagálunk.</p></details>
+                    <details class="faq-item" name="snfaq"><summary>Pontosan miben segít a technikai tanácsadás?<span data-ico="arrow"></span></summary><p>Stratégiai kérdésekben: melyik hosting éri meg, hogyan hozd ki a legtöbbet a teljesítményből, és milyen megoldások váltak be nálunk. A szervereden lévő hibákat nem javítjuk ki helyetted.</p></details>
+                    <details class="faq-item" name="snfaq"><summary>Mi a teendő, ha technikai gondom akad?<span data-ico="arrow"></span></summary><p>Írj ticketet a Discordon. Tanáccsal és iránymutatással szívesen segítünk, a tényleges javítást viszont a te csapatod végzi.</p></details>
+                    <details class="faq-item" name="snfaq"><summary>Hogyan tudok fizetni?<span data-ico="arrow"></span></summary><p>A fizetés módját a jelentkezésed elfogadása után, a ticketben beszéljük meg.</p></details>
+                    <details class="faq-item" name="snfaq"><summary>Mik a pontos elvárások a partnerszerverekkel szemben?<span data-ico="arrow"></span></summary><p>A fent leírt három szempont: megbízható üzemeltetés, saját arculat és élő kommunikáció.</p></details>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="dijak" class="sn-section">
-        <div class="section-head section-head-center reveal">
-            <span class="eyebrow">Díjazás</span>
-            <h2 class="section-title">Egyszerű, átlátható díjak</h2>
-            <p class="section-subtitle">Nincs apró betű: egy egyszeri csatlakozási díj, utána pedig egy fix havi összeg.</p>
-        </div>
-        <div class="sn-price reveal">
-            <div class="sn-price-row">
-                <div class="sn-price-item">
-                    <span class="sn-price-label">Csatlakozási díj</span>
-                    <span class="sn-price-value">5 000 <small>Ft</small></span>
-                    <span class="sn-price-note">egyszer, a partnerség indulásakor</span>
-                </div>
-                <span class="sn-price-plus" aria-hidden="true">+</span>
-                <div class="sn-price-item">
-                    <span class="sn-price-label">Havi díj</span>
-                    <span class="sn-price-value">2 500 <small>Ft / hó</small></span>
-                    <span class="sn-price-note">ezt követően, minden hónapban</span>
+        <section class="sec" data-slot="solarnet" data-label="Jelentkezés">
+            <div class="wrap">
+                <div class="sn-final card">
+                    <div>
+                        <h2>Jelentkezés</h2>
+                        <p>Nyiss ticketet a Discordon, és írd bele a szervered nevét, IP-címét, és pár mondatot a csapatodról és a terveidről.</p>
+                    </div>
+                    <a href="https://dc.solaryn.hu" class="btn btn-gold btn-big" target="_blank" rel="noopener"><span data-ico="discord"></span>Jelentkezés Discordon</a>
                 </div>
             </div>
-            <ul class="sn-price-perks">
-                <li><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7.5"/></svg>Nincs hűségidő</li>
-                <li><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7.5"/></svg>Bármikor lemondható, felmondási díj nélkül</li>
-                <li><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7.5"/></svg>A fizetés módját a ticketben egyeztetjük</li>
-            </ul>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <section id="gyik" class="sn-section sn-faq">
-        <div class="sn-faq-intro reveal">
-            <span class="eyebrow">GYIK</span>
-            <h2 class="section-title">Kérdésed van?</h2>
-            <p class="section-subtitle">Összegyűjtöttük, amit a jelentkezők a leggyakrabban kérdeznek. Ha nem találod a választ, nyugodtan nyiss egy ticketet.</p>
-        </div>
-        <div class="faq-container">
-            <div class="faq-item reveal">
-                <button class="faq-question">
-                    <span>Meddig tart a partnerség?</span>
-                    <span class="faq-arrow">⌄</span>
-                </button>
-                <div class="faq-answer">
-                    <p>Ameddig mindkét félnek megéri. Nincs határozott időtartam: a partnerség havonta megújul, és bármikor felmondhatod, külön díj nélkül.</p>
-                </div>
-            </div>
-            <div class="faq-item reveal">
-                <button class="faq-question">
-                    <span>Ki jelentkezhet a programba?</span>
-                    <span class="faq-arrow">⌄</span>
-                </button>
-                <div class="faq-answer">
-                    <p>Bármelyik Minecraft-szerver tulajdonosa, akinek a szervere stabilan fut, és van saját, egyedi tartalma.</p>
-                </div>
-            </div>
-            <div class="faq-item reveal">
-                <button class="faq-question">
-                    <span>Felcsatlakoztok a szerveremre a jelentkezés után?</span>
-                    <span class="faq-arrow">⌄</span>
-                </button>
-                <div class="faq-answer">
-                    <p>Igen. Mielőtt döntünk, mindenképp megnézzük a szervert belülről is - csak így tudunk felelősen igent vagy nemet mondani.</p>
-                </div>
-            </div>
-            <div class="faq-item reveal">
-                <button class="faq-question">
-                    <span>Mennyi idő alatt kapok választ?</span>
-                    <span class="faq-arrow">⌄</span>
-                </button>
-                <div class="faq-answer">
-                    <p>A ticketekre általában néhány napon belül reagálunk.</p>
-                </div>
-            </div>
-            <div class="faq-item reveal">
-                <button class="faq-question">
-                    <span>Pontosan miben segít a technikai tanácsadás?</span>
-                    <span class="faq-arrow">⌄</span>
-                </button>
-                <div class="faq-answer">
-                    <p>Stratégiai kérdésekben: melyik hosting éri meg, hogyan hozd ki a legtöbbet a teljesítményből, és milyen megoldások váltak be nálunk. A szervereden lévő hibákat nem javítjuk ki helyetted.</p>
-                </div>
-            </div>
-            <div class="faq-item reveal">
-                <button class="faq-question">
-                    <span>Mi a teendő, ha technikai gondom akad?</span>
-                    <span class="faq-arrow">⌄</span>
-                </button>
-                <div class="faq-answer">
-                    <p>Írj ticketet a Discordon. Tanáccsal és iránymutatással szívesen segítünk, a tényleges javítást viszont a te csapatod végzi.</p>
-                </div>
-            </div>
-            <div class="faq-item reveal">
-                <button class="faq-question">
-                    <span>Hogyan tudok fizetni?</span>
-                    <span class="faq-arrow">⌄</span>
-                </button>
-                <div class="faq-answer">
-                    <p>A fizetés módját a jelentkezésed elfogadása után, a ticketben beszéljük meg.</p>
-                </div>
-            </div>
-            <div class="faq-item reveal">
-                <button class="faq-question">
-                    <span>Mik a pontos elvárások a partnerszerverekkel szemben?</span>
-                    <span class="faq-arrow">⌄</span>
-                </button>
-                <div class="faq-answer">
-                    <p>A fent leírt három szempont: megbízható üzemeltetés, saját arculat és élő kommunikáció.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="sn-final reveal">
-        <div class="sn-final-inner">
-            <div class="sn-final-copy">
-                <h2 class="section-title">Készen állsz a következő lépésre?</h2>
-                <p class="section-subtitle">A SolarNet nemcsak tanácsokat ad, hanem egy összetartó hálózatot is, amelynek a tagjai egymást erősítik. Ha úgy érzed, a szervered ide tartozik, várjuk a jelentkezésed.</p>
-                <a href="https://dc.solaryn.hu" class="btn-glow-download btn-download-big" target="_blank" rel="noopener">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M19.6 5.3A17 17 0 0 0 15.4 4l-.5 1a15.7 15.7 0 0 0-5.8 0L8.6 4a17 17 0 0 0-4.2 1.3C1.7 9.3 1 13.2 1.3 17a17.1 17.1 0 0 0 5.2 2.6l1.1-1.7a11 11 0 0 1-1.7-.8l.4-.3a12.2 12.2 0 0 0 11.4 0l.4.3a11 11 0 0 1-1.7.8l1.1 1.7a17 17 0 0 0 5.2-2.6c.4-4.4-.7-8.3-3.1-11.7ZM8.5 14.7c-1 0-1.9-1-1.9-2.2s.8-2.2 1.9-2.2 1.9 1 1.9 2.2-.8 2.2-1.9 2.2Zm7 0c-1 0-1.9-1-1.9-2.2s.8-2.2 1.9-2.2 1.9 1 1.9 2.2-.8 2.2-1.9 2.2Z"/></svg>
-                    Jelentkezés Discordon
-                </a>
-            </div>
-            <div class="sn-final-check">
-                <div class="sn-final-check-title">A ticketbe írd bele:</div>
-                <ul>
-                    <li><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>a szervered <strong>nevét</strong></span></li>
-                    <li><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>a szervered <strong>IP-címét</strong></span></li>
-                    <li><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>pár mondatot a <strong>csapatodról</strong> és a <strong>terveidről</strong></span></li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="footer-content">
-            <div class="footer-top">
-                <div class="footer-brand">
-                    <a href="../" class="footer-brand-link">
-                        <img src="../assets/solaryn-icon.png" alt="Solaryn" class="footer-logo-icon">
-                        <span class="footer-logo">Solaryn Network</span>
-                    </a>
-                    <p>Egyedi játékmódok, saját kliens és egy közösség, ami minden nap tovább épül. Kövess minket a közösségi oldalainkon a legfrissebb hírekért!</p>
-                    <div class="social-apps">
-                        <a href="https://dc.solaryn.hu" class="social-app social-discord" target="_blank" rel="noopener"><span class="social-app-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M19.6 5.3A17 17 0 0 0 15.4 4l-.5 1a15.7 15.7 0 0 0-5.8 0L8.6 4a17 17 0 0 0-4.2 1.3C1.7 9.3 1 13.2 1.3 17a17.1 17.1 0 0 0 5.2 2.6l1.1-1.7a11 11 0 0 1-1.7-.8l.4-.3a12.2 12.2 0 0 0 11.4 0l.4.3a11 11 0 0 1-1.7.8l1.1 1.7a17 17 0 0 0 5.2-2.6c.4-4.4-.7-8.3-3.1-11.7ZM8.5 14.7c-1 0-1.9-1-1.9-2.2s.8-2.2 1.9-2.2 1.9 1 1.9 2.2-.8 2.2-1.9 2.2Zm7 0c-1 0-1.9-1-1.9-2.2s.8-2.2 1.9-2.2 1.9 1 1.9 2.2-.8 2.2-1.9 2.2Z"/></svg></span>Discord</a>
-                        <a href="https://www.youtube.com/@SolarynNetwork" class="social-app social-youtube" target="_blank" rel="noopener"><span class="social-app-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8.8 6.6v10.8l8.9-5.4z"/></svg></span>YouTube</a>
-                        <a href="https://www.instagram.com/solarynnetwork/" class="social-app social-instagram" target="_blank" rel="noopener"><span class="social-app-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3.9" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.2" cy="6.8" r="1.2" fill="currentColor"/></svg></span>Instagram</a>
-                        <a href="https://www.tiktok.com/@solaryn.network" class="social-app social-tiktok" target="_blank" rel="noopener"><span class="social-app-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.6 5.8A4.3 4.3 0 0 1 15.5 3h-3.1v12.4a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.7a5.7 5.7 0 1 0 4.9 5.7V9.1a7.3 7.3 0 0 0 4.3 1.4V7.4a4.3 4.3 0 0 1-3.2-1.6Z"/></svg></span>TikTok</a>
+    <footer class="foot">
+        <div class="wrap">
+            <div class="foot-grid">
+                <div>
+                    <a href="../" class="foot-brand"><img src="../assets/solaryn-icon.png" alt="" width="32" height="32">Solaryn Network</a>
+                    <p>Magyar Minecraft-hálózat saját játékmódokkal és saját klienssel.</p>
+                    <div class="foot-social">
+                        <a href="https://dc.solaryn.hu" target="_blank" rel="noopener" aria-label="Discord" data-ico="discord"></a>
+                        <a href="https://www.youtube.com/@SolarynNetwork" target="_blank" rel="noopener" aria-label="YouTube" data-ico="youtube"></a>
+                        <a href="https://www.instagram.com/solarynnetwork/" target="_blank" rel="noopener" aria-label="Instagram" data-ico="instagram"></a>
+                        <a href="https://www.tiktok.com/@solaryn.network" target="_blank" rel="noopener" aria-label="TikTok" data-ico="tiktok"></a>
                     </div>
                 </div>
-                <div class="footer-col">
-                    <div class="footer-col-title">Oldalak</div>
+                <div class="foot-col">
+                    <h3>Oldalak</h3>
                     <a href="../#jatekmodok">Játékmódok</a>
-                    <a href="../#csapat">Csapat</a>
+                    <a href="../#csapat">Tulajdonosok</a>
                     <a href="../#gyik">GYIK</a>
                     <a href="../solarnet/">SolarNet partnerprogram</a>
                 </div>
-                <div class="footer-col">
-                    <div class="footer-col-title">Fiók és bolt</div>
+                <div class="foot-col">
+                    <h3>Fiók és bolt</h3>
                     <a href="https://center.solaryn.hu">SolarCenter</a>
                     <a href="../szabalyzat/">Játékszabályzat</a>
                 </div>
-                <div class="footer-col">
-                    <div class="footer-col-title">Jogi</div>
+                <div class="foot-col">
+                    <h3>Jogi</h3>
                     <a href="../jogi/#impresszum">Impresszum</a>
                     <a href="../jogi/#aszf">ÁSZF</a>
                     <a href="../jogi/#adatkezeles">Adatvédelem</a>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <div class="footer-copy">© 2026 Solaryn Network. Minden jog fenntartva.</div>
-                <div class="legal-disclaimer">Disclaimer: Solaryn is not in any way affiliated with or supported by Minecraft, Mojang AB and/or Microsoft.</div>
+            <div class="foot-bottom">
+                <span>© 2026 Solaryn Network. Minden jog fenntartva.</span>
+                <span>Disclaimer: Solaryn is not in any way affiliated with or supported by Minecraft, Mojang AB and/or Microsoft.</span>
             </div>
         </div>
     </footer>
 
-    <script src="../script.js?v=20261001" defer></script>
-    <script src="../ui.js?v=20261002" defer></script>
+    <script src="../pixel-icons.js?v=20261106"></script>
+    <script src="../world.js?v=20261106"></script>
+    <script src="../shell.js?v=20261106b"></script>
 </body>
 
 </html>

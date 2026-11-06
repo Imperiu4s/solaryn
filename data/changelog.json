@@ -1,0 +1,116 @@
+{
+  "entries": [
+    {
+      "version": "0.55.0",
+      "date": "2026-11-03",
+      "title": "Zene modul, sebzésszámok és Flashback",
+      "items": [
+        "Új Zene modul: az épp szóló dal (Spotify, YouTube, Apple Music, böngésző…) borítóval, idősávval és sorról sorra szinkronizált, karaoke-szerűen kiszíneződő dalszöveggel",
+        "Zene: négy kinézet, borítóhoz igazodó színek, dalváltáskor értesítés, a dalszöveg akár előtted a világban is lebeghet (elytrán a repülés irányában)",
+        "Zene képernyő: tekerhető idősáv, egy sorra kattintva oda ugrik a dal, dalonként állítható időzítés, kézi dalszöveg-keresés, forrásválasztás és előzmények; billentyűkkel is vezérelhető",
+        "Szívek modul: ütéskor lebegő szám mutatja, mennyit sebeztél – kritikus ütés, ölés és gyógyulás kiemeléssel, saját színekkel, animációval és mérettel",
+        "Szívek modul: a fej fölötti szívek kikapcsolhatók, így akár csak a sebzésszámok maradnak",
+        "Új bővítmény 1.21.5-re: Flashback – rögzítsd a meneteidet, nézd vissza szabad kamerával, és készíts belőlük videót; a főmenüben külön gombot kap"
+      ]
+    },
+    {
+      "version": "0.54.0",
+      "date": "2026-11-01",
+      "title": "Gyorsüzenetek, egér-kijelző és chat-másolás",
+      "items": [
+        "Új Gyorsüzenetek modul: egy gombhoz (akár az egér oldalgombjaihoz) kész üzenetet vagy parancsot rendelhetsz, a kliens egy gombnyomásra elküldi",
+        "Billentyűzet modul: új Egér kijelző – mutatja az egérgombokat és azt, merre mozgatod az egeret; a HUD-szerkesztőben külön mozgatható",
+        "Chat: nyitott chatben jobb klikkel bármelyik üzenetet a vágólapra másolhatod",
+        "Az első beállítás varázsló választásai mostantól mindig érvényesülnek, újrafuttatáskor is, és a fiókodhoz mentett beállításokra is rákerülnek",
+        "Új telepítésnél a nem választott modulok ajánlott alapbeállítással indulnak",
+        "1.8.9 és 1.12.2: a régi verziókkal újra lehet csatlakozni, és a lobbyban, a Minigamesen és a Footballon látszanak a színátmenetek (hologramok, rangok)"
+      ]
+    },
+    {
+      "version": "0.53.6",
+      "date": "2026-10-28",
+      "title": "Szívek modul és új bővítmények",
+      "items": [
+        "Új Szívek modul: a játékosok (és ha kéred, a mobok) élete szívekként vagy számmal a fejük fölött, saját beállításokkal – akár csak az ellenfeleden",
+        "Páncélzat: a kézben lévő tárgy már bármi lehet (blokk, gyöngy, étel) a teljes darabszámával, és a bal kéz tárgya is kijelezhető",
+        "Új bővítmények: Simple Voice Chat, Translator (1.19.4) és Translator++ (1.21.5)",
+        "Javítva: 1.21.5-ben néha kidobott a szerver „out_of_order_chat” hibával"
+      ]
+    },
+    {
+      "version": "0.53.5",
+      "date": "2026-10-27",
+      "title": "Eszköz-ellenőrzés javítása",
+      "items": [
+        "Javítva: egyes gépeken az indításkor „Az eszköz ellenőrzése nem történt meg” hiba jött, és nem lehetett belépni a szerverre"
+      ]
+    },
+    {
+      "version": "0.53.4",
+      "date": "2026-10-27",
+      "title": "Belépési és stabilitási javítások",
+      "items": [
+        "Ha a launcher nem tudja előkészíteni a belépést, már indítás előtt kiírja az okát, ahelyett hogy a szerveren „Érvénytelen munkamenet” hibát kapnál",
+        "Javítva: 1.19.4-ben összeomlott a játék, ha bekapcsolt találat-színnel olyan játékost ütöttél meg, akiben nyíl állt"
+      ]
+    },
+    {
+      "version": "0.53.2",
+      "date": "2026-10-26",
+      "title": "Sok új bővítmény",
+      "items": [
+        "Több mint 60 új mod, textúracsomag és shader a Bővítmények között (pl. Mod Menu, Mouse Tweaks, Inventory Profiles Next, Entity Texture Features, BSL Classic, Sildur's)",
+        "Ha két bővítmény nem használható együtt, a launcher kiírja, és nem engedi egyszerre telepíteni - külön-külön mindkettő működik",
+        "Az első indításkor a varázsló megkérdezi a játék felületének méretét is",
+        "Javítva: 1.21.5-ben a Replay Mod mellett nem indult el a játék",
+        "A Névjegyben megjelenik a szerző és a Minecraft-nyilatkozat"
+      ]
+    },
+    {
+      "version": "0.52.1",
+      "date": "2026-10-24",
+      "title": "Nyitás előtti finomítások",
+      "items": [
+        "Biztonsági és stabilitási javítások a launcherben",
+        "Gyorsabb, tisztább felület-betöltés"
+      ]
+    },
+    {
+      "version": "0.52.0",
+      "date": "2026-10-23",
+      "title": "Scoreboard- és névtábla-javítások",
+      "items": [
+        "1.8.9 / 1.12.2: a szerver scoreboardja akkor is megjelenik, ha a csomagok rossz sorrendben érkeznek",
+        "1.8.9 / 1.12.2: a modulkeresőbe végre rendesen lehet gépelni",
+        "HUD-szerkesztő: ha a szerveren van scoreboard, azt látod és mozgatod, nem egy példát",
+        "NameTags: a saját neved fölött is látszik a rangod (prefix/suffix) a szervertől kapott formában",
+        "1.8.9 / 1.12.2: a rangok és scoreboard-sorok nem vágódnak le 16 karakternél"
+      ]
+    },
+    {
+      "version": "0.51.0",
+      "date": "2026-10-23",
+      "title": "Saját célkereszt és javítások",
+      "items": [
+        "Crosshair: saját célkeresztet rajzolhatsz egy 17×17-es rácson (rajz, radír, tükrözés, minták, előnézet)",
+        "Crosshair: a célpont-szín mostantól alapból aktív, ha entitásra célzol",
+        "A HUD-modulok újraindítás után is pontosan ott maradnak, ahová tetted őket",
+        "1.8.9 / 1.12.2: a szerverek scoreboard-sorai teljes hosszban és színátmenettel jelennek meg",
+        "1.19.4: ItemPhysics – a tárgyak a földön fekszenek, nem lebegnek és nem ugrálnak"
+      ]
+    },
+    {
+      "version": "0.50.0",
+      "date": "2026-10-20",
+      "title": "Teljesen megújult launcher",
+      "items": [
+        "Új, letisztult kinézet felső navigációval és nagy játékindító kezdőlappal",
+        "Első indításkor beállító varázsló előnézetekkel: verzió, HUD-modulok, kliensszín, teljesítmény",
+        "Statisztika oldal: játékidő, sorozatok, napszak- és napi bontás, jelvények",
+        "Képernyőkép-galéria és naplónéző (a kényes adatok automatikusan elrejtve)",
+        "Grafikus kártya választó laptopokhoz, tálcaikon, tárhely-kezelő és fájljavítás",
+        "Kisebb telepítő: a kliensfájlokat a launcher tölti le aláírt csomagból, és ellenőrzi"
+      ]
+    }
+  ]
+}

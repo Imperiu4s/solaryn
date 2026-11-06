@@ -193,14 +193,18 @@ const SkinPreview = (() => {
       lastX = e.clientX;
     }
     function onUp() { dragging = false; }
-    canvas.addEventListener('mousedown', onDown);
-    window.addEventListener('mousemove', onMove);
-    window.addEventListener('mouseup', onUp);
+    canvas.addEventListener('pointerdown', onDown);
+    window.addEventListener('pointermove', onMove);
+    window.addEventListener('pointerup', onUp);
+    window.addEventListener('pointercancel', onUp);
 
     let stopped = false;
+    const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     function frame() {
       if (stopped) return;
-      if (!dragging) angle += 0.006;
+      // Amíg nem látszik, nem rajzol: a lap többi része élvez elsőbbséget.
+      if (canvas.dataset.offscreen === '1') { requestAnimationFrame(frame); return; }
+      if (!dragging && !still) angle += 0.006;
 
       const w = canvas.width, h = canvas.height;
       gl.viewport(0, 0, w, h);
@@ -218,9 +222,10 @@ const SkinPreview = (() => {
 
     return () => {
       stopped = true;
-      canvas.removeEventListener('mousedown', onDown);
-      window.removeEventListener('mousemove', onMove);
-      window.removeEventListener('mouseup', onUp);
+      canvas.removeEventListener('pointerdown', onDown);
+      window.removeEventListener('pointermove', onMove);
+      window.removeEventListener('pointerup', onUp);
+      window.removeEventListener('pointercancel', onUp);
       gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
     };
   }

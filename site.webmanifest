@@ -11,13 +11,13 @@
   "theme_color": "#0e0e13",
   "icons": [
     {
-      "src": "/assets/solaryn-icon.png",
+      "src": "/assets/solaryn-icon.png?v=20261122",
       "sizes": "any",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/assets/solaryn-icon.png",
+      "src": "/assets/solaryn-icon.png?v=20261122",
       "sizes": "any",
       "type": "image/png",
       "purpose": "maskable"
